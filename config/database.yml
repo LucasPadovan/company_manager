@@ -15,10 +15,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: x0y0_development
+  database: company_manager_development
   pool: 5
-  username: postgres
-  password: postgres
+  username: general_user
+  password: 'general_user'
   host: localhost
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -42,16 +42,16 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: x0y0_test
+  database: company_manager_test
   pool: 5
-  username: <%= ENV['TRAVIS'] ? 'postgres' : 'postgres' %>
-  password: <%= ENV['TRAVIS'] ? '' : 'postgres' %>
+  username: <%= ENV['TRAVIS'] ? 'postgres' : 'general_user' %>
+  password: <%= ENV['TRAVIS'] ? '' : 'general_user' %>
   host: localhost
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: x0y0_production
+  database: company_manager_production
   pool: 5
-  username: postgres
-  password: postgres
+  username: general_user
+  password: 'general_user'

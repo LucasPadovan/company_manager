@@ -1,4 +1,4 @@
-= X0Y0
+= Company_manager
 
 Skeleton project, empty but with all the stuff I need to begin with =)
 
