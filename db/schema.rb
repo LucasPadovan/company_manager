@@ -11,7 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306131941) do
+ActiveRecord::Schema.define(:version => 20130109014811) do
+
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "area"
+    t.text     "details"
+    t.integer  "firm_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "contacts", ["firm_id"], :name => "index_contacts_on_firm_id"
+
+  create_table "firms", :force => true do |t|
+    t.string   "nombre"
+    t.string   "cuit"
+    t.string   "afip_cond"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "purchase_invoices", :force => true do |t|
+    t.datetime "date"
+    t.string   "invoice_type"
+    t.string   "destination_type"
+    t.float    "iva"
+    t.float    "subtotal"
+    t.float    "total"
+    t.float    "retencion"
+    t.float    "other_concepts"
+    t.integer  "firm_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "purchase_invoices", ["firm_id"], :name => "index_purchase_invoices_on_firm_id"
 
   create_table "users", :force => true do |t|
     t.string   "name",                                   :null => false

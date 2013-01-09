@@ -60,6 +60,7 @@ module CompanyManager
     config.generators do |g|
       g.test_framework :test_unit, fixture_replacement: :fabrication
       g.fixture_replacement :fabrication, dir: 'test/fabricators'
+      g.template_engine :haml
     end
   end
 end

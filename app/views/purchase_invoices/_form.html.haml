@@ -1,0 +1,40 @@
+.container-fluid
+  = form_for @purchase_invoice do |f|
+    - if @purchase_invoice.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@purchase_invoice.errors.count, "error")} prohibited this purchase_invoice from being saved:"
+        %ul
+          - @purchase_invoice.errors.full_messages.each do |msg|
+            %li= msg
+    .field
+      = f.label :firm
+      = f.select :firm_id, Firm.all.map{ |x| [x.nombre, x.id]}
+    .field
+      = f.label :date
+      = f.text_field :date, class: 'datepicker'
+    .field
+      = f.label :invoice_type
+      = f.select :invoice_type, ['A', 'B', 'C'], default: 'A'
+    .field
+      = f.label :destination_type
+      = f.select :destination_type, ['Ventas','Consumo'], default: 'Ventas'
+    .field
+      = f.label :iva
+      = f.text_field :iva, id: 'iva'
+    .field
+      = f.label :retencion
+      = f.text_field :retencion, id: 'retencion'
+    .field
+      = f.label :other_concepts
+      = f.text_field :other_concepts, id: 'other_concepts'
+    .field
+      = f.label :subtotal
+      = f.text_field :subtotal, id: 'subtotal'
+    .field
+      = f.label :total
+      = f.text_field :total, id: 'total'
+    .actions
+      = f.submit 'Save'
+:javascript
+  setDatePicker();
+  observeAmountFields();

@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @purchase_invoice.date
+%p
+  %b Tipo:
+  = @purchase_invoice.invoice_type
+%p
+  %b Destino:
+  = @purchase_invoice.destination_type
+%p
+  %b Iva:
+  = @purchase_invoice.iva
+%p
+  %b Retencion:
+  = @purchase_invoice.retencion
+%p
+  %b Conceptos no gravados:
+  = @purchase_invoice.other_concepts
+%p
+  %b Subtotal:
+  = @purchase_invoice.subtotal
+%p
+  %b Total:
+  = @purchase_invoice.total
+%p
+  %b Empresa:
+  = @purchase_invoice.firm.nombre
+%p
+  %b CUIT:
+  = @purchase_invoice.firm.cuit
+
+= link_to 'Edit', edit_purchase_invoice_path(@purchase_invoice)
+\|
+= link_to 'Back', purchase_invoices_path

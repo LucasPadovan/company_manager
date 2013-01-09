@@ -1,0 +1,35 @@
+%h1 Ventas
+
+%table
+  %tr
+    %th Fecha
+    %th Empresa
+    %th CUIT
+    %th Ventas
+    %th Consumo
+    %th Iva
+    %th Retencion
+    %th Conceptos no gravados
+    %th Total
+    %th
+    %th
+    %th
+
+  - @purchase_invoices.each do |purchase_invoice|
+    %tr
+      %td= purchase_invoice.date
+      %td= purchase_invoice.firm.nombre
+      %td= purchase_invoice.firm.cuit
+      %td= purchase_invoice.subtotal if purchase_invoice.destination_type == 'Ventas'
+      %td= purchase_invoice.subtotal if purchase_invoice.destination_type == 'Consumo'
+      %td= purchase_invoice.iva
+      %td= purchase_invoice.retencion
+      %td= purchase_invoice.other_concepts
+      %td= purchase_invoice.total
+      %td= link_to 'Show', purchase_invoice
+      %td= link_to 'Edit', edit_purchase_invoice_path(purchase_invoice)
+      %td= link_to 'Destroy', purchase_invoice, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Purchase invoice', new_purchase_invoice_path

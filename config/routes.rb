@@ -1,4 +1,13 @@
 CompanyManager::Application.routes.draw do
+  resources :purchase_invoices
+
+
+  resources :contacts
+
+
+  resources :firms
+
+
   devise_for :users
   
   resources :users do

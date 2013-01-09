@@ -21,3 +21,4 @@
 //= require date_pickers
 //= require mobile
 //= require users
+//= require manager_utils

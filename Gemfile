@@ -15,7 +15,6 @@ gem 'magick_columns'
 gem 'validates_timeliness'
 gem 'sidekiq'
 gem 'capistrano'
-gem 'haml'
 
 group :assets do
   gem 'sass-rails'
@@ -23,10 +22,18 @@ group :assets do
   gem 'libv8'
   gem 'therubyracer'
   gem 'uglifier'
+  gem 'less', '2.2.1'
+  gem 'less-rails', '2.2.3'
+  gem 'less-rails-bootstrap', '2.0.13'
 end
+
+gem 'twitter-bootstrap-rails'
+gem 'haml'
+gem 'haml-rails'
 
 group :development do
   gem 'thin'
+  gem 'bullet'
 end
 
 group :test do
