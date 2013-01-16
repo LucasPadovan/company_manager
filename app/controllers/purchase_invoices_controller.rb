@@ -28,7 +28,8 @@ class PurchaseInvoicesController < ApplicationController
   # GET /purchase_invoices/new.json
   def new
     @title = t('view.purchase_invoices.new_title')
-    @purchase_invoice = PurchaseInvoice.new
+    @monthly_movement = MonthlyMovement.find(params[:monthly_movement_id])
+    @purchase_invoice = @monthly_movement.purchase_invoices.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,12 +47,13 @@ class PurchaseInvoicesController < ApplicationController
   # POST /purchase_invoices.json
   def create
     @title = t('view.purchase_invoices.new_title')
-    @purchase_invoice = PurchaseInvoice.new(params[:purchase_invoice])
+    @monthly_movement = MonthlyMovement.find(params[:monthly_movement_id])
+    @purchase_invoice = @monthly_movement.purchase_invoices.build(params[:purchase_invoice])
 
     respond_to do |format|
       if @purchase_invoice.save
-        format.html { redirect_to @purchase_invoice, notice: t('view.purchase_invoices.correctly_created') }
-        format.json { render json: @purchase_invoice, status: :created, location: @purchase_invoice }
+        format.html { redirect_to [@monthly_movement, @purchase_invoice], notice: t('view.purchase_invoices.correctly_created') }
+        format.json { render json: [@monthly_movement, @purchase_invoice], status: :created, location: [@monthly_movement, @purchase_invoice] }
       else
         format.html { render action: 'new' }
         format.json { render json: @purchase_invoice.errors, status: :unprocessable_entity }
@@ -67,7 +69,7 @@ class PurchaseInvoicesController < ApplicationController
 
     respond_to do |format|
       if @purchase_invoice.update_attributes(params[:purchase_invoice])
-        format.html { redirect_to @purchase_invoice, notice: t('view.purchase_invoices.correctly_updated') }
+        format.html { redirect_to [@monthly_movement, @purchase_invoice], notice: t('view.purchase_invoices.correctly_updated') }
         format.json { head :ok }
       else
         format.html { render action: 'edit' }
@@ -75,7 +77,7 @@ class PurchaseInvoicesController < ApplicationController
       end
     end
   rescue ActiveRecord::StaleObjectError
-    redirect_to edit_purchase_invoice_url(@purchase_invoice), alert: t('view.purchase_invoices.stale_object_error')
+    redirect_to edit_monthly_movement_purchase_invoice_url(@purchase_invoice), alert: t('view.purchase_invoices.stale_object_error')
   end
 
   # DELETE /purchase_invoices/1
@@ -85,7 +87,7 @@ class PurchaseInvoicesController < ApplicationController
     @purchase_invoice.destroy
 
     respond_to do |format|
-      format.html { redirect_to purchase_invoices_url }
+      format.html { redirect_to monthly_movement_purchase_invoices_url }
       format.json { head :ok }
     end
   end

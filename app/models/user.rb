@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   include RoleModel
+
+  has_many :monthly_movements
   
   roles :admin, :regular
   

@@ -1,0 +1,48 @@
+.container-fluid
+  .align-center
+    %h1
+      Movimientos de
+      = @monthly_movement.month
+      de
+      = @monthly_movement.year
+    %p
+      %b Usuario:
+      = @monthly_movement.user.name
+    %p
+      %b Estado:
+      = @monthly_movement.status
+  .span5.well
+    %h3 Compras:
+    %p
+      %b Subtotal:
+      = @monthly_movement.purchases_subtotal
+    %p
+      %b Iva total:
+      = @monthly_movement.purchases_iva_total
+    %p
+      %b Otros conc total:
+      = @monthly_movement.purchases_otros_conc_total
+    %p
+      %b Total:
+      = @monthly_movement.purchases_total
+    .pull-right
+      = link_to 'Compras', monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn btn-primary', title: 'Click para agregar o ver las compras de este mes', rel: 'tooltip'
+  .span5.well
+    %h3 Ventas
+    %p
+      %b Subtotal:
+      = @monthly_movement.sales_subtotal
+    %p
+      %b Iva total:
+      = @monthly_movement.sales_iva_total
+    %p
+      %b Otros conc total:
+      = @monthly_movement.sales_otros_conc_total
+    %p
+      %b Total:
+      = @monthly_movement.sales_total
+    .pull-right
+      = link_to 'Ventas', '', class: 'btn btn-primary', title: 'Click para agregar o ver las ventas de este mes', rel: 'tooltip'
+  .clearfix
+  = link_to 'Editar', edit_monthly_movement_path(@monthly_movement), class: 'btn'
+  = link_to 'Volver', monthly_movements_path, class: 'btn btn-warning'

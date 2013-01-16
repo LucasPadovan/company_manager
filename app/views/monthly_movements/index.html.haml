@@ -1,0 +1,35 @@
+.container-fluid
+  %h1 Facturación mensual
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th Mes
+        %th Año
+        %th Status
+        %th Compras Total Iva
+        %th Compras Total otros conceptos
+        %th Compras Subtotal
+        %th Compras Total
+        %th Ventas Total Iva
+        %th Ventas Total otros conceptos
+        %th Ventas Subtotal
+        %th Ventas Total
+        %th
+        %th
+    %tbody
+      - @monthly_movements.each do |monthly_movement|
+        %tr
+          %td= monthly_movement.month
+          %td= monthly_movement.year
+          %td= monthly_movement.status
+          %td= monthly_movement.purchases_iva_total
+          %td= monthly_movement.purchases_otros_conc_total
+          %td= monthly_movement.purchases_subtotal
+          %td= monthly_movement.purchases_total
+          %td= monthly_movement.sales_iva_total
+          %td= monthly_movement.sales_otros_conc_total
+          %td= monthly_movement.sales_subtotal
+          %td= monthly_movement.sales_total
+          %td= link_to 'Ver', monthly_movement
+          %td= link_to 'Editar', edit_monthly_movement_path(monthly_movement)
+  = link_to 'Nueva facturación mensual', new_monthly_movement_path, class: 'btn btn-primary'

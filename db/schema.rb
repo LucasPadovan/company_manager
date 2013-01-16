@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109014811) do
+ActiveRecord::Schema.define(:version => 20130115194229) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,23 @@ ActiveRecord::Schema.define(:version => 20130109014811) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "monthly_movements", :force => true do |t|
+    t.string   "month"
+    t.integer  "year"
+    t.integer  "user_id"
+    t.string   "status"
+    t.float    "purchases_total"
+    t.float    "purchases_iva_total"
+    t.float    "purchases_otros_conc_total"
+    t.float    "purchases_subtotal"
+    t.float    "sales_total"
+    t.float    "sales_iva_total"
+    t.float    "sales_otros_conc_total"
+    t.float    "sales_subtotal"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "purchase_invoices", :force => true do |t|
     t.datetime "date"
     t.string   "invoice_type"
@@ -42,8 +59,9 @@ ActiveRecord::Schema.define(:version => 20130109014811) do
     t.float    "retencion"
     t.float    "other_concepts"
     t.integer  "firm_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.integer  "monthly_movement_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   add_index "purchase_invoices", ["firm_id"], :name => "index_purchase_invoices_on_firm_id"

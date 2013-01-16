@@ -10,6 +10,7 @@ class CreatePurchaseInvoices < ActiveRecord::Migration
       t.float :retencion
       t.float :other_concepts
       t.integer :firm_id
+      t.integer :monthly_movement_id
 
       t.timestamps
     end

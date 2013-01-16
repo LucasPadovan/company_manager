@@ -32,7 +32,7 @@ gem 'haml'
 gem 'haml-rails'
 
 group :development do
-  gem 'thin'
+  gem 'unicorn'
   gem 'bullet'
 end
 

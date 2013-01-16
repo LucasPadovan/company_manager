@@ -1,12 +1,11 @@
 CompanyManager::Application.routes.draw do
-  resources :purchase_invoices
+  resources :monthly_movements, except: [:destroy] do
+    resources :purchase_invoices
+  end
 
-
-  resources :contacts
-
-
-  resources :firms
-
+  resources :firms do
+    resources :contacts
+  end
 
   devise_for :users
   
