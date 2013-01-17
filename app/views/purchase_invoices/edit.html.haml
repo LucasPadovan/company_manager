@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @purchase_invoice
+= link_to 'Show', [@purchase_invoice.monthly_movement, @purchase_invoice]
 \|
-= link_to 'Back', purchase_invoices_path
+= link_to 'Back', monthly_movement_purchase_invoices_path

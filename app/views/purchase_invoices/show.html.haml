@@ -31,6 +31,6 @@
   %b CUIT:
   = @purchase_invoice.firm.cuit
 
-= link_to 'Edit', edit_purchase_invoice_path(@purchase_invoice)
+= link_to 'Edit', edit_monthly_movement_purchase_invoice_path(@purchase_invoice)
 \|
-= link_to 'Back', purchase_invoices_path
+= link_to 'Back', monthly_movement_purchase_invoices_path(@purchase_invoice)

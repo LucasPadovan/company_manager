@@ -1,10 +1,11 @@
 class PurchaseInvoicesController < ApplicationController
-  
+  before_filter :get_monthly_movement
+
   # GET /purchase_invoices
   # GET /purchase_invoices.json
   def index
     @title = t('view.purchase_invoices.index_title')
-    @purchase_invoices = PurchaseInvoice.page(params[:page])
+    @purchase_invoices = PurchaseInvoice.order('date asc').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +29,6 @@ class PurchaseInvoicesController < ApplicationController
   # GET /purchase_invoices/new.json
   def new
     @title = t('view.purchase_invoices.new_title')
-    @monthly_movement = MonthlyMovement.find(params[:monthly_movement_id])
     @purchase_invoice = @monthly_movement.purchase_invoices.build
 
     respond_to do |format|
@@ -47,13 +47,13 @@ class PurchaseInvoicesController < ApplicationController
   # POST /purchase_invoices.json
   def create
     @title = t('view.purchase_invoices.new_title')
-    @monthly_movement = MonthlyMovement.find(params[:monthly_movement_id])
     @purchase_invoice = @monthly_movement.purchase_invoices.build(params[:purchase_invoice])
+    @purchase_invoice.date = "#{params[:purchase_invoice][:date]}/#{MonthlyMovement::MONTHS[@monthly_movement.month.to_sym]}/#{@monthly_movement.year}".to_datetime
 
     respond_to do |format|
       if @purchase_invoice.save
-        format.html { redirect_to [@monthly_movement, @purchase_invoice], notice: t('view.purchase_invoices.correctly_created') }
-        format.json { render json: [@monthly_movement, @purchase_invoice], status: :created, location: [@monthly_movement, @purchase_invoice] }
+        format.html { redirect_to monthly_movement_purchase_invoices_path(@monthly_movement), notice: t('view.purchase_invoices.correctly_created') }
+        format.json { render json: monthly_movement_purchase_invoices_path(@monthly_movement), status: :created, location: [@monthly_movement, @purchase_invoice] }
       else
         format.html { render action: 'new' }
         format.json { render json: @purchase_invoice.errors, status: :unprocessable_entity }
@@ -91,4 +91,9 @@ class PurchaseInvoicesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  protected
+    def get_monthly_movement
+      @monthly_movement = MonthlyMovement.find(params[:monthly_movement_id])
+    end
 end
