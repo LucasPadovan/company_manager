@@ -5,7 +5,14 @@ class PurchaseInvoicesController < ApplicationController
   # GET /purchase_invoices.json
   def index
     @title = t('view.purchase_invoices.index_title')
-    @purchase_invoices = PurchaseInvoice.order('date asc').page(params[:page])
+    @totals = {ventas: 0, consumo: 0, iva: 0, retencion: 0, other_concepts: 0, total: 0 }
+    if params[:firm].present?
+      @purchase_invoices = @monthly_movement.purchase_invoices.where('firms.nombre LIKE ?', "%#{params[:firm]}%")
+    else
+      @purchase_invoices = @monthly_movement.purchase_invoices
+    end
+
+    @purchase_invoices = @purchase_invoices.includes(:firm).order('date asc')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -90,6 +97,13 @@ class PurchaseInvoicesController < ApplicationController
       format.html { redirect_to monthly_movement_purchase_invoices_url }
       format.json { head :ok }
     end
+  end
+
+  def generate_csv
+    @purchase_invoices = @monthly_movement.purchase_invoices
+    send_data @purchase_invoices.inject(['Fecha','Empresa','CUIT','Ventas','Consumo', 'IVA','Retencion', 'Importe no gravado','Total'].to_csv) { |file,row| file << row.to_csv },
+              type: 'text/csv; charset=utf-8; header=present',
+              filename: "Factura_Compras_#{@monthly_movement.month}/#{@monthly_movement.year}.csv"
   end
 
   protected

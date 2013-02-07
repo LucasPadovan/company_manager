@@ -14,8 +14,7 @@
         %th Ventas Total otros conceptos
         %th Ventas Subtotal
         %th Ventas Total
-        %th
-        %th
+        %th.span1
     %tbody
       - @monthly_movements.each do |monthly_movement|
         %tr
@@ -30,6 +29,21 @@
           %td= monthly_movement.sales_otros_conc_total
           %td= monthly_movement.sales_subtotal
           %td= monthly_movement.sales_total
-          %td= link_to 'Ver', monthly_movement
-          %td= link_to 'Editar', edit_monthly_movement_path(monthly_movement)
+          %td
+            = link_to_show monthly_movement
+            = link_to_edit edit_monthly_movement_path(monthly_movement)
+      %tr
+        %td
+        %td
+        %td
+          .pull-right Total:
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
   = link_to 'Nueva facturación mensual', new_monthly_movement_path, class: 'btn btn-primary'

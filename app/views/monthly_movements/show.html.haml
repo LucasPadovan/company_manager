@@ -5,6 +5,7 @@
       = @monthly_movement.month
       de
       = @monthly_movement.year
+      = link_to_edit edit_monthly_movement_path(@monthly_movement)
     %p
       %b Usuario:
       = @monthly_movement.user.name
@@ -27,6 +28,7 @@
       = @monthly_movement.purchases_total
     .pull-right
       = link_to 'Compras', monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn btn-primary', title: 'Click para agregar o ver las compras de este mes', rel: 'tooltip'
+      = link_to 'Generar Reporte', generate_csv_monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn btn-success', title: 'Click para generar el reporte de este mes', rel: 'tooltip', method: :post
   .span5.well
     %h3 Ventas
     %p
@@ -44,5 +46,4 @@
     .pull-right
       = link_to 'Ventas', '', class: 'btn btn-primary', title: 'Click para agregar o ver las ventas de este mes', rel: 'tooltip'
   .clearfix
-  = link_to 'Editar', edit_monthly_movement_path(@monthly_movement), class: 'btn'
   = link_to 'Volver', monthly_movements_path, class: 'btn btn-warning'

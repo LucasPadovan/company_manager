@@ -1,6 +1,9 @@
 .container-fluid
-  %h1 Ventas de #{@monthly_movement.month} de #{@monthly_movement.year}
-
+  %h1 Compras de #{@monthly_movement.month} de #{@monthly_movement.year}
+  .well
+    = form_for monthly_movement_purchase_invoices_path(@monthly_movement), method: :get do
+      = text_field_tag :firm, (params[:firm].present? ? params[:firm] : ''), placeholder: 'Nombre de la empresa'
+      = submit_tag 'Filtrar', class: 'btn btn-info pull-right'
   %table.table.table-bordered.table-striped
     %thead
       %tr
@@ -16,12 +19,22 @@
         %th
     %tbody
       - @purchase_invoices.each do |purchase_invoice|
+        - @totals[:iva] += purchase_invoice.iva || 0
+        - @totals[:retencion] += purchase_invoice.retencion || 0
+        - @totals[:other_concepts] += purchase_invoice.other_concepts || 0
+        - @totals[:total] += purchase_invoice.total || 0
         %tr
           %td= purchase_invoice.date.strftime('%d/%m/%y')
           %td= purchase_invoice.firm.nombre
           %td= purchase_invoice.firm.cuit
-          %td= purchase_invoice.subtotal if purchase_invoice.destination_type == 'Ventas'
-          %td= purchase_invoice.subtotal if purchase_invoice.destination_type == 'Consumo'
+          %td
+            - if purchase_invoice.destination_type == 'Ventas'
+              - @totals[:ventas] += purchase_invoice.subtotal
+              = purchase_invoice.subtotal
+          %td
+            - if purchase_invoice.destination_type == 'Consumo'
+              - @totals[:consumo] += purchase_invoice.subtotal
+              = purchase_invoice.subtotal
           %td= purchase_invoice.iva
           %td= purchase_invoice.retencion
           %td= purchase_invoice.other_concepts
@@ -30,5 +43,22 @@
             = link_to_show [purchase_invoice.monthly_movement, purchase_invoice]
             = link_to_edit ['edit', purchase_invoice.monthly_movement, purchase_invoice]
             = link_to_destroy [purchase_invoice.monthly_movement, purchase_invoice], method: :delete, data: { confirm: 'Estás a punto de eliminar una factura, ¿estás seguro que deseas hacer esto?' }
+      - total_check = 0
+      - @totals.each_pair do |x, y|
+        - total_check += y unless x.to_s == 'total'
+      %tr
+        %td
+        %td
+        %td
+          .pull-right Total:
+        %td= @totals[:ventas]
+        %td= @totals[:consumo]
+        %td= @totals[:iva]
+        %td= @totals[:retencion]
+        %td= @totals[:other_concepts]
+        %td{class: (total_check == @totals[:total] ? 'green' : 'red')}= @totals[:total]
+        %td
 
+  = link_to "Volver a movimientos de #{@monthly_movement.month}", @monthly_movement, class: 'btn'
   = link_to 'Nueva factura de compra', new_monthly_movement_purchase_invoice_path, class: 'btn btn-primary'
+#show_purchase
