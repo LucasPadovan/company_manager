@@ -77,4 +77,20 @@ class MonthlyMovementsController < ApplicationController
   rescue ActiveRecord::StaleObjectError
     redirect_to edit_monthly_movement_url(@monthly_movement), alert: t('view.monthly_movements.stale_object_error')
   end
+
+  def set_as_send
+    @monthly_movement = MonthlyMovement.find(params[:id])
+    p_subtotal = @monthly_movement.purchase_invoices.sum(&:subtotal)
+    p_iva_total = @monthly_movement.purchase_invoices.sum(&:iva)
+    p_other = @monthly_movement.purchase_invoices.sum(&:other_concepts) + @monthly_movement.purchase_invoices.sum(&:retencion)
+    p_total = @monthly_movement.purchase_invoices.sum(&:total)
+    @monthly_movement.update_attributes(status: MonthlyMovement::STATUSES[1], purchases_subtotal: p_subtotal, purchases_iva_total: p_iva_total, purchases_otros_conc_total: p_other, purchases_total: p_total)
+    redirect_to :back
+  end
+
+  def set_as_finalized
+    @monthly_movement = MonthlyMovement.find(params[:id])
+    @monthly_movement.update_attributes(status: MonthlyMovement::STATUSES[0])
+    redirect_to :back
+  end
 end

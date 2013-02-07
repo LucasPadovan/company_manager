@@ -5,6 +5,10 @@ CompanyManager::Application.routes.draw do
         post :generate_csv
       end
     end
+    member do
+      put :set_as_send
+      put :set_as_finalized
+    end
   end
 
   resources :firms do

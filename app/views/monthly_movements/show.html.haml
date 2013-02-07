@@ -12,6 +12,11 @@
     %p
       %b Estado:
       = @monthly_movement.status
+    - if @monthly_movement.started?
+      = link_to 'Enviado', set_as_send_monthly_movement_path(@monthly_movement), method: :put, class: 'btn btn-warning'
+    - else
+      = link_to 'Finalizado', set_as_finalized_monthly_movement_path(@monthly_movement), method: :put, class: 'btn btn-warning'
+    .clearfix
   .span5.well
     %h3 Compras:
     %p

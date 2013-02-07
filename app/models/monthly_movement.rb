@@ -16,4 +16,8 @@ class MonthlyMovement < ActiveRecord::Base
     MONTHS.each_key.map { |key| key.to_s }
   end
 
+  def started?
+    status == STATUSES[0]
+  end
+
 end

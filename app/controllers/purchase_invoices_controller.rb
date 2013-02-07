@@ -55,7 +55,7 @@ class PurchaseInvoicesController < ApplicationController
   def create
     @title = t('view.purchase_invoices.new_title')
     @purchase_invoice = @monthly_movement.purchase_invoices.build(params[:purchase_invoice])
-    @purchase_invoice.date = "#{params[:purchase_invoice][:date]}/#{MonthlyMovement::MONTHS[@monthly_movement.month.to_sym]}/#{@monthly_movement.year}".to_datetime
+    @purchase_invoice.date = "#{params[:purchase_invoice][:date].to_i + 1}/#{MonthlyMovement::MONTHS[@monthly_movement.month.to_sym]}/#{@monthly_movement.year}".to_datetime
 
     respond_to do |format|
       if @purchase_invoice.save
@@ -73,10 +73,11 @@ class PurchaseInvoicesController < ApplicationController
   def update
     @title = t('view.purchase_invoices.edit_title')
     @purchase_invoice = PurchaseInvoice.find(params[:id])
+    params[:purchase_invoice][:date] = "#{params[:purchase_invoice][:date].to_i + 1}/#{MonthlyMovement::MONTHS[@monthly_movement.month.to_sym]}/#{@monthly_movement.year}".to_datetime
 
     respond_to do |format|
       if @purchase_invoice.update_attributes(params[:purchase_invoice])
-        format.html { redirect_to [@monthly_movement, @purchase_invoice], notice: t('view.purchase_invoices.correctly_updated') }
+        format.html { redirect_to monthly_movement_purchase_invoices_path(@monthly_movement), notice: t('view.purchase_invoices.correctly_updated') }
         format.json { head :ok }
       else
         format.html { render action: 'edit' }

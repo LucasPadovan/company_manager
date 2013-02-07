@@ -1,4 +1,5 @@
 class PurchaseInvoice < ActiveRecord::Base
+  #todo: poner en default los valores en base de datos para poder calcular rápido.
   has_paper_trail
 
   belongs_to :firm

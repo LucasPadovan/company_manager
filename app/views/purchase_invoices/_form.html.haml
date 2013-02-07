@@ -27,10 +27,10 @@
         = f.text_field :iva, id: 'iva'
       %p
         = f.label 'Retenciones'
-        = f.text_field :retencion, id: 'retencion'
+        = f.text_field :retencion, id: 'retencion', value: 0
       %p
         = f.label 'Otros / Conceptos no gravados'
-        = f.text_field :other_concepts, id: 'other_concepts'
+        = f.text_field :other_concepts, id: 'other_concepts', value: 0
       %p
         = f.label 'Subtotal'
         - if @purchase_invoice.errors[:subtotal].any?
