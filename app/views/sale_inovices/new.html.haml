@@ -1,0 +1,6 @@
+.container-fluid
+  %h1 Nueva Factura de Venta de #{@monthly_movement.month} de #{@monthly_movement.year}
+
+  = render 'form'
+
+  = link_to 'Volver', monthly_movement_sale_invoices_path, class: 'btn'

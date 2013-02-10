@@ -49,6 +49,7 @@
       %b Total:
       = @monthly_movement.sales_total
     .pull-right
-      = link_to 'Ventas', '', class: 'btn btn-primary', title: 'Click para agregar o ver las ventas de este mes', rel: 'tooltip'
+      = link_to 'Ventas', monthly_movement_sale_invoices_path(@monthly_movement), class: 'btn btn-primary', title: 'Click para agregar o ver las ventas de este mes', rel: 'tooltip'
+      = link_to 'Generar Reporte', generate_csv_monthly_movement_sale_invoices_path(@monthly_movement), class: 'btn btn-success', title: 'Click para generar el reporte de este mes', rel: 'tooltip', method: :post
   .clearfix
   = link_to 'Volver', monthly_movements_path, class: 'btn btn-warning'

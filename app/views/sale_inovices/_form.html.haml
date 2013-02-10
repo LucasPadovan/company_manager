@@ -1,9 +1,9 @@
-= form_for [ @monthly_movement, @purchase_invoice ], html: { class: 'form-inline' } do |f|
-  -#- if @purchase_invoice.errors.any?
+= form_for [ @monthly_movement, @sale_invoice ], html: { class: 'form-inline' } do |f|
+  -#- if @sale_inovice.errors.any?
   -#  #error_explanation
-  -#    %h2= "#{pluralize(@purchase_invoice.errors.count, "errores")} evitaron que se guardara esta factura:"
+  -#    %h2= "#{pluralize(@sale_inovice.errors.count, "error")} prohibited this sale_inovice from being saved:"
   -#    %ul
-  -#      - @purchase_invoice.errors.full_messages.each do |msg|
+  -#      - @sale_inovice.errors.full_messages.each do |msg|
   -#        %li= msg
   .row
     .span5
@@ -19,14 +19,11 @@
       %p
         = f.label 'Tipo Factura'
         = f.select :invoice_type, ['A', 'B', 'C'], default: 'A'
-      %p
-        = f.label 'Venta/Consumo'
-        = f.select :destination_type, ['Ventas','Consumo'], default: 'Ventas'
     .span5
       %p
         = f.label 'IVA'
-        - if @purchase_invoice.errors[:iva].any?
-          %span.alert.alert-danger= @purchase_invoice.errors[:iva]
+        - if @sale_invoice.errors[:iva].any?
+          %span.alert.alert-danger= @sale_invoice.errors[:iva]
         = f.text_field :iva, id: 'iva'
       %p
         = f.label 'Retenciones'
@@ -36,13 +33,13 @@
         = f.text_field :other_concepts, id: 'other_concepts', value: 0
       %p
         = f.label 'Subtotal'
-        - if @purchase_invoice.errors[:subtotal].any?
-          %span.alert.alert-danger= @purchase_invoice.errors[:subtotal]
+        - if @sale_invoice.errors[:subtotal].any?
+          %span.alert.alert-danger= @sale_invoice.errors[:subtotal]
         = f.text_field :subtotal, id: 'subtotal'
       %p
         = f.label 'Total'
-        - if @purchase_invoice.errors[:total].any?
-          %span.alert.alert-danger= @purchase_invoice.errors[:total]
+        - if @sale_invoice.errors[:total].any?
+          %span.alert.alert-danger= @sale_invoice.errors[:total]
         = f.text_field :total, id: 'total'
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'

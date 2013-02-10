@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210183247) do
+ActiveRecord::Schema.define(:version => 20130210190012) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -66,6 +66,24 @@ ActiveRecord::Schema.define(:version => 20130210183247) do
   end
 
   add_index "purchase_invoices", ["firm_id"], :name => "index_purchase_invoices_on_firm_id"
+
+  create_table "sale_inovices", :force => true do |t|
+    t.datetime "date"
+    t.string   "invoice_type"
+    t.string   "number"
+    t.float    "iva"
+    t.float    "subtotal"
+    t.float    "total"
+    t.float    "retencion",           :default => 0.0
+    t.float    "other_concepts",      :default => 0.0
+    t.integer  "firm_id"
+    t.integer  "monthly_movement_id"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
+  add_index "sale_inovices", ["firm_id"], :name => "index_sale_inovices_on_firm_id"
+  add_index "sale_inovices", ["monthly_movement_id"], :name => "index_sale_inovices_on_monthly_movement_id"
 
   create_table "users", :force => true do |t|
     t.string   "name",                                   :null => false

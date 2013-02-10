@@ -1,0 +1,7 @@
+.container-fluid
+  %h1 Editando una factura de ventas
+
+  = render 'form'
+
+  = link_to_show [@monthly_movement, @sale_invoice]
+  = link_to 'Volver', monthly_movement_sale_invoices_path(@monthly_movement)

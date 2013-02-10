@@ -1,5 +1,11 @@
 CompanyManager::Application.routes.draw do
+
   resources :monthly_movements, except: [:destroy] do
+    resources :sale_inovices do
+      collection do
+        post :generate_csv
+      end
+    end
     resources :purchase_invoices do
       collection do
         post :generate_csv

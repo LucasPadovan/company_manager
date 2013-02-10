@@ -1,0 +1,2 @@
+module SaleInovicesHelper
+end

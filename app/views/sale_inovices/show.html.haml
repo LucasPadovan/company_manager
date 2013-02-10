@@ -1,0 +1,36 @@
+.container-fluid
+  .row
+    .span5
+      %p
+        %b Date:
+        = @sale_inovice.date
+      %p
+        %b Invoice type:
+        = @sale_inovice.invoice_type
+      %p
+        %b Number:
+        = @sale_inovice.number
+      %p
+        %b Firm:
+        = @sale_inovice.firm.nombre
+      %p
+        %b CUIT:
+        = @sale_inovice.firm.cuit
+    .span5
+      %p
+        %b Iva:
+        = @sale_inovice.iva
+      %p
+        %b Subtotal:
+        = @sale_inovice.subtotal
+      %p
+        %b Retencion:
+        = @sale_inovice.retencion
+      %p
+        %b Other concepts:
+        = @sale_inovice.other_concepts
+      %p
+        %b Total:
+        = @sale_inovice.total
+  = link_to_edit [edit, @monthly_movement, @sale_inovice]
+  = link_to "Volver a movimientos de #{@monthly_movement.month}", monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn'
