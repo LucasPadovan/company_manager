@@ -102,7 +102,7 @@ class PurchaseInvoicesController < ApplicationController
 
   def generate_csv
     @purchase_invoices = @monthly_movement.purchase_invoices
-    send_data @purchase_invoices.inject(['Fecha','Empresa','CUIT','Ventas','Consumo', 'IVA','Retencion', 'Importe no gravado','Total'].to_csv) { |file,row| file << row.to_csv },
+    send_data @purchase_invoices.inject(['Fecha', 'Numero', 'Empresa','CUIT','Ventas','Consumo', 'IVA','Retencion', 'Importe no gravado','Total'].to_csv) { |file,row| file << row.to_csv },
               type: 'text/csv; charset=utf-8; header=present',
               filename: "Factura_Compras_#{@monthly_movement.month}/#{@monthly_movement.year}.csv"
   end

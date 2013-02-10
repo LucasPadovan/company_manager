@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115194229) do
+ActiveRecord::Schema.define(:version => 20130210183247) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130115194229) do
     t.integer  "monthly_movement_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "number"
   end
 
   add_index "purchase_invoices", ["firm_id"], :name => "index_purchase_invoices_on_firm_id"

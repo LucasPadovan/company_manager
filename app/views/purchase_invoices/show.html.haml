@@ -1,36 +1,39 @@
-%p#notice= notice
-
-%p
-  %b Date:
-  = @purchase_invoice.date
-%p
-  %b Tipo:
-  = @purchase_invoice.invoice_type
-%p
-  %b Destino:
-  = @purchase_invoice.destination_type
-%p
-  %b Iva:
-  = @purchase_invoice.iva
-%p
-  %b Retencion:
-  = @purchase_invoice.retencion
-%p
-  %b Conceptos no gravados:
-  = @purchase_invoice.other_concepts
-%p
-  %b Subtotal:
-  = @purchase_invoice.subtotal
-%p
-  %b Total:
-  = @purchase_invoice.total
-%p
-  %b Empresa:
-  = @purchase_invoice.firm.nombre
-%p
-  %b CUIT:
-  = @purchase_invoice.firm.cuit
-
-= link_to 'Edit', edit_monthly_movement_purchase_invoice_path(@monthly_movement, @purchase_invoice)
-\|
-= link_to 'Back', monthly_movement_purchase_invoices_path(@monthly_movement)
+.container-fluid
+  .row
+    .span5
+      %p
+        %b Fecha:
+        = @purchase_invoice.date.strftime('%d/%m/%y')
+      %p
+        %b Tipo:
+        = @purchase_invoice.invoice_type
+      %p
+        %b Empresa:
+        = @purchase_invoice.firm.nombre
+      %p
+        %b CUIT:
+        = @purchase_invoice.firm.cuit
+      %p
+        %b Numero:
+        = @purchase_invoice.number
+      %p
+        %b Destino:
+        = @purchase_invoice.destination_type
+    .span5
+      %p
+        %b Iva:
+        = @purchase_invoice.iva
+      %p
+        %b Retencion:
+        = @purchase_invoice.retencion
+      %p
+        %b Conceptos no gravados:
+        = @purchase_invoice.other_concepts
+      %p
+        %b Subtotal:
+        = @purchase_invoice.subtotal
+      %p
+        %b Total:
+        = @purchase_invoice.total
+  = link_to_edit edit_monthly_movement_purchase_invoice_path(@monthly_movement, @purchase_invoice)
+  = link_to "Volver a movimientos de #{@monthly_movement.month}", monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn'

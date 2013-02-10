@@ -8,6 +8,7 @@
     %thead
       %tr
         %th Fecha
+        %th Numero
         %th Empresa
         %th CUIT
         %th Ventas
@@ -25,6 +26,7 @@
         - @totals[:total] += purchase_invoice.total || 0
         %tr
           %td= purchase_invoice.date.strftime('%d/%m/%y')
+          %td= purchase_invoice.number
           %td= purchase_invoice.firm.nombre
           %td= purchase_invoice.firm.cuit
           %td
@@ -47,6 +49,7 @@
       - @totals.each_pair do |x, y|
         - total_check += y unless x.to_s == 'total'
       %tr
+        %td
         %td
         %td
         %td
