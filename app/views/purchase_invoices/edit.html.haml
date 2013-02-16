@@ -2,6 +2,6 @@
   %h1 Editando una factura de compras
 
   = render 'form'
-
+%nav.form-actions
   = link_to_show [@purchase_invoice.monthly_movement, @purchase_invoice]
   = link_to 'Volver', monthly_movement_purchase_invoices_path(@monthly_movement)

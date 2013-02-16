@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20130210190012) do
 
   add_index "purchase_invoices", ["firm_id"], :name => "index_purchase_invoices_on_firm_id"
 
-  create_table "sale_inovices", :force => true do |t|
+  create_table "sale_invoices", :force => true do |t|
     t.datetime "date"
     t.string   "invoice_type"
     t.string   "number"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20130210190012) do
     t.datetime "updated_at",                           :null => false
   end
 
-  add_index "sale_inovices", ["firm_id"], :name => "index_sale_inovices_on_firm_id"
-  add_index "sale_inovices", ["monthly_movement_id"], :name => "index_sale_inovices_on_monthly_movement_id"
+  add_index "sale_invoices", ["firm_id"], :name => "index_sale_invoices_on_firm_id"
+  add_index "sale_invoices", ["monthly_movement_id"], :name => "index_sale_invoices_on_monthly_movement_id"
 
   create_table "users", :force => true do |t|
     t.string   "name",                                   :null => false

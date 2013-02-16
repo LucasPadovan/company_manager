@@ -1,4 +1,4 @@
-Fabricator(:sale_inovice) do
+Fabricator(:sale_invoice) do
   date { rand(1.year).ago }
   invoice_type { Faker::Lorem.sentence }
   number { Faker::Lorem.sentence }

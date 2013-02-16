@@ -7,7 +7,7 @@ class MonthlyMovement < ActiveRecord::Base
   belongs_to :user
 
   has_many :purchase_invoices
-  has_many :sale_inovices
+  has_many :sale_invoices
 
   attr_accessible :month, :year, :user_id, :status, :purchases_total, :purchases_iva_total, :purchases_otros_conc_total, :purchases_subtotal, :sales_total, :sales_iva_total, :sales_otros_conc_total, :sales_subtotal
 

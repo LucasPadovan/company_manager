@@ -1,6 +1,6 @@
-class CreateSaleInovices < ActiveRecord::Migration
+class CreateSaleInvoices < ActiveRecord::Migration
   def change
-    create_table :sale_inovices do |t|
+    create_table :sale_invoices do |t|
       t.datetime :date
       t.string :invoice_type
       t.string :number
@@ -14,7 +14,7 @@ class CreateSaleInovices < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :sale_inovices, :firm_id
-    add_index :sale_inovices, :monthly_movement_id
+    add_index :sale_invoices, :firm_id
+    add_index :sale_invoices, :monthly_movement_id
   end
 end

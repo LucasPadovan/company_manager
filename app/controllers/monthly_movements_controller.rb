@@ -84,7 +84,13 @@ class MonthlyMovementsController < ApplicationController
     p_iva_total = @monthly_movement.purchase_invoices.sum(&:iva)
     p_other = @monthly_movement.purchase_invoices.sum(&:other_concepts) + @monthly_movement.purchase_invoices.sum(&:retencion)
     p_total = @monthly_movement.purchase_invoices.sum(&:total)
-    @monthly_movement.update_attributes(status: MonthlyMovement::STATUSES[1], purchases_subtotal: p_subtotal, purchases_iva_total: p_iva_total, purchases_otros_conc_total: p_other, purchases_total: p_total)
+    s_subtotal = @monthly_movement.sale_invoices.sum(&:subtotal)
+    s_iva_total = @monthly_movement.sale_invoices.sum(&:iva)
+    s_other = @monthly_movement.sale_invoices.sum(&:other_concepts) + @monthly_movement.sale_invoices.sum(&:retencion)
+    s_total = @monthly_movement.sale_invoices.sum(&:total)
+    @monthly_movement.update_attributes(status: MonthlyMovement::STATUSES[1],
+                                        purchases_subtotal: p_subtotal, purchases_iva_total: p_iva_total, purchases_otros_conc_total: p_other, purchases_total: p_total,
+                                        sales_subtotal: s_subtotal, sales_iva_total: s_iva_total, sales_otros_conc_total: s_other, sales_total: s_total)
     redirect_to :back
   end
 

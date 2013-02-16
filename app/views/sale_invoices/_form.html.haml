@@ -1,10 +1,4 @@
 = form_for [ @monthly_movement, @sale_invoice ], html: { class: 'form-inline' } do |f|
-  -#- if @sale_inovice.errors.any?
-  -#  #error_explanation
-  -#    %h2= "#{pluralize(@sale_inovice.errors.count, "error")} prohibited this sale_inovice from being saved:"
-  -#    %ul
-  -#      - @sale_inovice.errors.full_messages.each do |msg|
-  -#        %li= msg
   .row
     .span5
       %p
@@ -12,7 +6,7 @@
         = f.select :firm_id, Firm.all.map{ |x| ["#{x.nombre} - #{x.cuit}", x.id]}
       %p
         = f.label 'Numero'
-        = f.text :number
+        = f.text_field :number
       %p
         = f.label 'Fecha'
         = f.select :date, (1..31).map {|x| x }
