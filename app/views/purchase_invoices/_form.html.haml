@@ -12,7 +12,7 @@
         = f.select :firm_id, Firm.all.map{ |x| ["#{x.nombre} - #{x.cuit}", x.id]}
       %p
         = f.label 'Numero'
-        = f.text :number
+        = f.text_field :number
       %p
         = f.label 'Fecha'
         = f.select :date, (1..31).map {|x| x }

@@ -2,16 +2,16 @@
   .row
     .span5
       %p
-        %b Date:
-        = @sale_invoice.date
+        %b Fecha:
+        = @sale_invoice.date.strftime('%d/%m/%y')
       %p
-        %b Invoice type:
+        %b Tipo:
         = @sale_invoice.invoice_type
       %p
-        %b Number:
+        %b Número:
         = @sale_invoice.number
       %p
-        %b Firm:
+        %b Empresa:
         = @sale_invoice.firm.nombre
       %p
         %b CUIT:
@@ -27,11 +27,11 @@
         %b Retencion:
         = @sale_invoice.retencion
       %p
-        %b Other concepts:
+        %b Otros conceptos:
         = @sale_invoice.other_concepts
       %p
         %b Total:
         = @sale_invoice.total
 %nav.form-actions
-  = link_to_edit [edit, @monthly_movement, @sale_invoice]
-  = link_to "Volver a movimientos de #{@monthly_movement.month}", monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn'
+  = link_to_edit ['edit', @monthly_movement, @sale_invoice]
+  = link_to "Volver a ventas de #{@monthly_movement.month}", monthly_movement_sale_invoices_path(@monthly_movement), class: 'btn'

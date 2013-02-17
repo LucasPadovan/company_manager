@@ -10,7 +10,7 @@ class PurchaseInvoice < ActiveRecord::Base
   validates_presence_of :date, :invoice_type, :destination_type, :iva, :subtotal, :total, :firm_id, :monthly_movement_id
 
   def to_csv
-    [date, number, firm.nombre, firm.cuit, (destination_type == 'Ventas' ? subtotal : 0 ), (destination_type == 'Consumo' ? subtotal : 0 ), iva, retencion, other_concepts, total].to_csv
+    [date.strftime('%d/%m/%y'), number, firm.nombre, firm.cuit, (destination_type == 'Ventas' ? subtotal : 0 ), (destination_type == 'Consumo' ? subtotal : 0 ), iva, retencion, other_concepts, total].to_csv
   end
 
 end

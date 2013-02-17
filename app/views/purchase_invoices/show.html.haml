@@ -37,4 +37,4 @@
         = @purchase_invoice.total
 %nav.form-actions
   = link_to_edit edit_monthly_movement_purchase_invoice_path(@monthly_movement, @purchase_invoice)
-  = link_to "Volver a movimientos de #{@monthly_movement.month}", monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn'
+  = link_to "Volver a compras de #{@monthly_movement.month}", monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn'

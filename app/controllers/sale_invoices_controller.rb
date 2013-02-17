@@ -101,7 +101,7 @@ class SaleInvoicesController < ApplicationController
 
   def generate_csv
     @sale_invoices = @monthly_movement.sale_invoices
-    send_data @sale_invoices.inject(['Fecha', 'Numero', 'Empresa', 'CUIT', 'IVA', 'Subtotal', 'Retencion', 'Importe no gravado','Total'].to_csv) { |file,row| file << row.to_csv },
+    send_data @sale_invoices.order(:date).inject(['Fecha', 'Numero', 'Empresa', 'CUIT', 'IVA', 'Subtotal', 'Retencion', 'Importe no gravado','Total'].to_csv) { |file,row| file << row.to_csv },
               type: 'text/csv; charset=utf-8; header=present',
               filename: "Facturas_Venta_#{@monthly_movement.month}/#{@monthly_movement.year}.csv"
   end

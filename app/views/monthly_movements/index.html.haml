@@ -5,7 +5,7 @@
       %tr
         %th Mes
         %th Año
-        %th Status
+        %th Estado
         %th Compras Total Iva
         %th Compras Total otros conceptos
         %th Compras Subtotal
@@ -16,19 +16,35 @@
         %th Ventas Total
         %th.span1
     %tbody
+      - p_iva_total = 0
+      - p_otros_conc = 0
+      - p_subtotal = 0
+      - p_total = 0
+      - s_iva_total = 0
+      - s_otros_conc = 0
+      - s_subtotal = 0
+      - s_total = 0
       - @monthly_movements.each do |monthly_movement|
+        - p_iva_total += monthly_movement.purchases_iva_total || 0
+        - p_otros_conc += monthly_movement.purchases_otros_conc_total || 0
+        - p_subtotal += monthly_movement.purchases_subtotal || 0
+        - p_total += monthly_movement.purchases_total || 0
+        - s_iva_total += monthly_movement.sales_iva_total|| 0
+        - s_otros_conc += monthly_movement.sales_otros_conc_total || 0
+        - s_subtotal += monthly_movement.sales_subtotal || 0
+        - s_total += monthly_movement.sales_total || 0
         %tr
           %td= monthly_movement.month
           %td= monthly_movement.year
           %td= monthly_movement.status
-          %td= monthly_movement.purchases_iva_total
-          %td= monthly_movement.purchases_otros_conc_total
-          %td= monthly_movement.purchases_subtotal
-          %td= monthly_movement.purchases_total
-          %td= monthly_movement.sales_iva_total
-          %td= monthly_movement.sales_otros_conc_total
-          %td= monthly_movement.sales_subtotal
-          %td= monthly_movement.sales_total
+          %td.purchases= monthly_movement.purchases_iva_total
+          %td.purchases= monthly_movement.purchases_otros_conc_total
+          %td.purchases= monthly_movement.purchases_subtotal
+          %td.purchases= monthly_movement.purchases_total
+          %td.sales= monthly_movement.sales_iva_total
+          %td.sales= monthly_movement.sales_otros_conc_total
+          %td.sales= monthly_movement.sales_subtotal
+          %td.sales= monthly_movement.sales_total
           %td
             = link_to_show monthly_movement
             = link_to_edit edit_monthly_movement_path(monthly_movement)
@@ -37,14 +53,14 @@
         %td
         %td
           .pull-right Total:
-        %td
-        %td
-        %td
-        %td
-        %td
-        %td
-        %td
-        %td
+        %td.purchases= p_iva_total
+        %td.purchases= p_otros_conc
+        %td.purchases= p_subtotal
+        %td.purchases= p_total
+        %td.sales= s_iva_total
+        %td.sales= s_otros_conc
+        %td.sales= s_subtotal
+        %td.sales= s_total
         %td
 %nav.form-actions
   = link_to 'Nueva facturación mensual', new_monthly_movement_path, class: 'btn btn-primary'
