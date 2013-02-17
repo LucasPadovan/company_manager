@@ -5,7 +5,7 @@ class SaleInvoicesController < ApplicationController
   # GET /sale_invoices.json
   def index
     @title = t('view.sale_invoices.index_title')
-    @totals = {ventas: 0, consumo: 0, iva: 0, retencion: 0, other_concepts: 0, total: 0 }
+    @totals = {subtotal: 0, iva: 0, retencion: 0, other_concepts: 0, total: 0 }
     if params[:firm].present?
       @sale_invoices = @monthly_movement.sale_invoices.where('firms.nombre LIKE ?', "%#{params[:firm]}%")
     else

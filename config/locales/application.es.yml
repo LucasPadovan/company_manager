@@ -72,3 +72,33 @@
       roles:
         admin: 'Administrador'
         regular: 'Normal'
+    monthly_movements:
+      index_title: 'Facturación Mensual'
+      show_title: 'Detalle Facturación mensual'
+      new_title: 'Nueva facturación mensual'
+      edit_title: 'Edición de la facturación mensual'
+      correctly_created: 'Facturación mensual agregado correctamente.'
+      correctly_updated: 'Facturación mensual actualizado correctamente.'
+      stale_object_error: 'La facturación mensual no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna facturación mensual hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva facturación mensual</span>'
+    purchase_invoices:
+      index_title: 'Facturas de compras'
+      show_title: 'Detalle de factura de compra'
+      new_title: 'Nueva factura de compra'
+      edit_title: 'Edición de la factura de compra'
+      correctly_created: 'Factura de compra agregada correctamente.'
+      correctly_updated: 'Factura de compra actualizada correctamente.'
+      stale_object_error: 'La factura de compra no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna factura de compra hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva factura de compra</span>'
+    sale_invoices:
+      index_title: 'Facturas de ventas'
+      show_title: 'Detalle de factura de venta'
+      new_title: 'Nueva factura de venta'
+      edit_title: 'Edición de la factura de venta'
+      correctly_created: 'Factura de venta agregada correctamente.'
+      correctly_updated: 'Factura de venta actualizada correctamente.'
+      stale_object_error: 'La factura de venta no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna factura de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva factura de venta</span>'

@@ -96,7 +96,7 @@ class MonthlyMovementsController < ApplicationController
 
   def set_as_finalized
     @monthly_movement = MonthlyMovement.find(params[:id])
-    @monthly_movement.update_attributes(status: MonthlyMovement::STATUSES[0])
+    @monthly_movement.update_attributes(status: MonthlyMovement::STATUSES[2])
     redirect_to :back
   end
 end

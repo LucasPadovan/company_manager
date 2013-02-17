@@ -63,5 +63,5 @@
         %td
 %nav.form-actions
   = link_to "Volver a movimientos de #{@monthly_movement.month}", @monthly_movement, class: 'btn'
-  = link_to 'Nueva factura de compra', new_monthly_movement_purchase_invoice_path, class: 'btn btn-primary'
+  = link_to('Nueva factura de compra', new_monthly_movement_purchase_invoice_path, class: 'btn btn-primary') unless @monthly_movement.status == MonthlyMovement::STATUSES[2]
 #show_purchase

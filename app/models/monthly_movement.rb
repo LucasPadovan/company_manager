@@ -21,4 +21,8 @@ class MonthlyMovement < ActiveRecord::Base
     status == STATUSES[0]
   end
 
+  def send?
+    status == STATUSES[1]
+  end
+
 end

@@ -14,7 +14,7 @@
       = @monthly_movement.status
     - if @monthly_movement.started?
       = link_to 'Enviado', set_as_send_monthly_movement_path(@monthly_movement), method: :put, class: 'btn btn-warning', rel: 'tooltip', title: 'Calculará el total de compras y ventas y permitirá generar los reportes para enviar'
-    - else
+    - elsif @monthly_movement.send?
       = link_to 'Finalizado', set_as_finalized_monthly_movement_path(@monthly_movement), method: :put, class: 'btn btn-warning', rel: 'tooltip', title: 'Marcará como finalizado el mes y no permitirá futuras modificaciones'
     .clearfix
   .span5.well
@@ -53,4 +53,4 @@
       = link_to 'Generar Reporte', generate_csv_monthly_movement_sale_invoices_path(@monthly_movement), class: 'btn btn-success', title: 'Click para generar el reporte de este mes', rel: 'tooltip', method: :post
   .clearfix
 %nav.form-actions
-  = link_to 'Volver', monthly_movements_path, class: 'btn'
+  = link_to 'Volver al índice de facturaciones', monthly_movements_path, class: 'btn'
