@@ -1,0 +1,22 @@
+.container-fluid
+
+  %p
+    %b Producto:
+    = @product_history.product.name
+  %p
+    %b Comprado a la empresa:
+    = @product_history.firm.nombre
+  %p
+    %b El día:
+    = @product_history.date
+  %p
+    %b Precio de compra:
+    = @product_history.purchase_price
+  %p
+    %b Precio de venta:
+    = @product_history.sale_price
+  %p
+    %b Usuario responsable:
+    = @product_history.user.name
+
+= link_to 'Volver', @product

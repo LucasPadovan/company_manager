@@ -1,0 +1,7 @@
+.container-fluid
+  %h1 Nuevo precio para #{@product.name}
+
+  = render 'form'
+
+.form-actions
+  = link_to 'Volver', @product, class: 'btn'

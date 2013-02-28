@@ -1,0 +1,25 @@
+.container-fluid
+  %h1 Listado de productos
+  - if @products.any?
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Nombre
+          %th Descripción
+          %th Rubro
+          %th.span2
+      %tbody
+        - @products.each do |product|
+          %tr
+            %td= product.name
+            %td= product.description
+            %td= product.rubro
+            %td.span2
+              = link_to_show product
+              = link_to_edit edit_product_path(product)
+              = link_to_destroy product, method: :delete, data: { :confirm => '¿Estás seguro que deseas eliminar este producto?' }
+  - else
+    .alert.alert-info
+      Aún no has cargado ningun producto, puedes hacerlo al clickear en "Nuevo Producto aquí abajo"
+.form-actions
+  = link_to 'Nuevo producto', new_product_path, class: 'btn btn-primary'

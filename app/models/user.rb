@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include RoleModel
 
   has_many :monthly_movements
+  has_many :products
   
   roles :admin, :regular
   

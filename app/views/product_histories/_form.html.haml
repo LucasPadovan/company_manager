@@ -1,0 +1,22 @@
+= form_for [@product, @product_history] do |f|
+  - if @product_history.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@product_history.errors.count, "error")} prohibited this product_history from being saved:"
+      %ul
+        - @product_history.errors.full_messages.each do |msg|
+          %li= msg
+
+  %p
+    = f.label 'Fecha:'
+    = f.datetime_select :date
+  %p
+    = f.label 'Precio compra:'
+    = f.text_field :purchase_price
+  %p
+    = f.label 'Precio de venta:'
+    = f.text_field :sale_price
+  %p
+    = f.label 'Empresa:'
+    = f.select :firm_id, Firm.all.map{ |x| ["#{x.nombre} - #{x.cuit}", x.id]}
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-primary'

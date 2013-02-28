@@ -1,0 +1,7 @@
+.container-fluid
+  %h1 Editando #{@product.name}
+
+  = render 'form'
+.form-actions
+  = link_to_show @product
+  = link_to 'Volver', products_path, class: 'btn'

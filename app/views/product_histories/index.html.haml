@@ -1,0 +1,24 @@
+.container-fluid
+  %h1 Precios para #{@product.name}
+
+  %table.table.table-bordered.table-striped
+    %tr
+      %th.span2 Fecha
+      %th Empresa
+      %th Precio de compra
+      %th Precio estimado de venta
+      %th Usuario encargado
+      %th
+
+    - @product_histories.each do |product_history|
+      %tr
+        %td= product_history.date.strftime('%d/%m/%y - %H:%M')
+        %td= product_history.firm.nombre
+        %td= product_history.purchase_price
+        %td= product_history.sale_price
+        %td= product_history.user.name
+        %td= link_to_destroy [@product, product_history], method: :delete, data: { confirm: 'Are you sure?' }
+
+.form-actions
+  = link_to 'Volver', @product, class: 'btn'
+  = link_to 'Nuevo Precio', ['new', @product, 'product_history'], class: 'btn btn-primary'

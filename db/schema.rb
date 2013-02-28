@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210190012) do
+ActiveRecord::Schema.define(:version => 20130218192508) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,26 @@ ActiveRecord::Schema.define(:version => 20130210190012) do
     t.datetime "updated_at",                 :null => false
   end
 
+  create_table "product_histories", :force => true do |t|
+    t.float    "purchase_price"
+    t.float    "sale_price"
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.integer  "firm_id"
+    t.datetime "date"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "rubro"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "purchase_invoices", :force => true do |t|
     t.datetime "date"
     t.string   "invoice_type"
@@ -67,6 +87,15 @@ ActiveRecord::Schema.define(:version => 20130210190012) do
 
   add_index "purchase_invoices", ["firm_id"], :name => "index_purchase_invoices_on_firm_id"
 
+  create_table "sale_histories", :force => true do |t|
+    t.datetime "date"
+    t.float    "price"
+    t.integer  "product_id"
+    t.integer  "firm_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "sale_invoices", :force => true do |t|
     t.datetime "date"
     t.string   "invoice_type"
@@ -82,8 +111,8 @@ ActiveRecord::Schema.define(:version => 20130210190012) do
     t.datetime "updated_at",                           :null => false
   end
 
-  add_index "sale_invoices", ["firm_id"], :name => "index_sale_invoices_on_firm_id"
-  add_index "sale_invoices", ["monthly_movement_id"], :name => "index_sale_invoices_on_monthly_movement_id"
+  add_index "sale_invoices", ["firm_id"], :name => "index_sale_inovices_on_firm_id"
+  add_index "sale_invoices", ["monthly_movement_id"], :name => "index_sale_inovices_on_monthly_movement_id"
 
   create_table "users", :force => true do |t|
     t.string   "name",                                   :null => false

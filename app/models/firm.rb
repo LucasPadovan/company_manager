@@ -3,6 +3,7 @@ class Firm < ActiveRecord::Base
 
   has_many :contacts
   has_many :purchase_invoices
+  has_many :sale_histories
 
   attr_accessible :nombre, :cuit, :afip_cond
 

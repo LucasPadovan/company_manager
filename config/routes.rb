@@ -1,4 +1,9 @@
 CompanyManager::Application.routes.draw do
+  resources :products do
+    resources :sale_histories
+    resources :product_histories
+  end
+
 
   resources :monthly_movements, except: [:destroy] do
     resources :sale_invoices do

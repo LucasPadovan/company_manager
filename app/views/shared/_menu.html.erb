@@ -11,6 +11,7 @@
         <div class="nav-collapse">
           <ul class="nav">
             <%= show_menu_link( name: 'Empresas', controllers: 'firms', path: firms_path ) if can?( :read, Firm ) %>
+            <%= show_menu_link( name: 'Productos', controllers: 'products', path: products_path ) if can?( :read, Product ) %>
             <%= show_menu_link( name: 'Facturación Mensual', controllers: 'monthly_movements', path: monthly_movements_path ) if can?( :read, MonthlyMovement ) %>
             <%= show_menu_link( name: 'Usuarios', controllers: 'users', path: users_path ) if can?( :read, User ) %>
           </ul>
