@@ -5,7 +5,10 @@ class ProductHistoriesController < ApplicationController
   # GET /product_histories.json
   def index
     @title = t('view.product_histories.index_title')
-    @product_histories = @product.product_histories
+    @product_histories = @product.product_histories.order('date desc').page(params[:page])
+    if params[:firm].present?
+      @product_histories = @product_histories.where(firm_id: params[:firm])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,6 +33,9 @@ class ProductHistoriesController < ApplicationController
   def new
     @title = t('view.product_histories.new_title')
     @product_history = @product.product_histories.build
+    if params[:firm].present?
+      @product_history.firm_id = params[:firm]
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,8 +58,8 @@ class ProductHistoriesController < ApplicationController
 
     respond_to do |format|
       if @product_history.save
-        format.html { redirect_to product_product_histories_path(@product), notice: t('view.product_histories.correctly_created') }
-        format.json { render json: product_product_histories_path(@product), status: :created, location: @product_history }
+        format.html { redirect_to @product, notice: t('view.product_histories.correctly_created') }
+        format.json { render json: @product, status: :created, location: @product_history }
       else
         format.html { render action: 'new' }
         format.json { render json: @product_history.errors, status: :unprocessable_entity }

@@ -16,7 +16,15 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @title = t('view.products.show_title')
-    @product = Product.find(params[:id])
+    @product = Product.includes(:product_histories, :sale_histories).find(params[:id])
+    @product_histories = []
+    Firm.joins(:product_histories).select('DISTINCT firms.*').each do |firm|
+      @product_histories << firm.product_histories.order(:date).last
+    end
+    @sale_histories = []
+    Firm.joins(:sale_histories).select('DISTINCT firms.*').each do |firm|
+      @sale_histories << firm.sale_histories.order(:date).last
+    end
 
     respond_to do |format|
       format.html # show.html.erb

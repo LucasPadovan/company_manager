@@ -15,7 +15,7 @@
     .span7
       -#todo: mostrar solo el último de cada empresa
       %h3 Precios de compra:
-      - if @product.product_histories.any?
+      - if @product_histories.any?
         %table.table.table-boredered
           %thead
             %tr
@@ -23,15 +23,17 @@
               %th Empresa
               %th Precio de compra
               %th Precio estimado de venta
+              %th
           %tbody
-            - @product.product_histories.each do |product_history|
+            - @product_histories.each do |product_history|
               %tr
                 %td= product_history.date.strftime('%d/%m/%y')
                 %td= product_history.firm.nombre
                 %td= product_history.purchase_price
                 %td= product_history.sale_price
-
-        = link_to 'Ver los últimos precios', product_product_histories_path(@product), class: 'btn btn-success'
+                %td
+                  = link_to 'Ver histórico', product_product_histories_path(@product, firm: product_history.firm), class: 'btn btn-success  btn-mini'
+                  = link_to 'Actualizar precio', new_product_product_history_path(@product, firm: product_history.firm), class: 'btn btn-primary btn-mini'
       = link_to 'Añadir nuevo precio', new_product_product_history_path(@product), class: 'btn btn-primary'
       %hr
       %h3 Vendido a:
@@ -44,12 +46,14 @@
               %th Precio
               %th
           %tbody
-            - @product.sale_histories.each do |sale_history|
+            - @sale_histories.each do |sale_history|
               %tr
                 %td= sale_history.date.strftime('%d/%m/%y')
                 %td= sale_history.firm.nombre
                 %td= sale_history.price
-                %td= link_to 'Añadir nuevo precio venta', new_product_sale_history_path(@product), class: 'btn btn-primary btn-mini'
+                %td
+                  = link_to 'Ver histórico', product_sale_histories_path(@product, firm: sale_history.firm), class: 'btn btn-success  btn-mini'
+                  = link_to 'Añadir nuevo precio venta', new_product_sale_history_path(@product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
       = link_to 'Vender a otra empresa', new_product_sale_history_path(@product), class: 'btn btn-primary'
 .form-actions
   = link_to_edit edit_product_path(@product)
