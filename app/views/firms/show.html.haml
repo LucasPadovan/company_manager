@@ -1,0 +1,58 @@
+.container-fluid
+  %h1= @firm.nombre
+  .row
+    .span4
+      %p
+        %strong>= Firm.human_attribute_name 'cuit'
+        \:
+        = @firm.cuit
+      %p
+        %strong>= Firm.human_attribute_name 'afip_cond'
+        \:
+        = @firm.afip_cond
+      %p
+        %strong>= Firm.human_attribute_name 'contacts'
+        \:
+        - @firm.contacts.each do |contact| #usar una tabla
+          = contact.name
+          = contact.area
+          = contact.details
+    .span7
+      %h3 Compramos:
+      %table.table.table-striped
+        %thead
+          %th Producto
+          %th Precio compra
+          %th Precio venta estimado
+          %th Fecha
+          %th
+        %tbody
+          - @product_histories.each do |product_history|
+            %tr
+              %td= product_history.product.name
+              %td= product_history.purchase_price
+              %td= product_history.sale_price
+              %td= product_history.date.strftime('%d/%m/%y - %H:%M')
+              %td
+                = link_to 'Ver histórico', product_product_histories_path(product_history.product, firm: product_history.firm), class: 'btn btn-success  btn-mini'
+                = link_to 'Actualizar precio', new_product_product_history_path(product_history.product, firm: product_history.firm), class: 'btn btn-primary btn-mini'
+
+      %hr
+      %h3 Vendemos:
+      %table.table.table-striped
+        %thead
+          %th Producto
+          %th Precio
+          %th Fecha
+        %tbody
+          - @sale_histories.each do |sale_history|
+            %tr
+              %td= sale_history.product.name
+              %td= sale_history.price
+              %td= sale_history.date.strftime('%d/%m/%y - %H:%M')
+              %td
+                = link_to 'Ver histórico', product_sale_histories_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-success  btn-mini'
+                = link_to 'Actualizar precio', new_product_sale_history_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
+.form-actions
+  = link_to_edit edit_firm_path(@firm) if can? :update, @firm
+  = link_to 'Volver', firms_path, class: 'btn'

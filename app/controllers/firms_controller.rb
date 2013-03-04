@@ -17,6 +17,14 @@ class FirmsController < ApplicationController
   def show
     @title = t('view.firms.show_title')
     @firm = Firm.find(params[:id])
+    @sale_histories = []
+    @product_histories = []
+    Product.joins(:sale_histories).where("sale_histories.firm_id = #{@firm.id}").select('DISTINCT products.*').each do |product|
+      @sale_histories << product.sale_histories.order(:date).last
+    end
+    Product.joins(:product_histories).where("product_histories.firm_id = #{@firm.id}").select('DISTINCT products.*').each do |product|
+      @product_histories << product.product_histories.order(:date).last
+    end
 
     respond_to do |format|
       format.html # show.html.erb
