@@ -3,20 +3,39 @@
   .row
     .span4
       %p
-        %strong>= Firm.human_attribute_name 'cuit'
-        \:
+        %strong CUIT:
         = @firm.cuit
       %p
-        %strong>= Firm.human_attribute_name 'afip_cond'
-        \:
+        %strong Condicion con la afip:
         = @firm.afip_cond
       %p
-        %strong>= Firm.human_attribute_name 'contacts'
-        \:
-        - @firm.contacts.each do |contact| #usar una tabla
-          = contact.name
-          = contact.area
-          = contact.details
+        %strong Medios de contacto:
+        - if @firm.contacts.any?
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Encargado
+                %th Área
+                %th Contacto
+                %th
+            %tbody
+              - @firm.contacts.each do |contact| #usar una tabla
+                %tr
+                  %td= contact.name
+                  %td= contact.area
+                  %td= contact.details
+                  %td
+                    = link_to_edit ['edit', @firm, contact]
+                    = link_to_destroy [@firm, contact]
+      %hr
+      %p
+        %h4 Nuevo contacto:
+        %p
+          = form_for [@firm, Contact.new], html: { class: 'form-inline' } do |f|
+            = f.text_field :name, placeholder: 'Nombre del encargado'
+            = f.text_field :area, placeholder: 'Área'
+            = f.text_field :details, placeholder: 'Teléfono/Email/Fax'
+            = f.submit 'Agregar contacto', class: 'btn btn-primary btn-small'
     .span7
       %h3 Compramos:
       %table.table.table-striped

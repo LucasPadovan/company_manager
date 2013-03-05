@@ -1,7 +1,6 @@
-%h1 Editing contact
+.container-fluid
+  %h1 Editando contacto para #{@firm.nombre}
 
-= render 'form'
-
-= link_to 'Show', @contact
-\|
-= link_to 'Back', contacts_path
+  = render 'form'
+.form-actions
+  = link_to 'Volver', @firm, class: 'btn'
