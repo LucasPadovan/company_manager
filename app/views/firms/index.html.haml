@@ -1,0 +1,29 @@
+.section-title
+  %h1 Empresas
+- if @firms.empty?
+  = render 'shared/empty_index'
+- else
+  .span10
+    %table.table.resource-list
+      %thead
+        %tr
+          %th.span4 Nombre
+          %th.span2 Cuit
+          %th.span3 Teléfonos
+          %th.span2
+      %tbody
+        - @firms.each do |firm|
+          %tr
+            %td= firm.nombre
+            %td= firm.cuit
+            %td
+              - if firm.contacts.any?
+                = firm.contacts.last.area + ' ' + firm.contacts.last.details
+            %td.span2
+              = link_to_show firm
+              = link_to_edit edit_firm_path(firm) if can? :update, firm
+              = link_to_destroy firm if can? :destroy, firm
+    = pagination_links(@firms)
+  .span2.section-commands
+    = link_to( 'Nueva empresa', new_firm_path, class: 'btn btn-danger' ) if can? :create, Firm
+  .clearfix

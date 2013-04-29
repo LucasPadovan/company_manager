@@ -20,4 +20,5 @@
  *= require devise
  *= require users
  *= require utils
+ *= require scaffolds
 */
