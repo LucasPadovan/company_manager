@@ -10,6 +10,9 @@
       user:
         one: 'Usuario'
         other: 'Usuarios'
+      firm:
+        one: 'Empresa'
+        other: 'Empresas'
       
     attributes:
       user:
@@ -22,6 +25,10 @@
           one: 'Perfil'
           other: 'Perfiles'
         remember_me: 'Recordarme'
+      firm:
+        nombre: 'Nombre'
+        afip_cond: 'Condición AFIP'
+        cuit: 'CUIT'
         
   errors:
     title: 'Error'
@@ -72,6 +79,16 @@
       roles:
         admin: 'Administrador'
         regular: 'Normal'
+    firms:
+      index_title: 'Empresas'
+      show_title: 'Información de %{firm}'
+      new_title: 'Nueva empresa'
+      edit_title: 'Editando %{firm}'
+      correctly_created: 'Empresa agregada correctamente.'
+      correctly_updated: 'Empresa actualizada correctamente.'
+      stale_object_error: 'La empresa no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva empresa</span>'
     monthly_movements:
       index_title: 'Facturación Mensual'
       show_title: 'Detalle Facturación mensual'

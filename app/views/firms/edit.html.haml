@@ -1,5 +1,4 @@
 .container-fluid
-  %h1 Editando #{@firm.nombre}
   = content_for :form_actions do
     = link_to t('label.show'), @firm
     = link_to t('label.list'), firms_path

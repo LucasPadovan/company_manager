@@ -15,8 +15,8 @@ class FirmsController < ApplicationController
   # GET /firms/1
   # GET /firms/1.json
   def show
-    @title = t('view.firms.show_title')
     @firm = Firm.find(params[:id])
+    @title = t('view.firms.show_title', firm: @firm.nombre)
     @sale_histories = []
     @product_histories = []
     Product.joins(:sale_histories).where("sale_histories.firm_id = #{@firm.id}").select('DISTINCT products.*').each do |product|
@@ -46,8 +46,8 @@ class FirmsController < ApplicationController
 
   # GET /firms/1/edit
   def edit
-    @title = t('view.firms.edit_title')
     @firm = Firm.find(params[:id])
+    @title = t('view.firms.edit_title', firm: @firm.nombre)
   end
 
   # POST /firms
