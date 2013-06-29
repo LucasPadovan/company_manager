@@ -96,4 +96,11 @@ module ApplicationHelper
     
     link_to '&#xe05a;'.html_safe, *args, options
   end
+
+  def link_to_add(title, where_to)
+    button_icon_text = content_tag(:div, '+', class: 'button-icon-text', style: ('padding-top: 5px' if /Firefox/.match request.env['HTTP_USER_AGENT']) )
+    button_icon = content_tag(:div, button_icon_text, class: 'button-icon')
+    button_text = content_tag(:div, link_to( title, where_to, class: 'btn btn-danger' ), class: 'button-text')
+    content_tag(:div, button_icon + button_text, class: 'button-iconized')
+  end
 end
