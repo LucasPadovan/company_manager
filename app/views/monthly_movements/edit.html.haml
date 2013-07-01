@@ -1,6 +1,4 @@
 .container-fluid
-  %h1= "Edición de la facturación del mes #{@monthly_movement.month}"
-
   = render 'form'
 %nav.form-actions
   = link_to 'Volver al índice de facturaciones', monthly_movements_path, class: 'btn'

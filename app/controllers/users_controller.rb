@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @title = t 'view.users.show_title'
+    @title = t 'view.users.show_title', user: @user.to_s
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @title = t 'view.users.edit_title'
+    @title = t 'view.users.edit_title', user: @user.to_s
   end
 
   # POST /users

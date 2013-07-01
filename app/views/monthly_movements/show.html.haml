@@ -1,11 +1,7 @@
 .container-fluid
+  .pull-right
+    = link_to_edit edit_monthly_movement_path(@monthly_movement)
   .align-center
-    %h1
-      Movimientos de
-      = @monthly_movement.month
-      de
-      = @monthly_movement.year
-      = link_to_edit edit_monthly_movement_path(@monthly_movement)
     %p
       %b Usuario:
       = @monthly_movement.user.name

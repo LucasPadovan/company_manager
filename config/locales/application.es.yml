@@ -63,9 +63,9 @@
           html: 'La búsqueda de <span class="label label-inverse">%{search}</span> no obtuvo ningún resultado.'
     users:
       index_title: 'Listado de usuarios'
-      show_title: 'Detalle de usuario'
+      show_title: 'Detalle de %{user}'
       new_title: 'Nuevo usuario'
-      edit_title: 'Modificar usuario'
+      edit_title: 'Modificar %{user}'
       correctly_created: 'Usuario agregado correctamente.'
       correctly_updated: 'Usuario actualizado correctamente.'
       stale_object_error: 'El usuario no pudo ser actualizado, intente nuevamente.'
@@ -91,9 +91,9 @@
         html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva empresa</span>'
     monthly_movements:
       index_title: 'Facturación Mensual'
-      show_title: 'Detalle Facturación mensual'
+      show_title: 'Movimientos de %{month} de %{year}'
       new_title: 'Nueva facturación mensual'
-      edit_title: 'Edición de la facturación mensual'
+      edit_title: 'Edición de la facturación del mes %{month}'
       correctly_created: 'Facturación mensual agregado correctamente.'
       correctly_updated: 'Facturación mensual actualizado correctamente.'
       stale_object_error: 'La facturación mensual no pudo ser actualizada, intente nuevamente.'

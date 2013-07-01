@@ -1,4 +1,5 @@
 = form_for [@firm, @contact] do |f|
+  //todo: hacer con modal.
   - if @contact.errors.any?
     #error_explanation
       %h2= "#{pluralize(@contact.errors.count, "error")} prohibited this contact from being saved:"

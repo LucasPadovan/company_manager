@@ -15,8 +15,8 @@ class MonthlyMovementsController < ApplicationController
   # GET /monthly_movements/1
   # GET /monthly_movements/1.json
   def show
-    @title = t('view.monthly_movements.show_title')
     @monthly_movement = MonthlyMovement.find(params[:id])
+    @title = t('view.monthly_movements.show_title', month: @monthly_movement.month, year: @monthly_movement.year)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,8 +38,8 @@ class MonthlyMovementsController < ApplicationController
 
   # GET /monthly_movements/1/edit
   def edit
-    @title = t('view.monthly_movements.edit_title')
     @monthly_movement = MonthlyMovement.find(params[:id])
+    @title = t('view.monthly_movements.edit_title', month: @monthly_movement.month)
   end
 
   # POST /monthly_movements
@@ -79,6 +79,7 @@ class MonthlyMovementsController < ApplicationController
   end
 
   def set_as_send
+    #todo: mandar al modelo.
     @monthly_movement = MonthlyMovement.find(params[:id])
     p_subtotal = @monthly_movement.purchase_invoices.sum(&:subtotal)
     p_iva_total = @monthly_movement.purchase_invoices.sum(&:iva)
