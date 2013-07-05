@@ -1,7 +1,6 @@
 .container-fluid
-  %h1 Editando #{@product.name}
 
   = render 'form'
 .form-actions
   = link_to_show @product
-  = link_to 'Volver', products_path, class: 'btn'
+  = link_to t('label.back'), products_path, class: 'btn'

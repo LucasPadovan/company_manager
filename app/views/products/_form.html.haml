@@ -6,13 +6,13 @@
         - @product.errors.full_messages.each do |msg|
           %li= msg
   %p
-    = f.label 'Nombre'
+    = f.label Product.human_attribute_name(:name)
     = f.text_field :name
   %p
-    = f.label 'Descripción'
+    = f.label Product.human_attribute_name(:description)
     = f.text_area :description
   %p
-    = f.label 'Rubro'
+    = f.label Product.human_attribute_name(:rubro)
     = f.text_field :rubro
   .actions
-    = f.submit 'Guardar producto', class: 'btn btn-primary'
+    = f.submit t('view.products.save'), class: 'btn btn-primary'

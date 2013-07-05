@@ -41,6 +41,22 @@
         nombre: 'Nombre'
         afip_cond: 'Condición AFIP'
         cuit: 'CUIT'
+      product:
+        name: Nombre
+        rubro: Rubro
+        description: Descripción
+      product_history:
+        date: Fecha
+        purchase_price: Precio de compra
+        sale_price: Precio de venta
+        firm: Empresa
+        user: Usuario
+        product: Producto
+      sale_history:
+        date: Fecha
+        firm: Empresa
+        product: Producto
+        price: Precio
         
   errors:
     title: 'Error'
@@ -59,6 +75,7 @@
     search: 'Buscar'
     searchinv: 'Buscando'
     show: 'Ver'
+    back: 'Volver'
     
   menu:
     actions:
@@ -106,6 +123,16 @@
       stale_object_error: 'La empresa no pudo ser actualizada, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva empresa</span>'
+    contacts:
+      index_title: 'Contactos'
+      show_title: 'Detalle de %{contact}'
+      new_title: 'Nuevo contacto'
+      edit_title: 'Editando %{contact}'
+      correctly_created: 'Contacto agregado correctamente.'
+      correctly_updated: 'Contacto actualizado correctamente.'
+      stale_object_error: 'El contacta no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningun contacto hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo contacto</span>'
     monthly_movements:
       index_title: 'Facturación Mensual'
       show_title: 'Movimientos de %{month} de %{year}'
@@ -130,12 +157,42 @@
       index_title: 'Lista de productos'
       show_title: 'Detalle de %{product}'
       new_title: 'Nuevo producto'
-      edit_title: 'Edición de %{product}'
+      edit_title: 'Editando %{product}'
       correctly_created: 'Producto agregado correctamente.'
       correctly_updated: 'Producto actualizado correctamente.'
       stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ningun producto hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva producto</span>'
+        html: 'No se ha cargado ningun producto hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo producto</span>'
+      save: 'Guardar producto'
+      show:
+        created_by: 'Cargado por: '
+        purchase_prices: 'Precios de compra: '
+        sold_to: 'Vendido a: '
+      show_historic: 'Ver historial'
+    product_histories:
+      index_title: 'Historial de precios de %{product}'
+      show_title: '%{product}'
+      new_title: 'Nuevo precio para %{product} para %{firm}'
+      edit_title: 'Editando el precio de %{product} para %{firm}'
+      correctly_created: 'Producto agregado correctamente.'
+      correctly_updated: 'Producto actualizado correctamente.'
+      stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningun precio hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo precio</span>'
+      update_price: 'Actualizar precio'
+      add_new_price: 'Comprar a otra empresa'
+    sale_histories:
+#      index_title: 'Historial de precios de %{product}'
+#      show_title: '%{product}'
+#      new_title: 'Nuevo precio para %{product} para %{firm}'
+#      edit_title: 'Editando el precio de %{product} para %{firm}'
+#      correctly_created: 'Producto agregado correctamente.'
+#      correctly_updated: 'Producto actualizado correctamente.'
+#      stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
+#      empty_index:
+#        html: 'No se ha creado ningun precio hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo precio</span>'
+      update_price: 'Actualizar precio venta'
+      sell_to_another: 'Vender a otra empresa'
     sale_invoices:
       index_title: 'Facturas de ventas'
       show_title: 'Detalle de factura de venta'

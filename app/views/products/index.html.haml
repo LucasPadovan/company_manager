@@ -1,12 +1,11 @@
 .container-fluid
-  %h1 Listado de productos
   - if @products.any?
     %table.table.table-bordered.table-striped
       %thead
         %tr
-          %th Nombre
-          %th Descripción
-          %th Rubro
+          %th= Product.human_attribute_name :name
+          %th= Product.human_attribute_name :description
+          %th= Product.human_attribute_name :rubro
           %th.span2
       %tbody
         - @products.each do |product|
@@ -20,6 +19,6 @@
               = link_to_destroy product, method: :delete, data: { :confirm => '¿Estás seguro que deseas eliminar este producto?' }
   - else
     .alert.alert-info
-      Aún no has cargado ningun producto, puedes hacerlo al clickear en "Nuevo Producto aquí abajo"
+      =t 'view.products.empty_index.html'
 .form-actions
-  = link_to 'Nuevo producto', new_product_path, class: 'btn btn-primary'
+  = link_to t('view.products.new_title'), new_product_path, class: 'btn btn-primary'

@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
   
-  # GET /products
-  # GET /products.json
   def index
     @title = t('view.products.index_title')
     @products = Product.page(params[:page])
@@ -12,11 +10,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/1
-  # GET /products/1.json
   def show
-    @title = t('view.products.show_title')
     @product = Product.includes(:product_histories, :sale_histories).find(params[:id])
+    @title = t('view.products.show_title', product: @product.name)
     @product_histories = []
     Firm.joins(:product_histories).select('DISTINCT firms.*').each do |firm|
       @product_histories << firm.product_histories.order(:date).last
@@ -32,11 +28,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/new
-  # GET /products/new.json
   def new
-    @title = t('view.products.new_title')
     @product = Product.new
+    @title = t('view.products.new_title')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,17 +38,14 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/1/edit
   def edit
-    @title = t('view.products.edit_title')
     @product = Product.find(params[:id])
+    @title = t('view.products.edit_title', product: @product.name)
   end
 
-  # POST /products
-  # POST /products.json
   def create
-    @title = t('view.products.new_title')
     @product = Product.new(params[:product])
+    @title = t('view.products.new_title')
     @product.user = @current_user
 
     respond_to do |format|
@@ -68,11 +59,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PUT /products/1
-  # PUT /products/1.json
   def update
-    @title = t('view.products.edit_title')
     @product = Product.find(params[:id])
+    @title = t('view.products.edit_title')
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
@@ -87,8 +76,6 @@ class ProductsController < ApplicationController
     redirect_to edit_product_url(@product), alert: t('view.products.stale_object_error')
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product = Product.find(params[:id])
     @product.destroy

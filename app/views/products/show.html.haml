@@ -1,27 +1,26 @@
 .container-fluid
-  %h1= @product.name
   .row
     .span4
       %p
-        %b Descripción:
+        %b= Product.human_attribute_name(:description) + ':'
         = @product.description
       %p
-        %b Rubro:
+        %b= Product.human_attribute_name(:rubro) + ':'
         = @product.rubro
       %p
-        %b Cargado por:
+        %b= t 'view.products.show.created_by'
         = @product.user.name
     .span7
       -#todo: mostrar solo el último de cada empresa
-      %h3 Precios de compra:
+      %h3= t 'view.products.show.purchase_prices'
       - if @product_histories.any?
         %table.table.table-boredered
           %thead
             %tr
-              %th.span1 Fecha
-              %th Empresa
-              %th Precio de compra
-              %th Precio estimado de venta
+              %th.span1= ProductHistory.human_attribute_name :date
+              %th= ProductHistory.human_attribute_name :firm
+              %th= ProductHistory.human_attribute_name :purchase_price
+              %th= ProductHistory.human_attribute_name :sale_price
               %th
           %tbody
             - @product_histories.each do |product_history|
@@ -31,18 +30,18 @@
                 %td= product_history.purchase_price
                 %td= product_history.sale_price
                 %td
-                  = link_to 'Ver histórico', product_product_histories_path(@product, firm: product_history.firm), class: 'btn btn-success  btn-mini'
-                  = link_to 'Actualizar precio', new_product_product_history_path(@product, firm: product_history.firm), class: 'btn btn-primary btn-mini'
-      = link_to 'Añadir nuevo precio', new_product_product_history_path(@product), class: 'btn btn-primary'
+                  = link_to t('view.products.show_historic'), product_product_histories_path(@product, firm: product_history.firm), class: 'btn btn-success  btn-mini'
+                  = link_to t('view.product_histories.update_price'), new_product_product_history_path(@product, firm: product_history.firm), class: 'btn btn-primary btn-mini'
+      = link_to t('view.product_histories.add_new_price'), new_product_product_history_path(@product), class: 'btn btn-primary'
       %hr
-      %h3 Vendido a:
+      %h3= t 'view.products.show.sold_to'
       - if @product.sale_histories.any?
         %table.table.table-boredered
           %thead
             %tr
-              %th.span1 Fecha
-              %th Empresa
-              %th Precio
+              %th.span1= SaleHistory.human_attribute_name :date
+              %th= SaleHistory.human_attribute_name :firm
+              %th= SaleHistory.human_attribute_name :price
               %th
           %tbody
             - @sale_histories.each do |sale_history|
@@ -51,9 +50,9 @@
                 %td= sale_history.firm.nombre
                 %td= sale_history.price
                 %td
-                  = link_to 'Ver histórico', product_sale_histories_path(@product, firm: sale_history.firm), class: 'btn btn-success  btn-mini'
-                  = link_to 'Añadir nuevo precio venta', new_product_sale_history_path(@product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
-      = link_to 'Vender a otra empresa', new_product_sale_history_path(@product), class: 'btn btn-primary'
+                  = link_to t('view.products.show_historic'), product_sale_histories_path(@product, firm: sale_history.firm), class: 'btn btn-success  btn-mini'
+                  = link_to t('view.sale_histories.update_price'), new_product_sale_history_path(@product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
+      = link_to t('view.sale_histories.sell_to_another'), new_product_sale_history_path(@product), class: 'btn btn-primary'
 .form-actions
   = link_to_edit edit_product_path(@product)
-  = link_to 'Volver', products_path, class: 'btn'
+  = link_to t('label.back'), products_path, class: 'btn'
