@@ -25,6 +25,18 @@
           one: 'Perfil'
           other: 'Perfiles'
         remember_me: 'Recordarme'
+      monthly_movement:
+        month: 'Mes'
+        year: 'Año'
+        status: 'Estado'
+        purchases_total: 'Total compras'
+        purchases_iva_total: 'IVA compras'
+        purchases_otros_conc_total: 'Otros conceptos compras'
+        purchases_subtotal: 'Subtotal compras'
+        sales_total: 'Total ventas'
+        sales_iva_total: 'IVA ventas'
+        sales_otros_conc_total: 'Otros conceptos ventas'
+        sales_subtotal: 'Subtotal ventas'
       firm:
         nombre: 'Nombre'
         afip_cond: 'Condición AFIP'
@@ -42,14 +54,19 @@
     edit: 'Editar'
     list: 'Listado'
     loading: 'Cargando...'
+    saving: 'Guardando...'
     new: 'Nuevo'
     search: 'Buscar'
+    searchinv: 'Buscando'
     show: 'Ver'
     
   menu:
     actions:
       logout: 'Salir de la aplicación'
     users: 'Usuarios'
+    firms: 'Empresas'
+    products: 'Productos'
+    monthly_movements: 'Facturación mensual'
     
   messages:
     confirmation: '¿Está seguro?'
@@ -109,6 +126,16 @@
       stale_object_error: 'La factura de compra no pudo ser actualizada, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ninguna factura de compra hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva factura de compra</span>'
+    products:
+      index_title: 'Lista de productos'
+      show_title: 'Detalle de %{product}'
+      new_title: 'Nuevo producto'
+      edit_title: 'Edición de %{product}'
+      correctly_created: 'Producto agregado correctamente.'
+      correctly_updated: 'Producto actualizado correctamente.'
+      stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningun producto hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva producto</span>'
     sale_invoices:
       index_title: 'Facturas de ventas'
       show_title: 'Detalle de factura de venta'
