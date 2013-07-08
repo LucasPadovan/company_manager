@@ -1,18 +1,11 @@
-%p#notice= notice
-
 %p
-  %b Name:
+  %b= Contact.human_attribute_name(:name)
   = @contact.name
 %p
-  %b Area:
+  %b= Contact.human_attribute_name(:area)
   = @contact.area
 %p
-  %b Details:
+  %b= Contact.human_attribute_name(:details)
   = @contact.details
-%p
-  %b Firm:
-  = @contact.firm_id
 
-= link_to 'Edit', edit_contact_path(@contact)
-\|
-= link_to 'Back', contacts_path
+= link_to t('view.contacts.edit_contact'), edit_contact_path(@contact)

@@ -38,9 +38,9 @@
 
     attributes:
       contact:
-        name: 'Nombre'
+        name: 'Nombre del encargado'
         area: 'Área'
-        details: 'Detalles'
+        details: 'Telefono/Email/Fax'
       firm:
         nombre: 'Nombre'
         afip_cond: 'Condición AFIP'
@@ -133,14 +133,16 @@
           html: 'La búsqueda de <span class="label label-inverse">%{search}</span> no obtuvo ningún resultado.'
     contacts:
       index_title: 'Contactos'
-      show_title: 'Detalle de %{contact}'
+      show_title: 'Detalle de %{contact} de %{firm}'
       new_title: 'Nuevo contacto'
-      edit_title: 'Editando %{contact}'
+      edit_title: 'Editando %{contact} de %{firm}'
       correctly_created: 'Contacto agregado correctamente.'
       correctly_updated: 'Contacto actualizado correctamente.'
       stale_object_error: 'El contacta no pudo ser actualizado, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ningun contacto hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo contacto</span>'
+      add_contact: 'Agregar contacto'
+      edit_contact: 'Editar contacto'
     firms:
       index_title: 'Empresas'
       show_title: 'Información de %{firm}'

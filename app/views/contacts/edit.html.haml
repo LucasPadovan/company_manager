@@ -1,6 +1,4 @@
 .container-fluid
-  %h1 Editando contacto para #{@firm.nombre}
-
   = render 'form'
 .form-actions
-  = link_to 'Volver', @firm, class: 'btn'
+  = link_to t('label.back'), @firm, class: 'btn'

@@ -2,8 +2,8 @@ class ContactsController < ApplicationController
   before_filter :get_firm
 
   def edit
-    @title = t('view.contacts.edit_title')
-    @contact = Contact.find(params[:id])
+    @contact = Contact.includes(:firm).find(params[:id])
+    @title = t('view.contacts.edit_title', contact: @contact.name, firm: @contact.firm.nombre)
   end
 
   # POST /contacts
@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
         format.html { redirect_to @firm, notice: t('view.contacts.correctly_created') }
         format.json { render json: @firm, status: :created, location: @contact }
       else
-        format.html { render action: 'new' }
+        format.html { render nothing: true }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
@@ -26,8 +26,8 @@ class ContactsController < ApplicationController
   # PUT /contacts/1
   # PUT /contacts/1.json
   def update
-    @title = t('view.contacts.edit_title')
-    @contact = Contact.find(params[:id])
+    @contact = Contact.includes(:firm).find(params[:id])
+    @title = t('view.contacts.edit_title', contact: @contact.name, firm: @contact.firm.nombre)
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])

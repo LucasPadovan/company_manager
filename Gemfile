@@ -25,6 +25,7 @@ group :assets do
   gem 'less', '2.2.1'
   gem 'less-rails', '2.2.3'
   gem 'less-rails-bootstrap', '2.0.13'
+  gem 'SrBuj', '0.8.5'
 end
 
 gem 'twitter-bootstrap-rails'

@@ -2,12 +2,12 @@
   //todo: hacer con modal.
   - if @contact.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@contact.errors.count, "error")} prohibited this contact from being saved:"
+      %h2= "#{pluralize(@contact.errors.count, 'error')} prohibited this contact from being saved:"
       %ul
         - @contact.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.text_field :name, placeholder: 'Nombre del encargado'
-  = f.text_field :area, placeholder: 'Área'
-  = f.text_field :details, placeholder: 'Teléfono/Email/Fax'
-  = f.submit 'Agregar contacto', class: 'btn btn-primary btn-small'
+  = f.text_field :name, placeholder: Contact.human_attribute_name(:name)
+  = f.text_field :area, placeholder: Contact.human_attribute_name(:area)
+  = f.text_field :details, placeholder: Contact.human_attribute_name(:details)
+  = f.submit t('view.contacts.add_contact'), class: 'btn btn-primary btn-small'

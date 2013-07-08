@@ -28,13 +28,13 @@
                     = link_to_destroy [@firm, contact]
       %hr
       %p
-        %h4 Nuevo contacto:
+        %h4= t 'view.contacts.new_title'
         %p
           = form_for [@firm, Contact.new], html: { class: 'form-inline' } do |f|
-            = f.text_field :name, placeholder: 'Nombre del encargado'
-            = f.text_field :area, placeholder: 'Área'
-            = f.text_field :details, placeholder: 'Teléfono/Email/Fax'
-            = f.submit 'Agregar contacto', class: 'btn btn-primary btn-small'
+            = f.text_field :name, placeholder: Contact.human_attribute_name(:name)
+            = f.text_field :area, placeholder: Contact.human_attribute_name(:area)
+            = f.text_field :details, placeholder: Contact.human_attribute_name(:details)
+            = f.submit t('view.contacts.add_contact'), class: 'btn btn-primary btn-small'
     .span7
       %h3 Compramos:
       %table.table.table-striped
