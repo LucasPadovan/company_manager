@@ -4,27 +4,47 @@
   attributes:
     created_at: 'Creación'
     updated_at: 'Actualización'
+    date: 'Fecha'
     
   activerecord:
     models:
-      user:
-        one: 'Usuario'
-        other: 'Usuarios'
+      contact:
+        one: 'Contacto'
+        other: 'Contactos'
       firm:
         one: 'Empresa'
         other: 'Empresas'
-      
-    attributes:
+      monthly_movement:
+        one: 'Facturación mensual'
+        other: 'Facturaciones mensuales'
+      product:
+        one: 'Producto'
+        other: 'Productos'
+      product_history:
+        one: 'Historial de precios'
+        other: 'Historiales de precios'
+      purchase_invoice:
+        one: 'Factura de compra'
+        other: 'Factuas de compras'
+      sale_history:
+        one: 'Historial de precios de ventas'
+        other: 'Historiales de precios de ventas'
+      sale_invoice:
+        one: 'Factura de venta'
+        other: 'Facturas de venta'
       user:
+        one: 'Usuario'
+        other: 'Usuarios'
+
+    attributes:
+      contact:
         name: 'Nombre'
-        lastname: 'Apellido'
-        email: 'Correo'
-        password: 'Contraseña'
-        password_confirmation: 'Confirmación'
-        roles:
-          one: 'Perfil'
-          other: 'Perfiles'
-        remember_me: 'Recordarme'
+        area: 'Área'
+        details: 'Detalles'
+      firm:
+        nombre: 'Nombre'
+        afip_cond: 'Condición AFIP'
+        cuit: 'CUIT'
       monthly_movement:
         month: 'Mes'
         year: 'Año'
@@ -37,26 +57,42 @@
         sales_iva_total: 'IVA ventas'
         sales_otros_conc_total: 'Otros conceptos ventas'
         sales_subtotal: 'Subtotal ventas'
-      firm:
-        nombre: 'Nombre'
-        afip_cond: 'Condición AFIP'
-        cuit: 'CUIT'
       product:
         name: Nombre
         rubro: Rubro
         description: Descripción
       product_history:
-        date: Fecha
         purchase_price: Precio de compra
         sale_price: Precio de venta
-        firm: Empresa
-        user: Usuario
-        product: Producto
+      purchase_invoice:
+        invoice_type: 'Tipo'
+        destination_type: 'Tipo de destino'
+        retencion: 'Retenciones'
+        other_concepts: 'Otros conceptos'
+        iva: 'IVA'
+        subtotal: 'Subtotal'
+        total: 'Total'
+        number: 'Número'
       sale_history:
-        date: Fecha
-        firm: Empresa
-        product: Producto
         price: Precio
+      sale_invoice:
+       invoice_type: 'Tipo'
+       number: 'Número'
+       iva: 'IVA'
+       subtotal: 'Subtotal'
+       total: 'Total'
+       retencion: 'Retenciones'
+       other_concepts: 'Otros conceptos'
+      user:
+        name: 'Nombre'
+        lastname: 'Apellido'
+        email: 'Correo'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación'
+        roles:
+          one: 'Perfil'
+          other: 'Perfiles'
+        remember_me: 'Recordarme'
         
   errors:
     title: 'Error'
@@ -95,34 +131,6 @@
       empty_search:
         title:
           html: 'La búsqueda de <span class="label label-inverse">%{search}</span> no obtuvo ningún resultado.'
-    users:
-      index_title: 'Listado de usuarios'
-      show_title: 'Detalle de %{user}'
-      new_title: 'Nuevo usuario'
-      edit_title: 'Modificar %{user}'
-      correctly_created: 'Usuario agregado correctamente.'
-      correctly_updated: 'Usuario actualizado correctamente.'
-      stale_object_error: 'El usuario no pudo ser actualizado, intente nuevamente.'
-      empty_index:
-        html: 'No se ha creado ningún usuario hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo usuario</span>'
-      new: 'Nuevo usuario'
-      update_profile: 'Actualizar datos'
-      update_password: 'Actualizar contraseña'
-      profile_correctly_updated: 'Actualizaste tus datos correctamente.'
-      edit_profile: 'Editar perfil'
-      roles:
-        admin: 'Administrador'
-        regular: 'Normal'
-    firms:
-      index_title: 'Empresas'
-      show_title: 'Información de %{firm}'
-      new_title: 'Nueva empresa'
-      edit_title: 'Editando %{firm}'
-      correctly_created: 'Empresa agregada correctamente.'
-      correctly_updated: 'Empresa actualizada correctamente.'
-      stale_object_error: 'La empresa no pudo ser actualizada, intente nuevamente.'
-      empty_index:
-        html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva empresa</span>'
     contacts:
       index_title: 'Contactos'
       show_title: 'Detalle de %{contact}'
@@ -133,6 +141,16 @@
       stale_object_error: 'El contacta no pudo ser actualizado, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ningun contacto hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo contacto</span>'
+    firms:
+      index_title: 'Empresas'
+      show_title: 'Información de %{firm}'
+      new_title: 'Nueva empresa'
+      edit_title: 'Editando %{firm}'
+      correctly_created: 'Empresa agregada correctamente.'
+      correctly_updated: 'Empresa actualizada correctamente.'
+      stale_object_error: 'La empresa no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva empresa</span>'
     monthly_movements:
       index_title: 'Facturación Mensual'
       show_title: 'Movimientos de %{month} de %{year}'
@@ -174,23 +192,23 @@
       show_title: '%{product}'
       new_title: 'Nuevo precio para %{product} para %{firm}'
       edit_title: 'Editando el precio de %{product} para %{firm}'
-      correctly_created: 'Producto agregado correctamente.'
-      correctly_updated: 'Producto actualizado correctamente.'
+      correctly_created: 'Precio agregado correctamente.'
+      correctly_updated: 'Precio actualizado correctamente.'
       stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ningun precio hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo precio</span>'
       update_price: 'Actualizar precio'
       add_new_price: 'Comprar a otra empresa'
     sale_histories:
-#      index_title: 'Historial de precios de %{product}'
-#      show_title: '%{product}'
-#      new_title: 'Nuevo precio para %{product} para %{firm}'
-#      edit_title: 'Editando el precio de %{product} para %{firm}'
-#      correctly_created: 'Producto agregado correctamente.'
-#      correctly_updated: 'Producto actualizado correctamente.'
-#      stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
-#      empty_index:
-#        html: 'No se ha creado ningun precio hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo precio</span>'
+      index_title: 'Historial de precios de ventas de %{product}'
+      show_title: '%{product}'
+      new_title: 'Nuevo precio de venta para %{product} para %{firm}'
+      edit_title: 'Editando el precio de venta de %{product} para %{firm}'
+      correctly_created: 'Precio de venta agregado correctamente.'
+      correctly_updated: 'Precio de venta actualizado correctamente.'
+      stale_object_error: 'El precio de venta no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningun precio de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo precio</span>'
       update_price: 'Actualizar precio venta'
       sell_to_another: 'Vender a otra empresa'
     sale_invoices:
@@ -203,3 +221,21 @@
       stale_object_error: 'La factura de venta no pudo ser actualizada, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ninguna factura de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva factura de venta</span>'
+    users:
+      index_title: 'Listado de usuarios'
+      show_title: 'Detalle de %{user}'
+      new_title: 'Nuevo usuario'
+      edit_title: 'Modificar %{user}'
+      correctly_created: 'Usuario agregado correctamente.'
+      correctly_updated: 'Usuario actualizado correctamente.'
+      stale_object_error: 'El usuario no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningún usuario hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo usuario</span>'
+      new: 'Nuevo usuario'
+      update_profile: 'Actualizar datos'
+      update_password: 'Actualizar contraseña'
+      profile_correctly_updated: 'Actualizaste tus datos correctamente.'
+      edit_profile: 'Editar perfil'
+      roles:
+        admin: 'Administrador'
+        regular: 'Normal'
