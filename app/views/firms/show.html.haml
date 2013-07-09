@@ -39,7 +39,7 @@
       %h3= t 'view.firms.show.we_buy'
       %table.table.table-striped
         %thead
-          %th= t 'activerecord.models.product'
+          %th= t 'activerecord.models.product.one'
           %th= ProductHistory.human_attribute_name :purchase_price
           %th= ProductHistory.human_attribute_name :sale_price
           %th= t 'attributes.date'
@@ -59,7 +59,7 @@
       %h3= t 'view.firms.show.we_sell'
       %table.table.table-striped
         %thead
-          %th= t 'activerecord.models.product'
+          %th= t 'activerecord.models.product.one'
           %th= SaleHistory.human_attribute_name :price
           %th= t 'attributes.date'
         %tbody

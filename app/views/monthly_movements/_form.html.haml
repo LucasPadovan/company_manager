@@ -6,10 +6,10 @@
         - @monthly_movement.errors.full_messages.each do |msg|
           %li= msg
 
-  Mes:
+  = MonthlyMovement.human_attribute_name :month
   = f.select :month, MonthlyMovement.months_for_select
-  Año:
+  = MonthlyMovement.human_attribute_name :year
   = f.number_field :year, value: @monthly_movement.year || Time.now.year
   = f.select :status, MonthlyMovement::STATUSES
   %br/
-  = f.submit 'Guardar', class: 'btn btn-primary'
+  = f.submit t('view.monthly_movements.save_monthly_movement'), class: 'btn btn-primary'

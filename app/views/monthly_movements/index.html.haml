@@ -2,17 +2,17 @@
   %table.table.table-striped.table-bordered
     %thead
       %tr
-        %th Mes
-        %th Año
-        %th Estado
-        %th Compras Total Iva
-        %th Compras Total otros conceptos
-        %th Compras Subtotal
-        %th Compras Total
-        %th Ventas Total Iva
-        %th Ventas Total otros conceptos
-        %th Ventas Subtotal
-        %th Ventas Total
+        %th= MonthlyMovement.human_attribute_name :month
+        %th= MonthlyMovement.human_attribute_name :year
+        %th= MonthlyMovement.human_attribute_name :status
+        %th= MonthlyMovement.human_attribute_name :purchases_iva_total
+        %th= MonthlyMovement.human_attribute_name :purchases_otros_conc_total
+        %th= MonthlyMovement.human_attribute_name :purchases_subtotal
+        %th= MonthlyMovement.human_attribute_name :purchases_total
+        %th= MonthlyMovement.human_attribute_name :sales_iva_total
+        %th= MonthlyMovement.human_attribute_name :sales_otros_conc_total
+        %th= MonthlyMovement.human_attribute_name :sales_subtotal
+        %th= MonthlyMovement.human_attribute_name :sales_total
         %th.span1
     %tbody
       - p_iva_total = 0
@@ -51,7 +51,7 @@
         %td
         %td
         %td
-          .pull-right Total:
+          .pull-right= t 'label.total'
         %td.purchases= p_iva_total
         %td.purchases= p_otros_conc
         %td.purchases= p_subtotal
@@ -62,4 +62,4 @@
         %td.sales= s_total
         %td
 %nav.form-actions
-  = link_to 'Nueva facturación mensual', new_monthly_movement_path, class: 'btn btn-primary'
+  = link_to t('view.monthly_movements.new_monthly_movement'), new_monthly_movement_path, class: 'btn btn-primary'

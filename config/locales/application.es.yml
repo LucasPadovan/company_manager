@@ -49,14 +49,14 @@
         month: 'Mes'
         year: 'Año'
         status: 'Estado'
-        purchases_total: 'Total compras'
         purchases_iva_total: 'IVA compras'
         purchases_otros_conc_total: 'Otros conceptos compras'
         purchases_subtotal: 'Subtotal compras'
-        sales_total: 'Total ventas'
+        purchases_total: 'Total compras'
         sales_iva_total: 'IVA ventas'
         sales_otros_conc_total: 'Otros conceptos ventas'
         sales_subtotal: 'Subtotal ventas'
+        sales_total: 'Total ventas'
       product:
         name: Nombre
         rubro: Rubro
@@ -112,6 +112,10 @@
     searchinv: 'Buscando'
     show: 'Ver'
     back: 'Volver'
+    subtotal: 'Subtotal'
+    iva_tot: 'Total IVA'
+    other_conc_tot: 'Total otros conceptos'
+    total: 'Total'
     
   menu:
     actions:
@@ -172,6 +176,16 @@
       stale_object_error: 'La facturación mensual no pudo ser actualizada, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ninguna facturación mensual hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva facturación mensual</span>'
+      new_monthly_movement: 'Nueva facturación mensual'
+      edit_monthly_movement:
+      save_monthly_movement: 'Guardar facturacion mensual'
+      status:
+        sent: 'Enviado'
+        finalized: 'Finalizado'
+      show:
+        purchases: 'Compras'
+        sales: 'Ventas'
+        generate_report: 'Generar reporte'
     purchase_invoices:
       index_title: 'Facturas de compras'
       show_title: 'Detalle de factura de compra'
