@@ -143,9 +143,14 @@
         html: 'No se ha creado ningun contacto hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo contacto</span>'
       add_contact: 'Agregar contacto'
       edit_contact: 'Editar contacto'
+      contact: 'Contacto'
     firms:
       index_title: 'Empresas'
       show_title: 'Información de %{firm}'
+      show:
+        contact_mediums: 'Medios de contacto:'
+        we_buy: 'Compramos'
+        we_sell: 'Vendemos'
       new_title: 'Nueva empresa'
       edit_title: 'Editando %{firm}'
       correctly_created: 'Empresa agregada correctamente.'
@@ -153,6 +158,8 @@
       stale_object_error: 'La empresa no pudo ser actualizada, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva empresa</span>'
+      add_firm: 'Agregar empresa'
+      edit_firm: 'Editar empresa'
     monthly_movements:
       index_title: 'Facturación Mensual'
       show_title: 'Movimientos de %{month} de %{year}'

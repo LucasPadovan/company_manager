@@ -2,20 +2,20 @@
   .row
     .span4
       %p
-        %strong CUIT:
+        %strong= Firm.human_attribute_name( :cuit ) + ':'
         = @firm.cuit
       %p
-        %strong Condicion con la afip:
+        %strong= Firm.human_attribute_name( :afip_cond ) + ':'
         = @firm.afip_cond
       %p
-        %strong Medios de contacto:
+        %strong= t 'view.firms.show.contact_mediums'
         - if @firm.contacts.any?
           %table.table.table-striped
             %thead
               %tr
-                %th Encargado
-                %th Área
-                %th Contacto
+                %th= Contact.human_attribute_name :name
+                %th= Contact.human_attribute_name :area
+                %th= t 'view.contacts.contact'
                 %th
             %tbody
               - @firm.contacts.each do |contact| #usar una tabla
@@ -36,13 +36,13 @@
             = f.text_field :details, placeholder: Contact.human_attribute_name(:details)
             = f.submit t('view.contacts.add_contact'), class: 'btn btn-primary btn-small'
     .span7
-      %h3 Compramos:
+      %h3= t 'view.firms.show.we_buy'
       %table.table.table-striped
         %thead
-          %th Producto
-          %th Precio compra
-          %th Precio venta estimado
-          %th Fecha
+          %th= t 'activerecord.models.product'
+          %th= ProductHistory.human_attribute_name :purchase_price
+          %th= ProductHistory.human_attribute_name :sale_price
+          %th= t 'attributes.date'
           %th
         %tbody
           - @product_histories.each do |product_history|
@@ -56,12 +56,12 @@
                 = link_to 'Actualizar precio', new_product_product_history_path(product_history.product, firm: product_history.firm), class: 'btn btn-primary btn-mini'
 
       %hr
-      %h3 Vendemos:
+      %h3= t 'view.firms.show.we_sell'
       %table.table.table-striped
         %thead
-          %th Producto
-          %th Precio
-          %th Fecha
+          %th= t 'activerecord.models.product'
+          %th= SaleHistory.human_attribute_name :price
+          %th= t 'attributes.date'
         %tbody
           - @sale_histories.each do |sale_history|
             %tr
@@ -69,8 +69,8 @@
               %td= sale_history.price
               %td= sale_history.date.strftime('%d/%m/%y - %H:%M')
               %td
-                = link_to 'Ver histórico', product_sale_histories_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-success  btn-mini'
-                = link_to 'Actualizar precio', new_product_sale_history_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
+                = link_to t('view.products.show_historic'), product_sale_histories_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-success  btn-mini'
+                = link_to t('view.sale_histories.update_price'), new_product_sale_history_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
 .form-actions
   = link_to_edit edit_firm_path(@firm) if can? :update, @firm
-  = link_to 'Volver', firms_path, class: 'btn'
+  = link_to t('label.back'), firms_path, class: 'btn'

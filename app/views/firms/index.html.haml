@@ -5,9 +5,9 @@
     %table.table.resource-list
       %thead
         %tr
-          %th.span4 Nombre
-          %th.span2 Cuit
-          %th.span3 Teléfonos
+          %th.span4= Firm.human_attribute_name :nombre
+          %th.span2= Firm.human_attribute_name :cuit
+          %th.span3= t 'view.contacts.contact'
           %th.span2
       %tbody
         - @firms.each do |firm|
@@ -23,5 +23,5 @@
               = link_to_destroy firm if can? :destroy, firm
     = pagination_links(@firms)
   .span2.section-commands
-    = link_to_add 'Nueva empresa', new_firm_path if can? :create, Firm
+    = link_to_add t('view.firms.add_firm'), new_firm_path if can? :create, Firm
   .clearfix
