@@ -144,6 +144,7 @@
       add_contact: 'Agregar contacto'
       edit_contact: 'Editar contacto'
       contact: 'Contacto'
+      save_contact: 'Guardar contacto'
     firms:
       index_title: 'Empresas'
       show_title: 'Información de %{firm}'
@@ -160,6 +161,7 @@
         html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva empresa</span>'
       add_firm: 'Agregar empresa'
       edit_firm: 'Editar empresa'
+      save_firm: 'Guardar empresa'
     monthly_movements:
       index_title: 'Facturación Mensual'
       show_title: 'Movimientos de %{month} de %{year}'
