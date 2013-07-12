@@ -1,11 +1,11 @@
 class ProductHistoriesController < ApplicationController
   before_filter :get_product
-
+  before_filter :get_firm, only: [:index, :new, :edit]
   # GET /product_histories
   # GET /product_histories.json
   def index
-    @title = t('view.product_histories.index_title')
     @product_histories = @product.product_histories.order('date desc').page(params[:page])
+    @title = t('view.product_histories.index_title', product: @product.name, firm: @firm.nombre)
     if params[:firm].present?
       @product_histories = @product_histories.where(firm_id: params[:firm])
     end
@@ -19,8 +19,8 @@ class ProductHistoriesController < ApplicationController
   # GET /product_histories/1
   # GET /product_histories/1.json
   def show
-    @title = t('view.product_histories.show_title')
     @product_history = ProductHistory.find(params[:id])
+    @title = t('view.product_histories.show_title')
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,8 +31,13 @@ class ProductHistoriesController < ApplicationController
   # GET /product_histories/new
   # GET /product_histories/new.json
   def new
-    @title = t('view.product_histories.new_title')
     @product_history = @product.product_histories.build
+    @title = if @firm.present?
+               t('view.product_histories.new_title_firm', product: @product.name, firm: @firm.nombre)
+             else
+               t('view.product_histories.new_title', product: @product.name)
+             end
+
     if params[:firm].present?
       @product_history.firm_id = params[:firm]
     end
@@ -45,14 +50,13 @@ class ProductHistoriesController < ApplicationController
 
   # GET /product_histories/1/edit
   def edit
-    @title = t('view.product_histories.edit_title')
     @product_history = ProductHistory.find(params[:id])
+    @title = t('view.product_histories.edit_title', product: @product.name, firm: @firm.nombre)
   end
 
   # POST /product_histories
   # POST /product_histories.json
   def create
-    @title = t('view.product_histories.new_title')
     @product_history = @product.product_histories.build(params[:product_history])
     @product_history.user = @current_user
 
@@ -70,7 +74,6 @@ class ProductHistoriesController < ApplicationController
   # PUT /product_histories/1
   # PUT /product_histories/1.json
   def update
-    @title = t('view.product_histories.edit_title')
     @product_history = ProductHistory.find(params[:id])
 
     respond_to do |format|
@@ -101,5 +104,9 @@ class ProductHistoriesController < ApplicationController
   private
     def get_product
       @product = Product.find(params[:product_id])
+    end
+
+    def get_firm
+      @firm = Firm.find(params[:firm]) if params[:firm]
     end
 end

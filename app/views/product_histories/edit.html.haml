@@ -1,5 +1,4 @@
-%h1 Editando precio para #{@product.name}
+.container-fluid
+  = render 'form'
 
-= render 'form'
-
-= link_to 'Volver', @product
+= link_to t('label.back'), @product, class: 'btn'
