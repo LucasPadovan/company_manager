@@ -1,22 +1,22 @@
 .container-fluid
 
   %p
-    %b Producto:
+    %b= t 'activerecord.models.product.one'
     = @product_history.product.name
   %p
-    %b Comprado a la empresa:
+    %b= t 'view.product_histories.show.bought_to'
     = @product_history.firm.nombre
   %p
-    %b El día:
+    %b= t 'view.product_histories.show.the_day'
     = @product_history.date
   %p
-    %b Precio de compra:
+    %b= ProductHistory.human_attribute_name :purchase_price
     = @product_history.purchase_price
   %p
-    %b Precio de venta:
+    %bb= ProductHistory.human_attribute_name :sale_price
     = @product_history.sale_price
   %p
-    %b Usuario responsable:
+    %b= t 'view.product_histories.responsible_user'
     = @product_history.user.name
 
-= link_to 'Volver', @product
+= link_to t('label.back'), @product

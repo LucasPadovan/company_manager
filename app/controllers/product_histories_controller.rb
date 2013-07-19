@@ -1,8 +1,7 @@
 class ProductHistoriesController < ApplicationController
   before_filter :get_product
   before_filter :get_firm, only: [:index, :new, :edit]
-  # GET /product_histories
-  # GET /product_histories.json
+
   def index
     @product_histories = @product.product_histories.order('date desc').page(params[:page])
     @title = t('view.product_histories.index_title', product: @product.name, firm: @firm.nombre)
@@ -16,8 +15,6 @@ class ProductHistoriesController < ApplicationController
     end
   end
 
-  # GET /product_histories/1
-  # GET /product_histories/1.json
   def show
     @product_history = ProductHistory.find(params[:id])
     @title = t('view.product_histories.show_title')
@@ -28,8 +25,6 @@ class ProductHistoriesController < ApplicationController
     end
   end
 
-  # GET /product_histories/new
-  # GET /product_histories/new.json
   def new
     @product_history = @product.product_histories.build
     @title = if @firm.present?
@@ -48,14 +43,11 @@ class ProductHistoriesController < ApplicationController
     end
   end
 
-  # GET /product_histories/1/edit
   def edit
     @product_history = ProductHistory.find(params[:id])
     @title = t('view.product_histories.edit_title', product: @product.name, firm: @firm.nombre)
   end
 
-  # POST /product_histories
-  # POST /product_histories.json
   def create
     @product_history = @product.product_histories.build(params[:product_history])
     @product_history.user = @current_user
@@ -71,8 +63,6 @@ class ProductHistoriesController < ApplicationController
     end
   end
 
-  # PUT /product_histories/1
-  # PUT /product_histories/1.json
   def update
     @product_history = ProductHistory.find(params[:id])
 
@@ -89,8 +79,6 @@ class ProductHistoriesController < ApplicationController
     redirect_to edit_product_product_history_url(@product, @product_history), alert: t('view.product_histories.stale_object_error')
   end
 
-  # DELETE /product_histories/1
-  # DELETE /product_histories/1.json
   def destroy
     @product_history = ProductHistory.find(params[:id])
     @product_history.destroy

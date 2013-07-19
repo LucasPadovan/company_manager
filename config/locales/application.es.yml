@@ -226,7 +226,10 @@
       update_price: 'Actualizar precio'
       add_new_price: 'Comprar a otra empresa'
       save_price: 'Guardar precio'
-      responsible_user: "Usuario encargado"
+      responsible_user: "Usuario responsable"
+      show:
+        bought_to: 'Comprado a la empresa'
+        the_day: 'El día'
     sale_histories:
       index_title: 'Historial de precios de ventas de %{product}'
       show_title: '%{product}'
