@@ -2,7 +2,7 @@ class PurchaseInvoicesController < ApplicationController
   before_filter :get_monthly_movement
 
   def index
-    @title = t('view.purchase_invoices.index_title')
+    @title = t('view.purchase_invoices.index_title', month: @monthly_movement.month, year: @monthly_movement.year)
     @totals = {ventas: 0, consumo: 0, iva: 0, retencion: 0, other_concepts: 0, total: 0 }
     if params[:firm].present?
       @purchase_invoices = @monthly_movement.purchase_invoices.where('firms.nombre LIKE ?', "%#{params[:firm]}%")
@@ -29,8 +29,8 @@ class PurchaseInvoicesController < ApplicationController
   end
 
   def new
-    @title = t('view.purchase_invoices.new_title')
     @purchase_invoice = @monthly_movement.purchase_invoices.build
+    @title = t('view.purchase_invoices.new_title', month:@monthly_movement.month, year: @monthly_movement.year)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,14 +39,14 @@ class PurchaseInvoicesController < ApplicationController
   end
 
   def edit
-    @title = t('view.purchase_invoices.edit_title')
-    @purchase_invoice = PurchaseInvoice.find(params[:id])
+    @purchase_invoice = PurchaseInvoice.includes(:firm).find(params[:id])
+    @title = t('view.purchase_invoices.edit_title', date: @purchase_invoice.date.strftime('%d/%m/%y'), firm: @purchase_invoice.firm.name)
   end
 
   def create
-    @title = t('view.purchase_invoices.new_title')
     @purchase_invoice = @monthly_movement.purchase_invoices.build(params[:purchase_invoice])
     @purchase_invoice.date = "#{params[:purchase_invoice][:date].to_i + 1}/#{MonthlyMovement::MONTHS[@monthly_movement.month.to_sym]}/#{@monthly_movement.year}".to_datetime
+    @title = t('view.purchase_invoices.new_title', month:@monthly_movement.month, year: @monthly_movement.year)
 
     respond_to do |format|
       if @purchase_invoice.save
@@ -60,8 +60,8 @@ class PurchaseInvoicesController < ApplicationController
   end
 
   def update
-    @title = t('view.purchase_invoices.edit_title')
     @purchase_invoice = PurchaseInvoice.find(params[:id])
+    @title = t('view.purchase_invoices.edit_title', date: @purchase_invoice.date.strftime('%d/%m/%y'), firm: @purchase_invoice.firm.name)
     params[:purchase_invoice][:date] = "#{params[:purchase_invoice][:date].to_i + 1}/#{MonthlyMovement::MONTHS[@monthly_movement.month.to_sym]}/#{@monthly_movement.year}".to_datetime
 
     respond_to do |format|

@@ -66,13 +66,15 @@
         sale_price: Precio de venta
       purchase_invoice:
         invoice_type: 'Tipo'
-        destination_type: 'Tipo de destino'
+        destination_type: 'Venta/Consumo'
         retencion: 'Retenciones'
         other_concepts: 'Otros conceptos'
         iva: 'IVA'
         subtotal: 'Subtotal'
         total: 'Total'
         number: 'Número'
+        sales: 'Ventas'
+        use: 'Consumo'
       sale_history:
         price: Precio
       sale_invoice:
@@ -187,15 +189,21 @@
         sales: 'Ventas'
         generate_report: 'Generar reporte'
     purchase_invoices:
-      index_title: 'Facturas de compras'
+      index_title: 'Compras de %{month} de %{year}'
       show_title: 'Detalle de factura de compra'
-      new_title: 'Nueva factura de compra'
-      edit_title: 'Edición de la factura de compra'
+      new_title: 'Nueva factura de compra de %{month} de %{year}'
+      edit_title: 'Editando la factura de compra del %{date} de %{firm}'
       correctly_created: 'Factura de compra agregada correctamente.'
       correctly_updated: 'Factura de compra actualizada correctamente.'
       stale_object_error: 'La factura de compra no pudo ser actualizada, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ninguna factura de compra hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva factura de compra</span>'
+      index:
+        delete_confirm: 'Estás a punto de eliminar una factura, ¿estás seguro que deseas hacer esto?'
+        back_to_monthly_movement: "Volver a movimientos de %{month}"
+      add_purchase_invoice: 'Nueva factura de compra'
+      edit_purchase_invoice: 'Editar factura de compra'
+      save_purchase_invoice: 'Guardar factura de compra'
     products:
       index_title: 'Lista de productos'
       show_title: 'Detalle de %{product}'

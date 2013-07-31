@@ -1,5 +1,4 @@
 .container-fluid
-  %h1 Compras de #{@monthly_movement.month} de #{@monthly_movement.year}
   .well
     = form_for monthly_movement_purchase_invoices_path(@monthly_movement), method: :get do
       = text_field_tag :firm, (params[:firm].present? ? params[:firm] : ''), placeholder: 'Nombre de la empresa'
@@ -7,16 +6,16 @@
   %table.table.table-bordered.table-striped
     %thead
       %tr
-        %th Fecha
-        %th Numero
-        %th Empresa
-        %th CUIT
-        %th Ventas
-        %th Consumo
-        %th Iva
-        %th Retencion
-        %th Conceptos no gravados
-        %th Total
+        %th= t 'attributes.date'
+        %th= t 'activerecord.attributes.purchase_invoice.number'
+        %th= t 'activerecord.models.firm.one'
+        %th= t 'activerecord.attributes.firm.cuit'
+        %th= t 'activerecord.attributes.purchase_invoice.sales'
+        %th= t 'activerecord.attributes.purchase_invoice.use'
+        %th= t 'activerecord.attributes.purchase_invoice.iva'
+        %th= t 'activerecord.attributes.purchase_invoice.retencion'
+        %th= t 'activerecord.attributes.purchase_invoice.other_concepts'
+        %th= t 'activerecord.attributes.purchase_invoice.total'
         %th
     %tbody
       - @purchase_invoices.each do |purchase_invoice|
@@ -44,7 +43,7 @@
           %td
             = link_to_show [purchase_invoice.monthly_movement, purchase_invoice]
             = link_to_edit ['edit', purchase_invoice.monthly_movement, purchase_invoice]
-            = link_to_destroy [purchase_invoice.monthly_movement, purchase_invoice], method: :delete, data: { confirm: 'Estás a punto de eliminar una factura, ¿estás seguro que deseas hacer esto?' }
+            = link_to_destroy [purchase_invoice.monthly_movement, purchase_invoice], method: :delete, data: { confirm: t('view.purchase_invoices.index.delete_confirm') }
       - total_check = 0
       - @totals.each_pair do |x, y|
         - total_check += y unless x.to_s == 'total'
@@ -53,7 +52,7 @@
         %td
         %td
         %td
-          .pull-right Total:
+          .pull-right= t('activerecord.attributes.purchase_invoice.total') + ':'
         %td= @totals[:ventas]
         %td= @totals[:consumo]
         %td= @totals[:iva]
@@ -62,6 +61,6 @@
         %td{class: (total_check == @totals[:total] ? 'green' : 'red')}= @totals[:total]
         %td
 %nav.form-actions
-  = link_to "Volver a movimientos de #{@monthly_movement.month}", @monthly_movement, class: 'btn'
-  = link_to('Nueva factura de compra', new_monthly_movement_purchase_invoice_path, class: 'btn btn-primary') unless @monthly_movement.status == MonthlyMovement::STATUSES[2]
+  = link_to t('view.purchase_invoices.index.back_to_monthly_movement', month: @monthly_movement.month), @monthly_movement, class: 'btn'
+  = link_to(t('view.purchase_invoices.add_purchase_invoice'), new_monthly_movement_purchase_invoice_path, class: 'btn btn-primary') unless @monthly_movement.status == MonthlyMovement::STATUSES[2]
 #show_purchase

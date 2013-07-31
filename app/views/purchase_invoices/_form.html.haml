@@ -1,50 +1,44 @@
 = form_for [ @monthly_movement, @purchase_invoice ], html: { class: 'form-inline' } do |f|
-  -#- if @purchase_invoice.errors.any?
-  -#  #error_explanation
-  -#    %h2= "#{pluralize(@purchase_invoice.errors.count, "errores")} evitaron que se guardara esta factura:"
-  -#    %ul
-  -#      - @purchase_invoice.errors.full_messages.each do |msg|
-  -#        %li= msg
   .row
     .span5
       %p
-        = f.label 'Empresa'
+        = f.label t('activerecord.models.firm.one')
         = f.select :firm_id, Firm.all.map{ |x| ["#{x.nombre} - #{x.cuit}", x.id]}
       %p
-        = f.label 'Numero'
+        = f.label t('activerecord.attributes.purchase_invoice.number')
         = f.text_field :number
       %p
-        = f.label 'Fecha'
+        = f.label t('attributes.date')
         = f.select :date, (1..31).map {|x| x }
       %p
-        = f.label 'Tipo Factura'
+        = f.label t('activerecord.attributes.purchase_invoice.invoice_type')
         = f.select :invoice_type, ['A', 'B', 'C'], default: 'A'
       %p
-        = f.label 'Venta/Consumo'
+        = f.label t('activerecord.attributes.purchase_invoice.destination_type')
         = f.select :destination_type, ['Ventas','Consumo'], default: 'Ventas'
     .span5
       %p
-        = f.label 'IVA'
+        = f.label t('activerecord.attributes.purchase_invoice.iva')
         - if @purchase_invoice.errors[:iva].any?
           %span.alert.alert-danger= @purchase_invoice.errors[:iva]
         = f.text_field :iva, id: 'iva'
       %p
-        = f.label 'Retenciones'
+        = f.label t('activerecord.attributes.purchase_invoice.retencion')
         = f.text_field :retencion, id: 'retencion', value: 0
       %p
-        = f.label 'Otros / Conceptos no gravados'
+        = f.label t('activerecord.attributes.purchase_invoice.other_concepts')
         = f.text_field :other_concepts, id: 'other_concepts', value: 0
       %p
-        = f.label 'Subtotal'
+        = f.label t('activerecord.attributes.purchase_invoice.subtotal')
         - if @purchase_invoice.errors[:subtotal].any?
           %span.alert.alert-danger= @purchase_invoice.errors[:subtotal]
         = f.text_field :subtotal, id: 'subtotal'
       %p
-        = f.label 'Total'
+        = f.label t('activerecord.attributes.purchase_invoice.total')
         - if @purchase_invoice.errors[:total].any?
           %span.alert.alert-danger= @purchase_invoice.errors[:total]
         = f.text_field :total, id: 'total'
   .actions
-    = f.submit 'Guardar', class: 'btn btn-primary'
+    = f.submit t(''), class: 'btn btn-primary'
 :javascript
   observeAmountFields();

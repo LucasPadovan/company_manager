@@ -2,39 +2,39 @@
   .row
     .span5
       %p
-        %b Fecha:
+        %b= t('attributes.date') + ':'
         = @purchase_invoice.date.strftime('%d/%m/%y')
       %p
-        %b Tipo:
+        %b= t('activerecord.attributes.purchase_invoice.invoice_type') + ':'
         = @purchase_invoice.invoice_type
       %p
-        %b Empresa:
+        %b= t('activerecord.models.firm.one') + ':'
         = @purchase_invoice.firm.nombre
       %p
-        %b CUIT:
+        %b= t('activerecord.attributes.firm.cuit') + ':'
         = @purchase_invoice.firm.cuit
       %p
-        %b Numero:
+        %b= t('activerecord.attributes.purchase_invoice.number') + ':'
         = @purchase_invoice.number
       %p
-        %b Destino:
+        %b= t('activerecord.attributes.purchase_invoice.destination_type') + ':'
         = @purchase_invoice.destination_type
     .span5
       %p
-        %b Iva:
+        %b= t('activerecord.attributes.purchase_invoice.iva') + ':'
         = @purchase_invoice.iva
       %p
-        %b Retencion:
+        %b= t('activerecord.attributes.purchase_invoice.retencion') + ':'
         = @purchase_invoice.retencion
       %p
-        %b Conceptos no gravados:
+        %b= t('activerecord.attributes.purchase_invoice.other_concepts') + ':'
         = @purchase_invoice.other_concepts
       %p
-        %b Subtotal:
+        %b= t('activerecord.attributes.purchase_invoice.subtotal') + ':'
         = @purchase_invoice.subtotal
       %p
-        %b Total:
+        %b= t('activerecord.attributes.purchase_invoice.total') + ':'
         = @purchase_invoice.total
 %nav.form-actions
   = link_to_edit edit_monthly_movement_purchase_invoice_path(@monthly_movement, @purchase_invoice)
-  = link_to "Volver a compras de #{@monthly_movement.month}", monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn'
+  = link_to t('view.purchase_invoices.index.back_to_monthly_movement', month: @monthly_movement.month), monthly_movement_purchase_invoices_path(@monthly_movement), class: 'btn'
