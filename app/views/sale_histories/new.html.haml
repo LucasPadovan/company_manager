@@ -1,6 +1,4 @@
 .container-fluid
-  %h1 Nuevo precio de venta para #{@product.name}
-
   = render 'form'
 .form-actions
-  = link_to 'Volver', @product
+  = link_to t('label.back'), @product

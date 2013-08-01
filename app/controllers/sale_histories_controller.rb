@@ -4,8 +4,8 @@ class SaleHistoriesController < ApplicationController
   # GET /sale_histories
   # GET /sale_histories.json
   def index
-    @title = t('view.sale_histories.index_title')
     @sale_histories = @product.sale_histories.order('date desc').page(params[:page])
+    @title = t('view.sale_histories.index_title', product: @product.name)
     if params[:firm].present?
       @sale_histories = @sale_histories.where(firm_id: params[:firm])
     end
@@ -31,8 +31,8 @@ class SaleHistoriesController < ApplicationController
   # GET /sale_histories/new
   # GET /sale_histories/new.json
   def new
-    @title = t('view.sale_histories.new_title')
     @sale_history = @product.sale_histories.build
+    @title = t('view.sale_histories.new_title', product: @product.name)
     if params[:firm].present?
       @sale_history.firm_id = params[:firm]
     end
@@ -45,15 +45,15 @@ class SaleHistoriesController < ApplicationController
 
   # GET /sale_histories/1/edit
   def edit
-    @title = t('view.sale_histories.edit_title')
-    @sale_history = SaleHistory.find(params[:id])
+    @sale_history = SaleHistory.includes(:product).find(params[:id])
+    @title = t('view.sale_histories.edit_title', product: @sale_history.product.name)
   end
 
   # POST /sale_histories
   # POST /sale_histories.json
   def create
-    @title = t('view.sale_histories.new_title')
     @sale_history = @product.sale_histories.build(params[:sale_history])
+    @title = t('view.sale_histories.new_title', product: @product.name)
 
     respond_to do |format|
       if @sale_history.save
@@ -69,8 +69,8 @@ class SaleHistoriesController < ApplicationController
   # PUT /sale_histories/1
   # PUT /sale_histories/1.json
   def update
-    @title = t('view.sale_histories.edit_title')
-    @sale_history = SaleHistory.find(params[:id])
+    @sale_history = SaleHistory.includes(:product).find(params[:id])
+    @title = t('view.sale_histories.edit_title', product: @sale_history.product.name)
 
     respond_to do |format|
       if @sale_history.update_attributes(params[:sale_history])

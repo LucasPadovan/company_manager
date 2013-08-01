@@ -52,7 +52,7 @@
                 %td
                   = link_to t('view.products.show_historic'), product_sale_histories_path(@product, firm: sale_history.firm), class: 'btn btn-success  btn-mini'
                   = link_to t('view.sale_histories.update_price'), new_product_sale_history_path(@product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
-      = link_to t('view.sale_histories.sell_to_another'), new_product_sale_history_path(@product), class: 'btn btn-primary'
+      = link_to t('view.sale_histories.add_new_price'), new_product_sale_history_path(@product), class: 'btn btn-primary'
 .form-actions
   = link_to_edit edit_product_path(@product)
   = link_to t('label.back'), products_path, class: 'btn'

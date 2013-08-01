@@ -76,7 +76,7 @@
         sales: 'Ventas'
         use: 'Consumo'
       sale_history:
-        price: Precio
+        price: Precio de venta
       sale_invoice:
        invoice_type: 'Tipo'
        number: 'Número'
@@ -230,7 +230,7 @@
       correctly_updated: 'Precio actualizado correctamente.'
       stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ningun precio hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo precio</span>'
+        html: 'No se ha creado ningun precio hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Comprar a otra empresa</span>'
       update_price: 'Actualizar precio'
       add_new_price: 'Comprar a otra empresa'
       save_price: 'Guardar precio'
@@ -241,15 +241,17 @@
     sale_histories:
       index_title: 'Historial de precios de ventas de %{product}'
       show_title: '%{product}'
-      new_title: 'Nuevo precio de venta para %{product} para %{firm}'
-      edit_title: 'Editando el precio de venta de %{product} para %{firm}'
+      new_title: 'Nuevo precio de venta para %{product}'
+      edit_title: 'Editando el precio de venta de %{product}'
       correctly_created: 'Precio de venta agregado correctamente.'
       correctly_updated: 'Precio de venta actualizado correctamente.'
       stale_object_error: 'El precio de venta no pudo ser actualizado, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ningun precio de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo precio</span>'
+        html: 'No se ha creado ningun precio de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Vender a otra empresa</span>'
       update_price: 'Actualizar precio venta'
-      sell_to_another: 'Vender a otra empresa'
+      update_price: 'Actualizar precio'
+      add_new_price: 'Vender a otra empresa'
+      save_price: 'Guardar precio'
     sale_invoices:
       index_title: 'Facturas de ventas'
       show_title: 'Detalle de factura de venta'

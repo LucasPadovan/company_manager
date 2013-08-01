@@ -7,13 +7,13 @@
           %li= msg
 
   %p
-    = f.label :date
+    = f.label t('attributes.date')
     = f.datetime_select :date
   %p
-    = f.label :price
+    = f.label t('activerecord.attributes.sale_history.price')
     = f.text_field :price
   %p
-    = f.label 'Empresa:'
+    = f.label t('activerecord.models.firm.one')
     = f.select :firm_id, Firm.all.map{ |x| ["#{x.nombre} - #{x.cuit}", x.id]}
   .actions
-    = f.submit 'Guardar', class: 'btn btn-primary'
+    = f.submit t('view.sale_histories.save_price'), class: 'btn btn-primary'
