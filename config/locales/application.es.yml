@@ -78,7 +78,7 @@
       sale_history:
         price: Precio de venta
       sale_invoice:
-       invoice_type: 'Tipo'
+       invoice_type: 'Tipo de factura'
        number: 'Número'
        iva: 'IVA'
        subtotal: 'Subtotal'
@@ -249,19 +249,28 @@
       empty_index:
         html: 'No se ha creado ningun precio de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Vender a otra empresa</span>'
       update_price: 'Actualizar precio venta'
-      update_price: 'Actualizar precio'
       add_new_price: 'Vender a otra empresa'
       save_price: 'Guardar precio'
     sale_invoices:
-      index_title: 'Facturas de ventas'
+      index_title: 'Ventas de %{month} de %{year}'
       show_title: 'Detalle de factura de venta'
-      new_title: 'Nueva factura de venta'
-      edit_title: 'Edición de la factura de venta'
+      new_title: 'Nueva Factura de Venta de %{month} de %{year}'
+      edit_title: 'Editando una factura de ventas de %{firm} '
       correctly_created: 'Factura de venta agregada correctamente.'
       correctly_updated: 'Factura de venta actualizada correctamente.'
       stale_object_error: 'La factura de venta no pudo ser actualizada, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ninguna factura de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva factura de venta</span>'
+      index:
+        search:
+          firm: 'Nombre de la empresa'
+          submit: 'Filtrar'
+        delete_confirm: 'Estás a punto de eliminar una factura, ¿estás seguro que deseas hacer esto?'
+        back_to_monthly_movements: 'Volver a movimientos de %{month}'
+        back_to_sales: 'Volver a ventas de %{@month}'
+      update_sale_invoice: 'Actualizar factura de venta'
+      add_sale_invoice: 'Agregar factura de venta'
+      save_sale_invoice: 'Guardar factura'
     users:
       index_title: 'Listado de usuarios'
       show_title: 'Detalle de %{user}'

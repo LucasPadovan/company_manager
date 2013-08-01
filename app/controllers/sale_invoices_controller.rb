@@ -4,8 +4,8 @@ class SaleInvoicesController < ApplicationController
   # GET /sale_invoices
   # GET /sale_invoices.json
   def index
-    @title = t('view.sale_invoices.index_title')
     @totals = {subtotal: 0, iva: 0, retencion: 0, other_concepts: 0, total: 0 }
+    @title = t('view.sale_invoices.index_title', month: @monthly_movement.month, year: @monthly_movement.year)
     if params[:firm].present?
       @sale_invoices = @monthly_movement.sale_invoices.where('firms.nombre LIKE ?', "%#{params[:firm]}%")
     else
@@ -35,8 +35,8 @@ class SaleInvoicesController < ApplicationController
   # GET /sale_invoices/new
   # GET /sale_invoices/new.json
   def new
-    @title = t('view.sale_invoices.new_title')
     @sale_invoice = @monthly_movement.sale_invoices.build
+    @title = t('view.sale_invoices.new_title', month: @monthly_movement.month, year: @monthly_movement.year)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,16 +46,16 @@ class SaleInvoicesController < ApplicationController
 
   # GET /sale_invoices/1/edit
   def edit
-    @title = t('view.sale_invoices.edit_title')
-    @sale_invoice = SaleInvoice.find(params[:id])
+    @sale_invoice = SaleInvoice.includes(:firm).find(params[:id])
+    @title = t('view.sale_invoices.edit_title', firm: @sale_invoice.firm.name)
   end
 
   # POST /sale_invoices
   # POST /sale_invoices.json
   def create
-    @title = t('view.sale_invoices.new_title')
     @sale_invoice = @monthly_movement.sale_invoices.build(params[:sale_invoice])
     @sale_invoice.date = "#{params[:sale_invoice][:date].to_i + 1}/#{MonthlyMovement::MONTHS[@monthly_movement.month.to_sym]}/#{@monthly_movement.year}".to_datetime
+    @title = t('view.sale_invoices.new_title', month: @monthly_movement.month, year: @monthly_movement.year)
 
     respond_to do |format|
       if @sale_invoice.save
@@ -71,8 +71,8 @@ class SaleInvoicesController < ApplicationController
   # PUT /sale_invoices/1
   # PUT /sale_invoices/1.json
   def update
-    @title = t('view.sale_invoices.edit_title')
-    @sale_invoice = SaleInvoice.find(params[:id])
+    @sale_invoice = SaleInvoice.includes(:firm).find(params[:id])
+    @title = t('view.sale_invoices.edit_title', firm: @sale_invoice.firm.name)
 
     respond_to do |format|
       if @sale_invoice.update_attributes(params[:sale_invoice])

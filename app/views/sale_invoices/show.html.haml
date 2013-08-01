@@ -2,36 +2,36 @@
   .row
     .span5
       %p
-        %b Fecha:
+        %b= t 'attributes.date' + ': '
         = @sale_invoice.date.strftime('%d/%m/%y')
       %p
-        %b Tipo:
+        %b= t 'activerecord.attributes.sale_invoice.invoice_type' + ': '
         = @sale_invoice.invoice_type
       %p
-        %b Número:
+        %b= t 'activerecord.attributes.sale_invoice.number' + ': '
         = @sale_invoice.number
       %p
-        %b Empresa:
+        %b= t 'activerecord.models.firm.one' + ': '
         = @sale_invoice.firm.nombre
       %p
-        %b CUIT:
+        %b= t 'activerecord.attributes.firm.cuit' + ': '
         = @sale_invoice.firm.cuit
     .span5
       %p
-        %b Iva:
+        %b= t 'activerecord.attributes.sale_invoice.iva' + ': '
         = @sale_invoice.iva
       %p
-        %b Subtotal:
+        %b= t 'activerecord.attributes.sale_invoice.subtotal' + ': '
         = @sale_invoice.subtotal
       %p
-        %b Retencion:
+        %b= t 'activerecord.attributes.sale_invoice.retencion' + ': '
         = @sale_invoice.retencion
       %p
-        %b Otros conceptos:
+        %b= t 'activerecord.attributes.sale_invoice.other_concepts' + ': '
         = @sale_invoice.other_concepts
       %p
-        %b Total:
+        %b= t 'activerecord.attributes.sale_invoice.total' + ': '
         = @sale_invoice.total
 %nav.form-actions
   = link_to_edit ['edit', @monthly_movement, @sale_invoice]
-  = link_to "Volver a ventas de #{@monthly_movement.month}", monthly_movement_sale_invoices_path(@monthly_movement), class: 'btn'
+  = link_to t('view.sale_invoices.index.back_to_sales', month: @monthly_movement.month), monthly_movement_sale_invoices_path(@monthly_movement), class: 'btn'

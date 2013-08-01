@@ -1,21 +1,20 @@
 .container-fluid
-  %h1 Ventas de #{@monthly_movement.month} de #{@monthly_movement.year}
   .well
     = form_for monthly_movement_sale_invoices_path(@monthly_movement), method: :get do
-      = text_field_tag :firm, (params[:firm].present? ? params[:firm] : ''), placeholder: 'Nombre de la empresa'
-      = submit_tag 'Filtrar', class: 'btn btn-info pull-right'
+      = text_field_tag :firm, (params[:firm].present? ? params[:firm] : ''), placeholder: t('view.sale_invoices.index.search.firm')
+      = submit_tag t('view.sale_invoices.index.search.submit'), class: 'btn btn-info pull-right'
   %table.table.table-bordered.table-striped
     %thead
       %tr
-        %th Fecha
-        %th Empresa
-        %th Tipo Factura
-        %th Numero
-        %th Iva
-        %th Retencion
-        %th Otros Conceptos
-        %th Subtotal
-        %th Total
+        %th= t 'attributes.date'
+        %th= t 'activerecord.models.firm.one'
+        %th= t 'activerecord.attributes.sale_invoice.invoice_type'
+        %th= t 'activerecord.attributes.sale_invoice.number'
+        %th= t 'activerecord.attributes.sale_invoice.iva'
+        %th= t 'activerecord.attributes.sale_invoice.retencion'
+        %th= t 'activerecord.attributes.sale_invoice.other_concepts'
+        %th= t 'activerecord.attributes.sale_invoice.subtotal'
+        %th= t 'activerecord.attributes.sale_invoice.total'
         %th
     %tbody
       - @sale_invoices.each do |sale_invoice|
@@ -37,7 +36,7 @@
           %td
             = link_to_show [@monthly_movement, sale_invoice]
             = link_to_edit ['edit', @monthly_movement, sale_invoice]
-            = link_to_destroy [@monthly_movement, sale_invoice], method: :delete, data: { confirm: 'Estás a punto de eliminar una factura, ¿estás seguro que deseas hacer esto?' }
+            = link_to_destroy [@monthly_movement, sale_invoice], method: :delete, data: { confirm: t('view.sale_invoices.index.delete_confirm') }
       - total_check = 0
       - @totals.each_pair do |x, y|
         - total_check += y unless x.to_s == 'total'
@@ -54,5 +53,5 @@
         %td{class: (total_check == @totals[:total] ? 'green' : 'red')}= @totals[:total]
         %td
 %nav.form-actions
-  = link_to "Volver a movimientos de #{@monthly_movement.month}", @monthly_movement, class: 'btn'
-  = link_to('Nueva factura de venta', new_monthly_movement_sale_invoice_path(@monthly_movement), class: 'btn btn-primary') unless @monthly_movement.status == MonthlyMovement::STATUSES[2]
+  = link_to t('view.sale_invoices.index.back_to_monthly_movements', month: @monthly_movement.month), @monthly_movement, class: 'btn'
+  = link_to( t('view.sale_invoices.add_sale_invoice'), new_monthly_movement_sale_invoice_path(@monthly_movement), class: 'btn btn-primary' ) unless @monthly_movement.status == MonthlyMovement::STATUSES[2]
