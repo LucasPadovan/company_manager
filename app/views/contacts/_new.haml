@@ -1,7 +1,7 @@
 .modal
   .modal-header
-    algo por aca
+    %h3= t 'view.contacts.new_title', firm: @firm.nombre
   .modal-body
-    ,as cpsas àr asca
+    = render 'form'
   .modal-footer
-    klasjdas
+    = link_to_function t('label.close'), "$('#modal').modal('toggle');", class: 'btn'
