@@ -1,0 +1,7 @@
+%tr
+  %td= contact.name
+  %td= contact.area
+  %td= contact.details
+  %td
+    = link_to_edit ['edit', @firm, contact]
+    = link_to_destroy [@firm, contact]

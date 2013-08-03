@@ -4,10 +4,15 @@ class ContactsController < ApplicationController
   def edit
     @contact = Contact.includes(:firm).find(params[:id])
     @title = t('view.contacts.edit_title', contact: @contact.name, firm: @contact.firm.nombre)
+    render partial: 'edit', content_type: 'text/html'
   end
 
-  # POST /contacts
-  # POST /contacts.json
+  def new
+    @contact = @firm.contacts.build
+    @title = t('view.contacts.new_title', firm: @contact.firm.nombre)
+    render partial: 'new', content_type: 'text/html'
+  end
+
   def create
     @title = t('view.contacts.new_title')
     @contact = @firm.contacts.build(params[:contact])
@@ -23,8 +28,6 @@ class ContactsController < ApplicationController
     end
   end
 
-  # PUT /contacts/1
-  # PUT /contacts/1.json
   def update
     @contact = Contact.includes(:firm).find(params[:id])
     @title = t('view.contacts.edit_title', contact: @contact.name, firm: @contact.firm.nombre)
@@ -42,8 +45,6 @@ class ContactsController < ApplicationController
     redirect_to edit_firm_contact_path(@firm, @contact), alert: t('view.contacts.stale_object_error')
   end
 
-  # DELETE /contacts/1
-  # DELETE /contacts/1.json
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy

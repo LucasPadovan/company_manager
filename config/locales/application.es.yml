@@ -140,7 +140,7 @@
     contacts:
       index_title: 'Contactos'
       show_title: 'Detalle de %{contact} de %{firm}'
-      new_title: 'Nuevo contacto'
+      new_title: 'Nuevo contacto de %{firm}'
       edit_title: 'Editando %{contact} de %{firm}'
       correctly_created: 'Contacto agregado correctamente.'
       correctly_updated: 'Contacto actualizado correctamente.'

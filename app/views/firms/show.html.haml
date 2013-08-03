@@ -18,23 +18,10 @@
                 %th= t 'view.contacts.contact'
                 %th
             %tbody
-              - @firm.contacts.each do |contact| #usar una tabla
-                %tr
-                  %td= contact.name
-                  %td= contact.area
-                  %td= contact.details
-                  %td
-                    = link_to_edit ['edit', @firm, contact]
-                    = link_to_destroy [@firm, contact]
+              = render @firm.contacts
       %hr
       %p
-        %h4= t 'view.contacts.new_title'
-        %p
-          = form_for [@firm, Contact.new], html: { class: 'form-inline' } do |f|
-            = f.text_field :name, placeholder: Contact.human_attribute_name(:name)
-            = f.text_field :area, placeholder: Contact.human_attribute_name(:area)
-            = f.text_field :details, placeholder: Contact.human_attribute_name(:details)
-            = f.submit t('view.contacts.add_contact'), class: 'btn btn-primary btn-small'
+        %h4= link_to t('view.contacts.add_contact'), new_firm_contact_path(@firm), class: 'btn btn-primary', remote: true, data: {target: 'modal', modal: true}
     .span7
       %h3= t 'view.firms.show.we_buy'
       %table.table.table-striped

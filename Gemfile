@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'jquery-rails'
@@ -25,7 +25,7 @@ group :assets do
   gem 'less', '2.2.1'
   gem 'less-rails', '2.2.3'
   gem 'less-rails-bootstrap', '2.0.13'
-  gem 'SrBuj', '0.8.5'
+  gem 'SrBuj'
 end
 
 gem 'twitter-bootstrap-rails'

@@ -11,9 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery-ui
+//= require SrBuj
 //= require jquery_ujs
-//= require jquery/jquery.ui.datepicker-es
 //= require twitter/bootstrap
 //= require turboevents
 //= require turbolinks
