@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218192508) do
+ActiveRecord::Schema.define(:version => 20140407221912) do
+
+  create_table "components", :force => true do |t|
+    t.integer "custom_product_id"
+    t.integer "product_id"
+  end
+
+  add_index "components", ["custom_product_id", "product_id"], :name => "index_components_on_custom_product_id_and_product_id"
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -65,8 +72,12 @@ ActiveRecord::Schema.define(:version => 20130218192508) do
     t.text     "description"
     t.string   "rubro"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "type"
+    t.string   "unit"
+    t.decimal  "initial_stock"
+    t.decimal  "stock"
   end
 
   create_table "purchase_invoices", :force => true do |t|

@@ -9,7 +9,7 @@
         = @product.rubro
       %p
         %b= t 'view.products.show.created_by'
-        = @product.user.name
+        = @product.user.name if @product.user
     .span7
       -#todo: mostrar solo el último de cada empresa
       %h3= t 'view.products.show.purchase_prices'

@@ -2,10 +2,10 @@
   .row
     .span4
       %p
-        %strong= Firm.human_attribute_name( :cuit ) + ':'
+        %strong= Firm.human_attribute_name(:cuit) + ':'
         = @firm.cuit
       %p
-        %strong= Firm.human_attribute_name( :afip_cond ) + ':'
+        %strong= Firm.human_attribute_name(:afip_cond) + ':'
         = @firm.afip_cond
       %p
         %strong= t 'view.firms.show.contact_mediums'

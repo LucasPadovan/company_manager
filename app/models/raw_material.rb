@@ -1,0 +1,3 @@
+class RawMaterial < Product
+
+end
