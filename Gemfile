@@ -25,12 +25,12 @@ group :assets do
   gem 'less', '2.2.1'
   gem 'less-rails', '2.2.3'
   gem 'less-rails-bootstrap', '2.0.13'
-  gem 'SrBuj'
 end
 
 gem 'twitter-bootstrap-rails'
 gem 'haml'
 gem 'haml-rails'
+gem 'SrBuj'
 
 group :development do
   gem 'puma'
@@ -44,6 +44,4 @@ group :test do
   gem 'database_cleaner' # For Capybara
   gem 'fabrication'
   gem 'faker'
-  gem 'ZenTest'
-  gem 'autotest-rails'
 end
