@@ -1,24 +1,22 @@
 .container-fluid
+  .well
+    = form_for :product, url: products_path, html: { method: :get } do |f|
+      = Product.human_attribute_name :type
+      = f.select :type, Product.types_for_select, selected: params[:product][:type]
+      = f.submit 'Filtrar', class: 'btn btn-info'
   - if @products.any?
     %table.table.table-bordered.table-striped
       %thead
         %tr
           %th= Product.human_attribute_name :name
+          %th= Product.human_attribute_name :type
           %th= Product.human_attribute_name :description
           %th= Product.human_attribute_name :rubro
           %th.span2
-      %tbody
-        - @products.each do |product|
-          %tr
-            %td= product.name
-            %td= product.description
-            %td= product.rubro
-            %td.span2
-              = link_to_show product_path(product)
-              = link_to_edit edit_product_path(product)
-              = link_to_destroy product_path(product), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este producto?' }
+      %tbody#products_body
+        = render partial: 'product', collection: @products
   - else
     .alert.alert-info
       =t 'view.products.empty_index.html'
 .form-actions
-  = link_to t('view.products.new_title'), new_product_path, class: 'btn btn-primary'
+  = srbuj_link_to_new t('view.products.new_title'), new_product_path

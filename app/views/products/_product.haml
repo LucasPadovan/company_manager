@@ -1,0 +1,9 @@
+%tr{ id: dom_id(product) }
+  %td= product.name
+  %td= product.type
+  %td= product.description
+  %td= product.rubro
+  %td.span2
+    = link_to_show product_path(product)
+    = srbuj_link_to_edit edit_product_path(product)
+    = srbuj_link_to_destroy product_path(product), data: { target: dom_id(product), confirm: '¿Estás seguro que deseas eliminar este producto?' }

@@ -2,7 +2,15 @@ class ProductsController < ApplicationController
   
   def index
     @title = t('view.products.index_title')
-    @products = Product.page(params[:page])
+    if params[:product].present?
+      case params[:product][:type]
+        when 'CustomProduct' then @products = CustomProduct.page(params[:page])
+        when 'RawMaterial' then @products = RawMaterial.page(params[:page])
+        else @products = Product.page(params[:page])
+      end
+    else
+      @products = Product.page(params[:page])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,15 +40,14 @@ class ProductsController < ApplicationController
     @product = Product.new
     @title = t('view.products.new_title')
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product }
-    end
+    render partial: 'new', content_type: 'text/html'
   end
 
   def edit
     @product = Product.find(params[:id])
     @title = t('view.products.edit_title', product: @product.name)
+
+    render partial: 'edit', content_type: 'text/html'
   end
 
   def create
@@ -48,14 +55,10 @@ class ProductsController < ApplicationController
     @title = t('view.products.new_title')
     @product.user = @current_user
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: t('view.products.correctly_created') }
-        format.json { render json: @product, status: :created, location: @product }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.save
+      render partial: 'product', locals: { product: @product }, content_type: 'text/html'
+    else
+      render partial: 'new', status: :unprocessable_entity
     end
   end
 
@@ -63,26 +66,22 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @title = t('view.products.edit_title')
 
-    respond_to do |format|
-      if @product.update_attributes(params[:product])
-        format.html { redirect_to @product, notice: t('view.products.correctly_updated') }
-        format.json { head :ok }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.update_attributes(params[:product])
+      render partial: 'product', locals: { product: @product }, content_type: 'text/html'
+    else
+      render partial: 'edit', status: :unprocessable_entity
     end
   rescue ActiveRecord::StaleObjectError
-    redirect_to edit_product_url(@product), alert: t('view.products.stale_object_error')
+    js_redirect to: edit_product_url(@product)
+    js_notify message: t('view.products.stale_object_error')
   end
 
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
-
-    respond_to do |format|
-      format.html { redirect_to products_url }
-      format.json { head :ok }
+    if @product.destroy
+      render nothing: true, content_type: 'text/html'
+    else
+      render nothing: true
     end
   end
 end

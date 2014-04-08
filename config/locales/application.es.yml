@@ -61,6 +61,7 @@
         name: Nombre
         rubro: Rubro
         description: Descripción
+        type: Tipo
       product_history:
         purchase_price: Precio de compra
         sale_price: Precio de venta
