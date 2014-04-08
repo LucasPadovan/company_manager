@@ -20,6 +20,6 @@ class Product < ActiveRecord::Base
   end
 
   def self.types_for_select
-    [['Sin tipo especial', ''], ['Producto fabricado', 'CustomProduct'], ['Materia prima', 'RawMaterial']]
+    [['Sin tipo especial', 'none'], ['Producto fabricado', 'CustomProduct'], ['Materia prima', 'RawMaterial']]
   end
 end

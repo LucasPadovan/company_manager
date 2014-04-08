@@ -1,9 +1,9 @@
 .container-fluid
   .well
-    = form_for :product, url: products_path, html: { method: :get } do |f|
+    = form_tag products_path, method: :get do
       = Product.human_attribute_name :type
-      = f.select :type, Product.types_for_select, selected: params[:product][:type]
-      = f.submit 'Filtrar', class: 'btn btn-info'
+      = select_tag :type, options_for_select(Product.types_for_select, params[:type])
+      = submit_tag 'Filtrar', class: 'btn btn-info'
   - if @products.any?
     %table.table.table-bordered.table-striped
       %thead

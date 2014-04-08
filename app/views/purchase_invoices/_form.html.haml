@@ -39,6 +39,6 @@
           %span.alert.alert-danger= @purchase_invoice.errors[:total]
         = f.text_field :total, id: 'total'
   .actions
-    = f.submit t(''), class: 'btn btn-primary'
+    = f.submit 'Enviar', class: 'btn btn-primary'
 :javascript
   observeAmountFields();

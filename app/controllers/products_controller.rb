@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
   
   def index
     @title = t('view.products.index_title')
-    if params[:product].present?
-      case params[:product][:type]
+    if params[:type].present?
+      case params[:type]
         when 'CustomProduct' then @products = CustomProduct.page(params[:page])
         when 'RawMaterial' then @products = RawMaterial.page(params[:page])
         else @products = Product.page(params[:page])
