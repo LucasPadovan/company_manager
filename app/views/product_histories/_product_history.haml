@@ -1,0 +1,8 @@
+%tr{ id: dom_id(product_history.firm) }
+  %td= product_history.product.name
+  %td= product_history.purchase_price
+  %td= product_history.sale_price
+  %td= product_history.date.strftime('%d/%m/%y - %H:%M')
+  %td
+    = srbuj_link_to_new 'Actualizar precio', new_product_product_history_path(product_history.product, firm: product_history.firm), class: 'btn btn-primary btn-mini'
+    = link_to 'Ver histórico', product_product_histories_path(product_history.product, firm: product_history.firm), class: 'btn btn-success  btn-mini'

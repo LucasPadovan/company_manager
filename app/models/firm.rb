@@ -11,4 +11,7 @@ class Firm < ActiveRecord::Base
 
   validates_presence_of :nombre, :cuit, :afip_cond
 
+  def self.firms_for_select
+    Firm.all.map{ |x| ["#{x.nombre} - #{x.cuit}", x.id]}
+  end
 end

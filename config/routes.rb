@@ -1,7 +1,7 @@
 CompanyManager::Application.routes.draw do
   resources :products do
-    resources :sale_histories
-    resources :product_histories
+    resources :sale_histories, only: [:index, :show, :new, :create]
+    resources :product_histories, only: [:index, :show, :new, :create]
   end
 
 

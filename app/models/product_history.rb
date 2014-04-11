@@ -7,4 +7,6 @@ class ProductHistory < ActiveRecord::Base
 
   attr_accessible :purchase_price, :sale_price, :product_id, :user_id, :firm_id, :date
 
-  end
+  validates :purchase_price, presence: true
+
+end

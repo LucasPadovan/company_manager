@@ -65,6 +65,7 @@
       product_history:
         purchase_price: Precio de compra
         sale_price: Precio de venta
+        firm_id: "Empresa"
       purchase_invoice:
         invoice_type: 'Tipo'
         destination_type: 'Venta/Consumo'
@@ -78,6 +79,7 @@
         use: 'Consumo'
       sale_history:
         price: Precio de venta
+        firm_id: "Empresa"
       sale_invoice:
        invoice_type: 'Tipo de factura'
        number: 'Número'

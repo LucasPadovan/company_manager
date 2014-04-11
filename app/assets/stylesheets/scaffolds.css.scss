@@ -35,10 +35,13 @@
   box-shadow: 3px 3px 3px rgba(100, 100, 100, .85);
 }
 
-.section-commands{
-}
-
 .form-actions {
   border-corner-shape: bevel;
   border-radius: 0px 0px 15px 15px;
+}
+
+.modal {
+  form {
+    margin-bottom: 0px;
+  }
 }

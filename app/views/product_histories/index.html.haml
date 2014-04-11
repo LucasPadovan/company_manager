@@ -19,5 +19,5 @@
         %td= link_to_destroy [@product, product_history], method: :delete, data: { confirm: 'Are you sure?' }
 
 .form-actions
-  = link_to t('label.back'), @product, class: 'btn'
+  = link_to t('label.back'), :back, class: 'btn'
   = link_to t('view.product_histories.update_price'), ['new', @product, 'product_history'], class: 'btn btn-primary'

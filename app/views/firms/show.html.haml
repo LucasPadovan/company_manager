@@ -31,16 +31,8 @@
           %th= ProductHistory.human_attribute_name :sale_price
           %th= t 'attributes.date'
           %th
-        %tbody
-          - @product_histories.each do |product_history|
-            %tr
-              %td= product_history.product.name
-              %td= product_history.purchase_price
-              %td= product_history.sale_price
-              %td= product_history.date.strftime('%d/%m/%y - %H:%M')
-              %td
-                = link_to 'Ver histórico', product_product_histories_path(product_history.product, firm: product_history.firm), class: 'btn btn-success  btn-mini'
-                = link_to 'Actualizar precio', new_product_product_history_path(product_history.product, firm: product_history.firm), class: 'btn btn-primary btn-mini'
+        %tbody#product_histories_body
+          = render @product_histories
 
       %hr
       %h3= t 'view.firms.show.we_sell'
@@ -49,15 +41,8 @@
           %th= t 'activerecord.models.product.one'
           %th= SaleHistory.human_attribute_name :price
           %th= t 'attributes.date'
-        %tbody
-          - @sale_histories.each do |sale_history|
-            %tr
-              %td= sale_history.product.name
-              %td= sale_history.price
-              %td= sale_history.date.strftime('%d/%m/%y - %H:%M')
-              %td
-                = link_to t('view.products.show_historic'), product_sale_histories_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-success  btn-mini'
-                = link_to t('view.sale_histories.update_price'), new_product_sale_history_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
+        %tbody#sale_histories_body
+          = render @sale_histories
 .form-actions
   = link_to_edit edit_firm_path(@firm) if can? :update, @firm
   = link_to t('label.back'), firms_path, class: 'btn'
