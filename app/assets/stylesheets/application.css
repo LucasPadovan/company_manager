@@ -19,7 +19,7 @@
  *= require common
  *= require common-responsive
  *= require devise
- *= require users
  *= require utils
  *= require scaffolds
+ *= require customization/datepicker
 */

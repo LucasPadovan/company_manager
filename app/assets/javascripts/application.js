@@ -17,7 +17,6 @@
 //= require turboevents
 //= require turbolinks
 //= require common
-//= require date_pickers
 //= require mobile
-//= require users
 //= require manager_utils
+//= require bootstrap-datepicker

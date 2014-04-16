@@ -11,7 +11,10 @@ var calculateTotal= function() {
 }
 
 var setDatePicker = function() {
-    $('.datepicker').datepicker({format: 'dd/mm/yyyy', autoclose: true, language: 'es'});
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy'
+      }
+    );
 }
 
 //var setTooltip = function () {

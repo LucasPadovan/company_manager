@@ -7,10 +7,12 @@
     .modal-body
       = f.error_notification
 
-      = f.input :date, as: :string, input_html: { class: 'datepicker', value: (@start_date ? @start_date.strftime('%d/%m/%Y') : Date.today.strftime('%d/%m/%Y')) }
+      = f.input :date, as: :string, input_html: { class: 'datepicker', value: Date.today.strftime('%d/%m/%Y') }
       = f.input :purchase_price
       = f.input :sale_price
       = f.input :firm_id, collection: Firm.firms_for_select
     .modal-footer
       = link_to_close_modal
       = f.submit t('view.product_histories.save_price'), class: 'btn btn-primary'
+:javascript
+  setDatePicker();
