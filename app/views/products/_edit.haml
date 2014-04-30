@@ -1,5 +1,7 @@
 .modal
-  = simple_form_for @product, url: products_path(@product), html: { remote: true, data: { target: dom_id(@product), modal: true, error: 'modal' } } do |f|
+  = simple_form_for :product, url: product_path(@product), html: { remote: true,
+    data: { target: "product_#{@product.id}", modal: true, error: 'modal', replace: true,
+    responds_as: :put }, method: :put } do |f|
     .modal-header
       %h3= @title
     .modal-body

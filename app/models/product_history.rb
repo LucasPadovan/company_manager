@@ -1,11 +1,10 @@
 class ProductHistory < ActiveRecord::Base
   has_paper_trail
 
-  belongs_to :product
   belongs_to :user
-  belongs_to :firm
+  belongs_to :interest
 
-  attr_accessible :purchase_price, :sale_price, :product_id, :user_id, :firm_id, :date
+  attr_accessible :date, :purchase_price, :sale_price, :interest_id, :user_id
 
   validates :purchase_price, presence: true
 

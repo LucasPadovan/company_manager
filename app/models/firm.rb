@@ -4,8 +4,8 @@ class Firm < ActiveRecord::Base
   has_many :contacts
   has_many :purchase_invoices
   has_many :sale_invoices
-  has_many :sale_histories
-  has_many :product_histories
+  has_many :interests
+  has_many :products, through: :interests
 
   attr_accessible :nombre, :cuit, :afip_cond
 
@@ -13,5 +13,9 @@ class Firm < ActiveRecord::Base
 
   def self.firms_for_select
     Firm.all.map{ |x| ["#{x.nombre} - #{x.cuit}", x.id]}
+  end
+
+  def to_s
+    nombre
   end
 end

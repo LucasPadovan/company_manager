@@ -3,15 +3,15 @@ class Product < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :product_histories, dependent: :destroy
-  has_many :sale_histories, dependent: :destroy
   has_many :components
+  has_many :interests
+  has_many :firms, through: :interests
 
   attr_accessible :name, :description, :rubro, :user_id, :unit, :stock, :initial_stock, :type
 
   validates :name, presence: true
 
-  def type
+  def type_to_show
     case self
       when CustomProduct then 'Producto Fabricado'
       when RawMaterial then 'Materia Prima'
@@ -20,6 +20,10 @@ class Product < ActiveRecord::Base
   end
 
   def self.types_for_select
-    [['Sin tipo especial', 'none'], ['Producto fabricado', 'CustomProduct'], ['Materia prima', 'RawMaterial']]
+    [['Producto general', nil], ['Producto fabricado', 'CustomProduct'], ['Materia prima', 'RawMaterial']]
+  end
+
+  def to_s
+    name
   end
 end

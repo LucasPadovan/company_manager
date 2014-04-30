@@ -1,10 +1,9 @@
 class SaleHistory < ActiveRecord::Base
   has_paper_trail
 
-  belongs_to :firm
-  belongs_to :product
+  belongs_to :interest
 
-  attr_accessible :date, :price, :product_id, :firm_id
+  attr_accessible :date, :price, :interest_id
 
   validates :price, presence: true
 

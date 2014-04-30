@@ -10,48 +10,15 @@
       %p
         %b= t 'view.products.show.created_by'
         = @product.user.name if @product.user
-    .span7
+    .span8
       -#todo: mostrar solo el último de cada empresa
       %h3= t 'view.products.show.purchase_prices'
-      - if @product_histories.any?
-        %table.table.table-boredered
-          %thead
-            %tr
-              %th.span1= ProductHistory.human_attribute_name :date
-              %th= ProductHistory.human_attribute_name :firm
-              %th= ProductHistory.human_attribute_name :purchase_price
-              %th= ProductHistory.human_attribute_name :sale_price
-              %th
-          %tbody
-            - @product_histories.each do |product_history|
-              %tr
-                %td= product_history.date.strftime('%d/%m/%y')
-                %td= product_history.firm.nombre
-                %td= product_history.purchase_price
-                %td= product_history.sale_price
-                %td
-                  = link_to t('view.products.show_historic'), product_product_histories_path(@product, firm: product_history.firm), class: 'btn btn-success  btn-mini'
-                  = link_to t('view.product_histories.update_price'), new_product_product_history_path(@product, firm: product_history.firm), class: 'btn btn-primary btn-mini'
+      = render 'product_histories/product_histories_table'
       = link_to t('view.product_histories.add_new_price'), new_product_product_history_path(@product), class: 'btn btn-primary'
+
       %hr
       %h3= t 'view.products.show.sold_to'
-      - if @product.sale_histories.any?
-        %table.table.table-boredered
-          %thead
-            %tr
-              %th.span1= SaleHistory.human_attribute_name :date
-              %th= SaleHistory.human_attribute_name :firm
-              %th= SaleHistory.human_attribute_name :price
-              %th
-          %tbody
-            - @sale_histories.each do |sale_history|
-              %tr
-                %td= sale_history.date.strftime('%d/%m/%y')
-                %td= sale_history.firm.nombre
-                %td= sale_history.price
-                %td
-                  = link_to t('view.products.show_historic'), product_sale_histories_path(@product, firm: sale_history.firm), class: 'btn btn-success  btn-mini'
-                  = link_to t('view.sale_histories.update_price'), new_product_sale_history_path(@product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
+      = render 'sale_histories/sale_histories_table'
       = link_to t('view.sale_histories.add_new_price'), new_product_sale_history_path(@product), class: 'btn btn-primary'
 .form-actions
   = link_to_edit edit_product_path(@product)

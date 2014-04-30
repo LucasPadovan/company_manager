@@ -1,6 +1,6 @@
 = f.input :name
 = f.input :description, input_html: { rows: 4, cols: 40 }
-= f.input :type, collection: Product.types_for_select
+= f.input :type, collection: Product.types_for_select, default: 1
 = f.input :rubro
 = content_for :form_actions do
   = link_to_close_modal

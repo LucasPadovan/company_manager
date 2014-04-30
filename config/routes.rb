@@ -24,6 +24,10 @@ CompanyManager::Application.routes.draw do
 
   resources :firms do
     resources :contacts, only: [:new, :create, :edit, :update, :destroy]
+    member do
+      get :add_product
+      post :create_product
+    end
   end
 
   devise_for :users

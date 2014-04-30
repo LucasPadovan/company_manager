@@ -4,7 +4,7 @@
       = Product.human_attribute_name :type
       = select_tag :type, options_for_select(Product.types_for_select, params[:type])
       = submit_tag 'Filtrar', class: 'btn btn-info'
-  - if @products.any?
+
     %table.table.table-bordered.table-striped
       %thead
         %tr
@@ -15,8 +15,5 @@
           %th.span2
       %tbody#products_body
         = render partial: 'product', collection: @products
-  - else
-    .alert.alert-info
-      =t 'view.products.empty_index.html'
 .form-actions
   = srbuj_link_to_new t('view.products.new_title'), new_product_path
