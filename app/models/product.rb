@@ -23,6 +23,10 @@ class Product < ActiveRecord::Base
     [['Producto general', nil], ['Producto fabricado', 'CustomProduct'], ['Materia prima', 'RawMaterial']]
   end
 
+  def self.products_for_select
+    Product.all.map{ |x| [x.name, x.id]}
+  end
+
   def to_s
     name
   end

@@ -14,6 +14,9 @@
       firm:
         one: 'Empresa'
         other: 'Empresas'
+      interest:
+        one: 'Interes'
+        other: 'Intereses'
       monthly_movement:
         one: 'Facturación mensual'
         other: 'Facturaciones mensuales'
@@ -45,6 +48,11 @@
         nombre: 'Nombre'
         afip_cond: 'Condición AFIP'
         cuit: 'CUIT'
+      interest:
+        product: 'Producto'
+        firm: 'Empresa'
+        price: 'Precio'
+        sale_price: 'Precio de venta'
       monthly_movement:
         month: 'Mes'
         year: 'Año'
@@ -171,6 +179,12 @@
       add_firm: 'Agregar empresa'
       edit_firm: 'Editar empresa'
       save_firm: 'Guardar empresa'
+    interests:
+      new:
+        sale_product_title: 'Vender "%{product}" a otra empresa'
+        purchase_product_title: 'Comprar "%{product}" a otra empresa'
+        sale_firm_title: 'Vender otro producto'
+        purchase_firm_title: 'Comprar otro producto'
     monthly_movements:
       index_title: 'Facturación Mensual'
       show_title: 'Movimientos de %{month} de %{year}'

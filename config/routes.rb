@@ -1,7 +1,9 @@
 CompanyManager::Application.routes.draw do
   resources :products do
-    resources :sale_histories, only: [:index, :show, :new, :create]
-    resources :product_histories, only: [:index, :show, :new, :create]
+    resources :interests, only: [:new, :create, :destroy] do
+      resources :sale_histories, only: [:index, :show, :new, :create]
+      resources :product_histories, only: [:index, :show, :new, :create]
+    end
   end
 
 
@@ -24,10 +26,7 @@ CompanyManager::Application.routes.draw do
 
   resources :firms do
     resources :contacts, only: [:new, :create, :edit, :update, :destroy]
-    member do
-      get :add_product
-      post :create_product
-    end
+    resources :interests, only: [:new, :create, :destroy]
   end
 
   devise_for :users

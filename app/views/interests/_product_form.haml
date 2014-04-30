@@ -1,0 +1,4 @@
+= simple_form_for @interest, url: product_interests_path(@product), html: { remote: true, data: { target: "#{params[:type]}_interest_table", modal: true, error: 'modal' }, class: 'form-horizontal' } do |f|
+  = f.select :firm, collection: Firm.firms_for_select
+  = content_for :form_actions do
+    = f.submit 'Crear', class: 'btn btn-primary'
