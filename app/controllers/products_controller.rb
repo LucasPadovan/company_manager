@@ -1,12 +1,12 @@
 class ProductsController < ApplicationController
-  
+
   def index
     @title = t('view.products.index_title')
     if params[:type].present?
       case params[:type]
-        when 'CustomProduct' then @products = CustomProduct.page(params[:page])
-        when 'RawMaterial' then @products = RawMaterial.page(params[:page])
-        else @products = Product.page(params[:page])
+        when 'CustomProduct'  then @products = CustomProduct.page(params[:page])
+        when 'RawMaterial'    then @products = RawMaterial.page(params[:page])
+        else                  @products = Product.page(params[:page])
       end
     else
       @products = Product.page(params[:page])
@@ -19,16 +19,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.includes(:product_histories, :sale_histories).find(params[:id])
+    @product = Product.includes(interests: [:product_histories, :sale_histories]).find(params[:id])
     @title = t('view.products.show_title', product: @product.name)
-    @product_histories = []
-    Firm.joins(:product_histories).select('DISTINCT firms.*').each do |firm|
-      @product_histories << firm.product_histories.order(:date).last
-    end
-    @sale_histories = []
-    Firm.joins(:sale_histories).select('DISTINCT firms.*').each do |firm|
-      @sale_histories << firm.sale_histories.order(:date).last
-    end
+    @interests = @product.interests
+    @purchase_interests
+    #todo: sale_interests, purchase_interests
+    #@product_histories = ProductHistory.where(interest_id: @product.interests.map(&:id))
+    #@sale_histories = SaleHistory.where(interest_id: @product.interests.map(&:id))
 
     respond_to do |format|
       format.html # show.html.erb
@@ -67,6 +64,7 @@ class ProductsController < ApplicationController
     @title = t('view.products.edit_title')
 
     if @product.update_attributes(params[:product])
+      # todo: no esta actualizando bien el tipo de producto.
       render partial: 'product', locals: { product: @product }, content_type: 'text/html'
     else
       render partial: 'edit', status: :unprocessable_entity

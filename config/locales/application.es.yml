@@ -189,6 +189,8 @@
         purchase_firm_title: 'Comprar otro producto'
         purchase_this_product: 'Comprar este producto'
         purchase_to_this_firm: 'Comprar a esta empresa'
+      destroy:
+        tooltip: '¿Esta seguro que desea eliminar este producto de esta empresa?'
     monthly_movements:
       index_title: 'Facturación Mensual'
       show_title: 'Movimientos de %{month} de %{year}'
