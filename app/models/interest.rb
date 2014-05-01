@@ -5,5 +5,17 @@ class Interest < ActiveRecord::Base
   has_many :product_histories
   has_many :sale_histories
 
-  attr_accessible :product_id, :firm_id
+  attr_accessible :date, :product_id, :firm_id
+
+  def price
+
+  end
+
+  def sale_price
+
+  end
+
+  def purchase_price
+
+  end
 end

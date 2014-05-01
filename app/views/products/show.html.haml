@@ -11,14 +11,13 @@
         %b= t 'view.products.show.created_by'
         = @product.user.name if @product.user
     .span8
-      -# reemplazar estas tablas con las de interests
       %h3= t 'view.products.show.purchase_prices'
-      = render 'product_histories/product_histories_table'
+      = render partial: 'interests/interests_table', locals: { type: 'purchase' }
       -#= link_to t('view.product_histories.add_new_price'), new_product_product_history_path(@product), class: 'btn btn-primary'
       = srbuj_link_to_new t('view.product_histories.add_new_price'), new_product_interest_path(@product, type: 'purchase')
       %hr
       %h3= t 'view.products.show.sold_to'
-      = render 'sale_histories/sale_histories_table'
+      = render partial: 'interests/interests_table', locals: { type: 'sale' }
       = srbuj_link_to_new t('view.sale_histories.add_new_price'), new_product_interest_path(@product, type: 'sale')
 .form-actions
   = link_to_edit edit_product_path(@product)

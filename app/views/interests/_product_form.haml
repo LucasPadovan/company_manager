@@ -1,4 +1,11 @@
-= simple_form_for @interest, url: product_interests_path(@product), html: { remote: true, data: { target: "#{params[:type]}_interest_table", modal: true, error: 'modal' }, class: 'form-horizontal' } do |f|
-  = f.select :firm, collection: Firm.firms_for_select
-  = content_for :form_actions do
-    = f.submit 'Crear', class: 'btn btn-primary'
+= simple_form_for @interest, url: product_interests_path(@product), html: { remote: true, data: { target: "#{params[:type]}_interest_body", modal: true, error: 'modal' }, class: 'form-horizontal' } do |f|
+  = f.input :firm_id, collection: Firm.firms_for_select
+  = f.input :date, as: :string, input_html: { class: 'datepicker', value: Date.today.strftime('%d/%m/%Y') }
+  -#= f.input :type, as: :hidden, input_html: { value: params[:type] }
+  -#= content_for :form_actions do
+  = link_to_close_modal
+  = f.submit t("view.interests.new.#{params[:type]}_to_this_firm"), class: 'btn btn-primary'
+
+-#cleanModalOnClose
+:javascript
+  setDatePicker();

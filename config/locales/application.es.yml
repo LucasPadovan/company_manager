@@ -49,8 +49,8 @@
         afip_cond: 'Condición AFIP'
         cuit: 'CUIT'
       interest:
-        product: 'Producto'
-        firm: 'Empresa'
+        product_id: 'Producto'
+        firm_id: 'Empresa'
         price: 'Precio'
         sale_price: 'Precio de venta'
       monthly_movement:
@@ -181,10 +181,14 @@
       save_firm: 'Guardar empresa'
     interests:
       new:
-        sale_product_title: 'Vender "%{product}" a otra empresa'
-        purchase_product_title: 'Comprar "%{product}" a otra empresa'
         sale_firm_title: 'Vender otro producto'
+        sale_product_title: 'Vender "%{product}" a otra empresa'
+        sale_this_product: 'Vender este producto'
+        sale_to_this_firm: 'Vender a esta empresa'
+        purchase_product_title: 'Comprar "%{product}" a otra empresa'
         purchase_firm_title: 'Comprar otro producto'
+        purchase_this_product: 'Comprar este producto'
+        purchase_to_this_firm: 'Comprar a esta empresa'
     monthly_movements:
       index_title: 'Facturación Mensual'
       show_title: 'Movimientos de %{month} de %{year}'

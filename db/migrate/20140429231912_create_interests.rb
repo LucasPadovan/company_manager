@@ -3,6 +3,7 @@ class CreateInterests < ActiveRecord::Migration
     create_table :interests do |t|
       t.integer :firm_id
       t.integer :product_id
+      t.datetime :date
 
       t.timestamps
     end
