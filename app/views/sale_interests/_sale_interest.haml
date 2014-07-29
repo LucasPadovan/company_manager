@@ -1,0 +1,9 @@
+%tr{ id: dom_id(sale_interest) }
+  %td= @firm ? sale_interest.product : sale_interest.firm
+  %td= sale_interest.date.strftime('%d/%m/%y - %H:%M')
+  %td= sale_interest.price
+  %td
+    = srbuj_link_to_destroy firm_sale_interest_path(sale_interest.firm, sale_interest), data: { target: dom_id(sale_interest), confirm: t('view.interests.destroy.tooltip') }
+    -#todo: precios
+    -#= srbuj_link_to_new t('view.sale_histories.update_price'), new_product_sale_history_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
+    -#= link_to t('view.products.show_historic'), product_sale_histories_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-success btn-mini'

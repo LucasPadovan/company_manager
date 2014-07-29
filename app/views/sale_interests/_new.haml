@@ -1,0 +1,13 @@
+.modal
+  = simple_form_for [@firm_or_product, @sale_interest], html: { remote: true, data: { target: 'sale_interests_body', modal: true, error: 'modal' } } do |f|
+    .modal-header
+      %h3= @title
+    .modal-body
+      = render partial: 'form', locals: { f: f }
+    .modal-footer
+      = link_to_close_modal
+      = f.submit t('view.interests.new.sale_this_product'), class: 'btn btn-primary'
+
+-#cleanModalOnClose
+:javascript
+  setDatePicker();

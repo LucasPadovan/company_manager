@@ -29,8 +29,8 @@
       %hr
 
       %h3= t 'view.firms.show.we_sell'
-      -#= render 'sale_histories/sale_histories_table'
-      -#= srbuj_link_to_new 'Vender nuevo producto', add_product_firm_path(@firm, sale: true)
+      = render 'sale_interests/index'
+      = srbuj_link_to_new 'Vender nuevo producto', new_firm_sale_interest_path(@firm)
 
 .form-actions
   = link_to_edit edit_firm_path(@firm) if can? :update, @firm

@@ -15,7 +15,7 @@ class FirmsController < ApplicationController
   # GET /firms/1
   # GET /firms/1.json
   def show
-    @firm = Firm.includes(:purchase_interests).find(params[:id])
+    @firm = Firm.includes(:purchase_interests, :sale_interests).find(params[:id])
     @title = t('view.firms.show_title', firm: @firm.nombre)
     @purchase_interests = @firm.purchase_interests
     @sale_interests = @firm.sale_interests
