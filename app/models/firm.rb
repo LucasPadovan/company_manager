@@ -4,7 +4,8 @@ class Firm < ActiveRecord::Base
   has_many :contacts
   has_many :purchase_invoices
   has_many :sale_invoices
-  has_many :interests
+  has_many :purchase_interests
+  has_many :sale_interests
   has_many :products, through: :interests
 
   attr_accessible :nombre, :cuit, :afip_cond

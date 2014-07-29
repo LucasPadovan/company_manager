@@ -64,8 +64,7 @@ class ProductsController < ApplicationController
     @title = t('view.products.edit_title')
 
     if @product.update_attributes(params[:product])
-      # todo: no esta actualizando bien el tipo de producto.
-      render partial: 'product', locals: { product: @product }, content_type: 'text/html'
+      render partial: 'product', locals: { product: Product.find(params[:id]) }, content_type: 'text/html'
     else
       render partial: 'edit', status: :unprocessable_entity
     end

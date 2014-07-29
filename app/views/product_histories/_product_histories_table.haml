@@ -1,0 +1,9 @@
+%table.table.table-striped
+  %thead
+    %th= @firm ? t('activerecord.models.product.one') : t('activerecord.models.firm.one')
+    %th= t 'attributes.date'
+    %th= ProductHistory.human_attribute_name :purchase_price
+    %th= ProductHistory.human_attribute_name :sale_price
+    %th
+  %tbody#product_histories_body
+    = render @product_histories

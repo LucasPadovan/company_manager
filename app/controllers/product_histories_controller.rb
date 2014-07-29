@@ -1,6 +1,6 @@
 class ProductHistoriesController < ApplicationController
   before_filter :get_product
-  before_filter :get_firm, only: [:index, :new, :edit]
+  before_filter :get_firm, only: [:index, :new]
 
   def index
     @product_histories = @product.product_histories.order('date desc').page(params[:page])
@@ -27,12 +27,10 @@ class ProductHistoriesController < ApplicationController
 
   def new
     @product_history = @product.product_histories.build
-    @title = if @firm.present?
-               t('view.product_histories.new_title_firm', product: @product.name, firm: @firm.nombre)
-             else
+    @title = ( @firm.present? ?
+               t('view.product_histories.new_title_firm', product: @product.name, firm: @firm.nombre) :
                t('view.product_histories.new_title', product: @product.name)
-             end
-
+             )
     if params[:firm].present?
       @product_history.firm_id = params[:firm]
     end

@@ -15,16 +15,10 @@ class FirmsController < ApplicationController
   # GET /firms/1
   # GET /firms/1.json
   def show
-    @firm = Firm.find(params[:id])
+    @firm = Firm.includes(:purchase_interests).find(params[:id])
     @title = t('view.firms.show_title', firm: @firm.nombre)
-    @sale_histories = []
-    @product_histories = []
-    Product.joins(:sale_histories).where("sale_histories.firm_id = #{@firm.id}").select('DISTINCT products.*').each do |product|
-      @sale_histories << product.sale_histories.order(:date).last
-    end
-    Product.joins(:product_histories).where("product_histories.firm_id = #{@firm.id}").select('DISTINCT products.*').each do |product|
-      @product_histories << product.product_histories.order(:date).last
-    end
+    @purchase_interests = @firm.purchase_interests
+    @sale_interests = @firm.sale_interests
 
     respond_to do |format|
       format.html # show.html.erb
@@ -96,5 +90,11 @@ class FirmsController < ApplicationController
       format.html { redirect_to firms_url }
       format.json { head :ok }
     end
+  end
+
+  def add_product
+    @firm = Firm.find(params[:id])
+
+    render partial: 'add_product', content_type: 'text/html'
   end
 end

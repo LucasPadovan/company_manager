@@ -22,27 +22,16 @@
       %hr
       %p
         %h4= link_to t('view.contacts.add_contact'), new_firm_contact_path(@firm), class: 'btn btn-primary', remote: true, data: {target: 'modal', modal: true}
-    .span7
+    .span8
       %h3= t 'view.firms.show.we_buy'
-      %table.table.table-striped
-        %thead
-          %th= t 'activerecord.models.product.one'
-          %th= ProductHistory.human_attribute_name :purchase_price
-          %th= ProductHistory.human_attribute_name :sale_price
-          %th= t 'attributes.date'
-          %th
-        %tbody#product_histories_body
-          = render @product_histories
-
+      = render 'purchase_interests/index'
+      = srbuj_link_to_new 'Comprar nuevo producto', new_firm_purchase_interest_path(@firm)
       %hr
+
       %h3= t 'view.firms.show.we_sell'
-      %table.table.table-striped
-        %thead
-          %th= t 'activerecord.models.product.one'
-          %th= SaleHistory.human_attribute_name :price
-          %th= t 'attributes.date'
-        %tbody#sale_histories_body
-          = render @sale_histories
+      -#= render 'sale_histories/sale_histories_table'
+      -#= srbuj_link_to_new 'Vender nuevo producto', add_product_firm_path(@firm, sale: true)
+
 .form-actions
   = link_to_edit edit_firm_path(@firm) if can? :update, @firm
   = link_to t('label.back'), firms_path, class: 'btn'

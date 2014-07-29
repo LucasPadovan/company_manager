@@ -1,0 +1,3 @@
+class PurchaseInterest < Interest
+
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140407221912) do
+ActiveRecord::Schema.define(:version => 20140429231912) do
 
   create_table "components", :force => true do |t|
     t.integer "custom_product_id"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(:version => 20140407221912) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "interests", :force => true do |t|
+    t.integer  "firm_id"
+    t.integer  "product_id"
+    t.string   "type"
+    t.datetime "date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "interests", ["firm_id", "product_id"], :name => "index_interests_on_firm_id_and_product_id"
+
   create_table "monthly_movements", :force => true do |t|
     t.string   "month"
     t.integer  "year"
@@ -59,12 +70,11 @@ ActiveRecord::Schema.define(:version => 20140407221912) do
   create_table "product_histories", :force => true do |t|
     t.float    "purchase_price"
     t.float    "sale_price"
-    t.integer  "product_id"
     t.integer  "user_id"
-    t.integer  "firm_id"
     t.datetime "date"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "interest_id"
   end
 
   create_table "products", :force => true do |t|
@@ -101,10 +111,9 @@ ActiveRecord::Schema.define(:version => 20140407221912) do
   create_table "sale_histories", :force => true do |t|
     t.datetime "date"
     t.float    "price"
-    t.integer  "product_id"
-    t.integer  "firm_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "interest_id"
   end
 
   create_table "sale_invoices", :force => true do |t|

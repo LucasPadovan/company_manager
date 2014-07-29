@@ -22,4 +22,5 @@
  *= require utils
  *= require scaffolds
  *= require customization/datepicker
+ *= require customization/tokeninput-facebook
 */

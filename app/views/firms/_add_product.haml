@@ -1,0 +1,10 @@
+.modal
+  .modal-header
+    %h3 titulo
+  .modal-body
+    = form_tag create_product_firm_path do
+      = text_field_tag :name, placeholder: 'Ingrese los tipos de producto'
+  .modal-footer
+    = yield :form_actions
+:javascript
+  loadOrCreateProduct();

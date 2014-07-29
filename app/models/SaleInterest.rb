@@ -1,0 +1,3 @@
+class SaleInterest < Interest
+
+end

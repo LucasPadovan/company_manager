@@ -1,6 +1,5 @@
 class Interest < ActiveRecord::Base
   #todo: validaciones, avisar al eliminar relaciones con precios, no dejar eliminar si alguien mas las esta usando
-  #todo: PurchaseInterest y SaleInterest, es mas natural y puedo eliminar los product_histories y sale_histories, solo dejo de relacion algo parecido a price.
   belongs_to :product
   belongs_to :firm
 

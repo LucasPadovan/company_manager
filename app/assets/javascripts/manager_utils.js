@@ -17,6 +17,10 @@ var setDatePicker = function() {
     );
 }
 
+var checkProductExistence = function(selector) {
+
+}
+
 //var setTooltip = function () {
 //    $('.btn-info, .btn-danger, .filter').tooltip();
 //}

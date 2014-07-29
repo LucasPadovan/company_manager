@@ -1,9 +1,8 @@
 CompanyManager::Application.routes.draw do
   resources :products do
-    resources :interests, only: [:new, :create, :destroy] do
-      resources :sale_histories, only: [:index, :show, :new, :create]
-      resources :product_histories, only: [:index, :show, :new, :create]
-    end
+    #todo: hacer controladores
+    resources :purchase_interests, only: [:new, :create, :destroy]
+    resources :sale_interests, only: [:new, :create, :destroy]
   end
 
 
@@ -26,7 +25,8 @@ CompanyManager::Application.routes.draw do
 
   resources :firms do
     resources :contacts, only: [:new, :create, :edit, :update, :destroy]
-    resources :interests, only: [:new, :create, :destroy]
+    resources :purchase_interests, only: [:new, :create, :destroy]
+    resources :sale_interests, only: [:new, :create, :destroy]
   end
 
   devise_for :users
