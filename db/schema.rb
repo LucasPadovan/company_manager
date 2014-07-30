@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140429231912) do
+ActiveRecord::Schema.define(:version => 20140729231912) do
 
   create_table "components", :force => true do |t|
     t.integer "custom_product_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20140429231912) do
     t.datetime "updated_at",                 :null => false
   end
 
-  create_table "product_histories", :force => true do |t|
+  create_table "prices", :force => true do |t|
     t.float    "purchase_price"
     t.float    "sale_price"
     t.integer  "user_id"
@@ -107,14 +107,6 @@ ActiveRecord::Schema.define(:version => 20140429231912) do
   end
 
   add_index "purchase_invoices", ["firm_id"], :name => "index_purchase_invoices_on_firm_id"
-
-  create_table "sale_histories", :force => true do |t|
-    t.datetime "date"
-    t.float    "price"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "interest_id"
-  end
 
   create_table "sale_invoices", :force => true do |t|
     t.datetime "date"

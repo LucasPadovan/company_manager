@@ -3,17 +3,11 @@ class Interest < ActiveRecord::Base
   belongs_to :product
   belongs_to :firm
 
-  has_many :product_histories
-  has_many :sale_histories
+  has_many :prices
 
-  accepts_nested_attributes_for :product_histories
-  accepts_nested_attributes_for :sale_histories
+  accepts_nested_attributes_for :prices
 
-  attr_accessible :date, :product_id, :firm_id, :product_histories_attributes, :sale_histories_attributes
-
-  def price
-    product_histories.last.purchase_price if product_histories.any?
-  end
+  attr_accessible :date, :product_id, :firm_id, :prices_attributes
 
   def sale_price
 

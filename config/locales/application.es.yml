@@ -65,15 +65,15 @@
         sales_otros_conc_total: 'Otros conceptos ventas'
         sales_subtotal: 'Subtotal ventas'
         sales_total: 'Total ventas'
+      price:
+        purchase_price: Precio de compra
+        sale_price: Precio de venta
+        firm_id: "Empresa"
       product:
         name: Nombre
         rubro: Rubro
         description: Descripción
         type: Tipo
-      product_history:
-        purchase_price: Precio de compra
-        sale_price: Precio de venta
-        firm_id: "Empresa"
       purchase_invoice:
         invoice_type: 'Tipo'
         destination_type: 'Venta/Consumo'

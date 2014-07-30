@@ -1,4 +1,5 @@
-class ProductHistory < ActiveRecord::Base
+class Price < ActiveRecord::Base
+
   has_paper_trail
 
   belongs_to :user

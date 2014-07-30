@@ -10,6 +10,7 @@ class SaleInterestsController < ApplicationController
 
     @firm_or_product = @firm || @product
     @sale_interest = @firm_or_product.sale_interests.build
+    @sale_interest.prices.build
 
     render partial: 'new', content_type: 'text/html'
   end

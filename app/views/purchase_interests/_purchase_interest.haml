@@ -2,6 +2,7 @@
   %td= @firm ? purchase_interest.product : purchase_interest.firm
   %td= purchase_interest.date.strftime('%d/%m/%y - %H:%M')
   %td= purchase_interest.price
+  %td= purchase_interest.proposed_sale_price
   %td
     = srbuj_link_to_destroy firm_purchase_interest_path(purchase_interest.firm, purchase_interest), data: { target: dom_id(purchase_interest), confirm: t('view.interests.destroy.tooltip') }
     -#todo: precios
