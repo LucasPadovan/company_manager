@@ -5,6 +5,11 @@ CompanyManager::Application.routes.draw do
     resources :sale_interests, only: [:new, :create, :destroy]
   end
 
+  resources :interests, only: :show do
+    member do
+      resources :prices
+    end
+  end
 
   resources :monthly_movements, except: [:destroy] do
     resources :sale_invoices do

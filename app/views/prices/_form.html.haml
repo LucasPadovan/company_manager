@@ -1,6 +1,6 @@
 .modal
-  = simple_form_for @product_history, url: [@product, @product_history], html: { remote: true,
-      data: { target: dom_id(@product_history.firm), modal: true, error: 'modal', replace: true },
+  = simple_form_for @price, url: prices_path(@interest), html: { remote: true,
+      data: { target: dom_id(@interest), modal: true, error: 'modal', replace: true },
       class: 'form-horizontal' } do |f|
     .modal-header
       %h3= @title
@@ -10,9 +10,9 @@
       = f.input :date, as: :string, input_html: { class: 'datepicker', value: Date.today.strftime('%d/%m/%Y') }
       = f.input :purchase_price
       = f.input :sale_price
-      = f.input :firm_id, collection: Firm.firms_for_select
+
     .modal-footer
       = link_to_close_modal
-      = f.submit t('view.product_histories.save_price'), class: 'btn btn-primary'
+      = f.submit t('view.purchase_interests.save_price'), class: 'btn btn-primary'
 :javascript
   setDatePicker();

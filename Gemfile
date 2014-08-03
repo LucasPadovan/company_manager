@@ -35,6 +35,8 @@ gem 'SrBuj'
 group :development do
   gem 'unicorn'
   gem 'bullet'
+  gem 'pry'
+  gem 'pry-byebug'
 end
 
 group :test do

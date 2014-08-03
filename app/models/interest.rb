@@ -9,11 +9,4 @@ class Interest < ActiveRecord::Base
 
   attr_accessible :date, :product_id, :firm_id, :prices_attributes
 
-  def sale_price
-
-  end
-
-  def purchase_price
-
-  end
 end

@@ -243,7 +243,7 @@
         purchase_prices: 'Precios de compra: '
         sold_to: 'Vendido a: '
       show_historic: 'Ver historial'
-    product_histories:
+    purchase_interests:
       index_title: 'Historial de precios de %{product} para %{firm}'
       show_title: '%{product}'
       new_title_firm: 'Nuevo precio para %{product} para %{firm}'
@@ -261,7 +261,7 @@
       show:
         bought_to: 'Comprado a la empresa'
         the_day: 'El día'
-    sale_histories:
+    sale_interest:
       index_title: 'Historial de precios de ventas de %{product}'
       show_title: '%{product}'
       new_title: 'Nuevo precio de venta para %{product}'

@@ -1,10 +1,11 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= @firm ? t('activerecord.models.product.one') : t('activerecord.models.firm.one')
+      %th= t('activerecord.models.product.one')
+      %th= t('activerecord.models.firm.one')
       %th= t 'attributes.date'
       %th= Interest.human_attribute_name :price
       %th= Interest.human_attribute_name :sale_price
       %th
   %tbody{ id: 'purchase_interests_body' }
-    = render @purchase_interests
+    = render partial: 'purchase_interests/purchase_interest', as: :interest, collection: @purchase_interests
