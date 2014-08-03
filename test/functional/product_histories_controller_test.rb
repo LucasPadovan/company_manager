@@ -11,7 +11,7 @@ class ProductHistoriesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:product_histories)
+    assert_not_nil assigns(:prices)
     assert_select '#unexpected_error', false
     assert_template "product_histories/index"
   end

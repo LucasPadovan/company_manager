@@ -28,7 +28,7 @@ class SaleInterestsController < ApplicationController
     @sale_interest = @firm_or_product.sale_interests.build(params[:sale_interest])
 
     if @sale_interest.save
-      render @sale_interest, content_type: 'text/html'
+      render partial: 'sale_interests/sale_interest', locals: { interest: @sale_interest }, content_type: 'text/html'
     else
       render partial: 'new', locals: { type: params[:type] }, status: :unprocessable_entity
     end

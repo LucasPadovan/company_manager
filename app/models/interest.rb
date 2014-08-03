@@ -9,4 +9,7 @@ class Interest < ActiveRecord::Base
 
   attr_accessible :date, :product_id, :firm_id, :prices_attributes
 
+  def is_purchase_interest?
+    self.class == PurchaseInterest
+  end
 end

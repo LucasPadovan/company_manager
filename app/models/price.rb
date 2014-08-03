@@ -7,6 +7,4 @@ class Price < ActiveRecord::Base
 
   attr_accessible :date, :purchase_price, :sale_price, :interest_id, :user_id
 
-  validates :purchase_price, presence: true
-
 end

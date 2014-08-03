@@ -4,20 +4,19 @@
     %tr
       %th.span2= t 'attributes.date'
       %th= t 'activerecord.models.firm.one'
-      %th= ProductHistory.human_attribute_name :purchase_price
-      %th= ProductHistory.human_attribute_name :sale_price
-      %th= t 'view.product_histories.responsible_user'
-      %th
+      - if @interest.is_purchase_interest?
+        %th= Price.human_attribute_name :purchase_price
+      %th= Price.human_attribute_name :sale_price
+      %th= t 'view.purchase_interests.responsible_user'
 
-    - @product_histories.each do |product_history|
+    - @prices.each do |price|
       %tr
-        %td= product_history.date.strftime('%d/%m/%y - %H:%M')
-        %td= product_history.firm.nombre
-        %td= product_history.purchase_price
-        %td= product_history.sale_price
-        %td= product_history.user.name
-        %td= link_to_destroy [@product, product_history], method: :delete, data: { confirm: 'Are you sure?' }
+        %td= price.date.strftime('%d/%m/%y - %H:%M') if price.date
+        %td= price.interest.firm.nombre
+        - if @interest.is_purchase_interest?
+          %td= price.purchase_price
+        %td= price.sale_price
+        %td= price.user.name if price.user
 
 .form-actions
   = link_to t('label.back'), :back, class: 'btn'
-  = link_to t('view.product_histories.update_price'), ['new', @product, 'product_history'], class: 'btn btn-primary'

@@ -4,14 +4,11 @@ class PricesController < ApplicationController
 
   def index
     @prices = @interest.prices.order('date desc').page(params[:page])
-    @title = t('view.product_histories.index_title', product: @product.name, firm: @firm.nombre)
-    if params[:firm].present?
-      @product_histories = @product_histories.where(firm_id: params[:firm])
-    end
+    @title = t('view.purchase_interests.index_title', product: @interest.product.name, firm: @interest.firm.nombre)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @product_histories }
+      format.json { render json: @prices }
     end
   end
 
