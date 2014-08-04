@@ -16,8 +16,9 @@ class PurchaseInterestsController < ApplicationController
   end
 
   def create
-    if params[:product_id].present?
-      @product = Product.find(params[:product_id])
+    product_id = params[:product_id] || params[:custom_product_id] || params[:raw_product_id]
+    if product_id
+      @product = Product.find(product_id)
       @title = t('view.interests.new.purchase_product_title', product: @product)
     else
       @firm = Firm.find(params[:firm_id])

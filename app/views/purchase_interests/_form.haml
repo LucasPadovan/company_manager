@@ -1,4 +1,5 @@
-= f.input :product_id, collection: Product.products_for_select
+= f.input :product_id, collection: Product.products_for_select unless params[:product_id]
+= f.input :firm_id, collection: Firm.firms_for_select if params[:product_id]
 = f.input :date, as: :string, input_html: { class: 'datepicker', value: Date.today.strftime('%d/%m/%Y') }
 = f.simple_fields_for :prices do |price|
   = price.input :purchase_price
