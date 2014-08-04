@@ -4,7 +4,8 @@ class Product < ActiveRecord::Base
   belongs_to :user
 
   has_many :components
-  has_many :interests
+  has_many :purchase_interests
+  has_many :sale_interests
   has_many :firms, through: :interests
 
   attr_accessible :name, :description, :rubro, :user_id, :unit, :stock, :initial_stock, :type

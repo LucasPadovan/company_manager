@@ -1,7 +1,0 @@
-%table.table.table-striped
-  %thead
-    %th= @firm ? t('activerecord.models.product.one') : t('activerecord.models.firm.one')
-    %th= t 'attributes.date'
-    %th= SaleHistory.human_attribute_name :price
-  %tbody#sale_histories_body
-    = render @sale_histories

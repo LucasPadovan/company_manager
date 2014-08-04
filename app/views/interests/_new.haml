@@ -1,7 +1,0 @@
-.modal
-  .modal-header
-    %h3= @title
-  .modal-body
-    = render @firm ? 'firm_form' : 'product_form'
-  .modal-footer
-    = yield :form_actions

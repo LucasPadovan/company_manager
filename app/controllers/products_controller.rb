@@ -19,13 +19,10 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.includes(interests: [:product_histories, :sale_histories]).find(params[:id])
+    @product = Product.includes(:purchase_interests, :sale_interests).find(params[:id])
     @title = t('view.products.show_title', product: @product.name)
-    @interests = @product.interests
-    @purchase_interests
-    #todo: sale_interests, purchase_interests
-    #@product_histories = ProductHistory.where(interest_id: @product.interests.map(&:id))
-    #@sale_histories = SaleHistory.where(interest_id: @product.interests.map(&:id))
+    @purchase_interests = @product.purchase_interests
+    @sale_interests = @product.sale_interests
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,8 +1,0 @@
-%tr{ id: dom_id(interest) }
-  %td= @firm ? interest.product : interest.firm
-  %td= interest.date.strftime('%d/%m/%y - %H:%M')
-  %td= interest.price
-  %td
-    = srbuj_link_to_destroy product_interest_path(interest.product, interest), data: { target: dom_id(interest), confirm: t('view.interests.destroy.tooltip') }
-    -#= srbuj_link_to_new t('view.sale_histories.update_price'), new_product_sale_history_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-primary btn-mini'
-    -#= link_to t('view.products.show_historic'), product_sale_histories_path(sale_history.product, firm: sale_history.firm), class: 'btn btn-success btn-mini'
