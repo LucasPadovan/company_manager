@@ -14,10 +14,12 @@
       %h3= t 'view.products.show.purchase_prices'
       = render partial: 'purchase_interests/index'
       = srbuj_link_to_new t('view.sale_interest.add_new_price'), new_product_purchase_interest_path(@product)
+      = link_to_csv 'Exportar en csv', prices_list_product_path(@product, format: 'csv')
       %hr
       %h3= t 'view.products.show.sold_to'
       = render partial: 'sale_interests/index'
       = srbuj_link_to_new t('view.sale_interest.add_new_price'), new_product_sale_interest_path(@product)
+      = link_to_csv 'Exportar en csv', prices_list_product_path(@product, format: 'csv', type: 'sale')
 .form-actions
   = link_to_edit edit_product_path(@product)
   = link_to t('label.back'), products_path, class: 'btn'

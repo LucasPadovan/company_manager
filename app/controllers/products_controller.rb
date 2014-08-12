@@ -78,4 +78,31 @@ class ProductsController < ApplicationController
       render nothing: true
     end
   end
+
+  def prices_list
+    @product = Product.find(params[:id])
+    case params[:type]
+      when 'sale'
+        @interests = @product.sale_interests
+        name = "Precios de venta de #{@product.to_s} al #{Time.now.strftime('%d/%m/%y %H:%Mhs')}.csv"
+      else
+        @interests = @product.purchase_interests
+        name = "Precios de compra de #{@product.to_s} al #{Time.now.strftime('%d/%m/%y %H:%Mhs')}.csv"
+    end
+    first_column = 'Empresa'
+
+    respond_to do |format|
+      format.csv {
+          exportable_csv =  CSV.generate do |csv|
+            csv << @interests.column_names_for_export(first_column)
+            @interests.each do |interest|
+              csv << interest.to_csv(first_column)
+            end
+          end
+
+          send_data exportable_csv,
+                    filename: name
+      }
+    end
+  end
 end

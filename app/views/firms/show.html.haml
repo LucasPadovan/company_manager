@@ -26,11 +26,13 @@
       %h3= t 'view.firms.show.we_buy'
       = render 'purchase_interests/index'
       = srbuj_link_to_new 'Comprar nuevo producto', new_firm_purchase_interest_path(@firm)
+      = link_to_csv 'Exportar en csv', prices_list_firm_path(@firm, format: 'csv')
       %hr
 
       %h3= t 'view.firms.show.we_sell'
       = render 'sale_interests/index'
       = srbuj_link_to_new 'Vender nuevo producto', new_firm_sale_interest_path(@firm)
+      = link_to_csv 'Exportar en csv', prices_list_firm_path(@firm, format: 'csv', type: 'sale')
 
 .form-actions
   = link_to_edit edit_firm_path(@firm) if can? :update, @firm

@@ -191,4 +191,9 @@ module ApplicationHelper
   def link_to_close_modal
     link_to_function 'Cerrar', "$('#modal').modal('toggle');", class: 'btn'
   end
+
+  def link_to_csv(*args)
+    name = args.shift
+    link_to content_tag(:i, '', class: 'icon-share') + name, *args, class: 'btn btn-info'
+  end
 end

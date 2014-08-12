@@ -2,6 +2,9 @@ CompanyManager::Application.routes.draw do
   resources :products, :custom_products, :raw_products, controller: :products do
     resources :purchase_interests, only: [:new, :create, :destroy]
     resources :sale_interests, only: [:new, :create, :destroy]
+    member do
+      get :prices_list
+    end
   end
 
   resources :interests, only: :show do
@@ -31,6 +34,9 @@ CompanyManager::Application.routes.draw do
     resources :contacts, only: [:new, :create, :edit, :update, :destroy]
     resources :purchase_interests, only: [:new, :create, :destroy]
     resources :sale_interests, only: [:new, :create, :destroy]
+    member do
+      get :prices_list
+    end
   end
 
   devise_for :users

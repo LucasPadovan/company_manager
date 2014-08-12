@@ -92,6 +92,34 @@ class FirmsController < ApplicationController
     end
   end
 
+  def prices_list
+    @firm = Firm.find(params[:id])
+    case params[:type]
+      when 'sale'
+        @interests = @firm.sale_interests
+        name = "Precios de venta para #{@firm.to_s} al #{Time.now.strftime('%d/%m/%y %H:%Mhs')}.csv"
+      else
+        @interests = @firm.purchase_interests
+        name = "Precios de compra para #{@firm.to_s} al #{Time.now.strftime('%d/%m/%y %H:%Mhs')}.csv"
+    end
+    first_column = 'Producto'
+
+    respond_to do |format|
+      format.csv {
+        exportable_csv =  CSV.generate do |csv|
+          csv << @interests.column_names_for_export(first_column)
+          @interests.each do |interest|
+            csv << interest.to_csv(first_column)
+          end
+        end
+
+        send_data exportable_csv,
+                  filename: name
+      }
+    end
+  end
+
+  #creo que esto se puede ir
   def add_product
     @firm = Firm.find(params[:id])
 
