@@ -1,8 +1,8 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= t('activerecord.models.product.one')
-      %th= t('activerecord.models.firm.one')
+      %th= t('activerecord.models.product.one') if params[:controller] == 'firms'
+      %th= t('activerecord.models.firm.one') unless params[:controller] == 'firms'
       %th= t 'attributes.date'
       %th= Interest.human_attribute_name :price
       %th

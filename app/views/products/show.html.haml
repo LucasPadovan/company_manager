@@ -13,7 +13,7 @@
     .span8
       %h3= t 'view.products.show.purchase_prices'
       = render partial: 'purchase_interests/index'
-      = srbuj_link_to_new t('view.sale_interest.add_new_price'), new_product_purchase_interest_path(@product)
+      = srbuj_link_to_new t('view.purchase_interests.add_new_price'), new_product_purchase_interest_path(@product)
       = link_to_csv 'Exportar en csv', prices_list_product_path(@product, format: 'csv')
       %hr
       %h3= t 'view.products.show.sold_to'

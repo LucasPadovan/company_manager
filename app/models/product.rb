@@ -12,6 +12,8 @@ class Product < ActiveRecord::Base
 
   validates :name, presence: true
 
+  scope :general, -> { where type: '' }
+
   def type_to_show
     case self
       when CustomProduct then 'Producto Fabricado'

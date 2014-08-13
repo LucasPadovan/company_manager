@@ -21,6 +21,10 @@ var checkProductExistence = function(selector) {
 
 }
 
+var enableTooltips = function () {
+  $("[rel='tooltip']").tooltip()
+}
+
 //var setTooltip = function () {
 //    $('.btn-info, .btn-danger, .filter').tooltip();
 //}

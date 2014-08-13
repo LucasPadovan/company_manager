@@ -196,4 +196,8 @@ module ApplicationHelper
     name = args.shift
     link_to content_tag(:i, '', class: 'icon-share') + name, *args, class: 'btn btn-info'
   end
+
+  def text_link_to_show(title, url)
+    link_to title, url, rel: 'tooltip', title: 'Ver detalle'
+  end
 end

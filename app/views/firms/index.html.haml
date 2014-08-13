@@ -12,13 +12,12 @@
       %tbody
         - @firms.each do |firm|
           %tr
-            %td= firm.nombre
+            %td= text_link_to_show firm.nombre, firm
             %td= firm.cuit
             %td
               - if firm.contacts.any?
                 = firm.contacts.last.area + ' ' + firm.contacts.last.details
             %td.span2
-              = link_to_show firm
               = link_to_edit edit_firm_path(firm) if can? :update, firm
               = link_to_destroy firm if can? :destroy, firm
     = pagination_links(@firms)

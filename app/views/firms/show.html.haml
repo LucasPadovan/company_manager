@@ -9,6 +9,7 @@
         = @firm.afip_cond
       %p
         %strong= t 'view.firms.show.contact_mediums'
+        -#todo: srbujifi esto
         - if @firm.contacts.any?
           %table.table.table-striped
             %thead
