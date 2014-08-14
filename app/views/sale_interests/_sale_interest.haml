@@ -1,6 +1,6 @@
 %tr{ id: dom_id(interest) }
-  %td= interest.product if params[:controller] == 'firms'
-  %td= interest.firm unless params[:controller] == 'firms'
+  %td= interest.product
+  %td= interest.firm
   %td= interest.date.strftime('%d/%m/%y - %H:%M')
   %td= interest.price
   %td
