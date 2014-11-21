@@ -1,0 +1,9 @@
+.modal
+  = simple_form_for @component, url: product_recipe_components_path(@product, @recipe), html: { remote: true, data: { target: 'components_body', modal: true, error: 'modal', callback: 'updateRecipeTotals' } } do |f|
+    .modal-header
+      %h3= @title
+    .modal-body
+      = render partial: 'form', locals: { f: f }
+    .modal-footer
+      = f.submit 'Agregar componente', class: 'btn btn-primary btn-small'
+      = link_to_function t('label.close'), "$('#modal').modal('toggle');", class: 'btn'

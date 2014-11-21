@@ -1,0 +1,9 @@
+%h3 Recetas
+- if @product.recipes.any?
+  %table.table.table-striped
+    %tbody
+      = render partial: 'recipes/recipe', collection: @product.recipes
+
+  %br
+
+= srbuj_link_to_new 'Agregar receta', new_product_recipe_path(@product)

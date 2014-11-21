@@ -1,0 +1,11 @@
+smtp:
+  address: 'smtp.gmail.com'
+  port: 587
+  domain: 'gmail.com'
+  user_name: 'lucaslockon@gmail.com'
+  password: 'kbbsgcqowucamhba'
+  authentication: 'plain'
+  enable_starttls_auto: true
+public_host: 'public.domain.com'
+devise:
+  secret_key: '7d550357b3a48a11161866eb45bdefd1fe14e70de4de5359d03c8bca7a82fd1bc70467f2ffa6a18f958e5bf02771378bc973f5c118c61659989518c2a660094e'

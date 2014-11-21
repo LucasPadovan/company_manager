@@ -21,8 +21,7 @@
             %tbody
               = render @firm.contacts
       %hr
-      %p
-        %h4= link_to t('view.contacts.add_contact'), new_firm_contact_path(@firm), class: 'btn btn-primary', remote: true, data: {target: 'modal', modal: true}
+      %p= srbuj_link_to_new t('view.contacts.add_contact'), new_firm_contact_path(@firm)
     .span8
       %h3= t 'view.firms.show.we_buy'
       = render 'purchase_interests/index'

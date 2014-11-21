@@ -1,0 +1,27 @@
+.container-fluid
+  .row
+    .span4
+      %p
+        %b Receta:
+        = @recipe.name
+      %p
+        %b Description:
+        = @recipe.description
+    .span6
+      = render partial: 'components/index'
+    .span2
+      -#todo: deberia multiplicar por la cantidad.
+      %h3 Costo
+      %p
+        Menor costo:
+        %h4
+          $
+          %span#lowestCost= @lowest_cost
+      %p
+        Mayor costo:
+        %h4
+          $
+          %span#highestCost= @highest_cost
+.form-actions
+  = link_to_edit edit_product_recipe_path(@product, @recipe)
+  = link_to t('label.back'), @product, class: 'btn'

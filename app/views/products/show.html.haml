@@ -10,6 +10,9 @@
       %p
         %b= t 'view.products.show.created_by'
         = @product.user.name if @product.user
+      %hr
+      - if @product.is_a?(CustomProduct)
+        = render partial: 'recipes/index'
     .span8
       %h3= t 'view.products.show.purchase_prices'
       = render partial: 'purchase_interests/index'

@@ -5,6 +5,9 @@ CompanyManager::Application.routes.draw do
     member do
       get :prices_list
     end
+    resources :recipes do
+      resources :components
+    end
   end
 
   resources :interests, only: :show do

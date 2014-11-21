@@ -1,0 +1,12 @@
+%tr{ id: dom_id(component) }
+  %td= "#{component.quantity} #{component.unit}"
+  %td= component.product.name
+  - if component.lowest_cost[1] > 0
+    %td= link_to component.lowest_cost[0], firm_path(component.lowest_cost[1]), data: { lowest_value: component.lowest_cost[0] }
+    %td= link_to component.highest_cost[0], firm_path(component.highest_cost[1]), data: { highest_value: component.lowest_cost[0] }
+  - else
+    %td
+    %td
+  %td
+    = srbuj_link_to_edit edit_product_recipe_component_path(@product, @recipe, component)
+    = srbuj_link_to_destroy product_recipe_component_path(@product, @recipe, component), data: { target: dom_id(component), confirm: '¿Estás seguro que deseas eliminar esta componente?', callback: 'updateRecipeTotals' }

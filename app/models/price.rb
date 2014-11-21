@@ -1,5 +1,5 @@
 class Price < ActiveRecord::Base
-
+  # todo: implementar precio unitario, precios por cantidad, precios optimos, precios por lote cerrado
   has_paper_trail
 
   belongs_to :user

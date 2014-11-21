@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140729231912) do
+ActiveRecord::Schema.define(:version => 20141121015335) do
 
   create_table "components", :force => true do |t|
-    t.integer "custom_product_id"
     t.integer "product_id"
+    t.float   "quantity"
+    t.string  "unit"
+    t.integer "recipe_id"
   end
-
-  add_index "components", ["custom_product_id", "product_id"], :name => "index_components_on_custom_product_id_and_product_id"
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -107,6 +107,14 @@ ActiveRecord::Schema.define(:version => 20140729231912) do
   end
 
   add_index "purchase_invoices", ["firm_id"], :name => "index_purchase_invoices_on_firm_id"
+
+  create_table "recipes", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "product_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "sale_invoices", :force => true do |t|
     t.datetime "date"

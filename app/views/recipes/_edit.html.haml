@@ -1,0 +1,9 @@
+.modal
+  = simple_form_for @recipe, url: product_recipes_path(@product, @recipe), html: { remote: true, data: { target: dom_id(@recipe), modal: true, error: 'modal' } } do |f|
+    .modal-header
+      %h3= @title
+    .modal-body
+      = render partial: 'form', locals: { f: f }
+    .modal-footer
+      = f.submit 'Actualizar receta', class: 'btn btn-primary btn-small'
+      = link_to_function t('label.close'), "$('#modal').modal('toggle');", class: 'btn'

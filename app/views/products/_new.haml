@@ -1,5 +1,5 @@
 .modal
-  = simple_form_for @product, url: products_path(@product), html: { remote: true, data: { target: 'products_body', modal: true, error: 'modal' } } do |f|
+  = simple_form_for @product, url: products_path(@product), html: { remote: request.xhr?, data: { target: 'products_body', modal: true, error: 'modal' } } do |f|
     .modal-header
       %h3= @title
     .modal-body

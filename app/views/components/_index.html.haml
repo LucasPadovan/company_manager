@@ -1,0 +1,15 @@
+%h3 Componentes
+%table.table.table-striped
+  %thead
+    %tr
+      %th Cantidad
+      %th Producto
+      %th Menor costo
+      %th Mayor costo
+      %th
+
+  %tbody#components_body
+    = render partial: 'components/component', collection: @components
+
+%br
+= srbuj_link_to_new 'Agregar componente', new_product_recipe_component_path(@product, @recipe)

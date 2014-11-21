@@ -3,10 +3,10 @@ class Product < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :components
-  has_many :purchase_interests
-  has_many :sale_interests
   has_many :firms, through: :interests
+  has_many :purchase_interests
+  has_many :recipes
+  has_many :sale_interests
 
   attr_accessible :name, :description, :rubro, :user_id, :unit, :stock, :initial_stock, :type
 
@@ -32,5 +32,21 @@ class Product < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def lowest_price_and_firm
+    lowest_price = 0
+    purchase_interests.each do |purchase_interest|
+      lowest_price = [purchase_interest.price, purchase_interest.firm.id] if purchase_interest.price < lowest_price || lowest_price == 0
+    end
+    lowest_price
+  end
+
+  def highest_price_and_firm
+    highest_price = 0
+    purchase_interests.each do |purchase_interest|
+      highest_price = [purchase_interest.price, purchase_interest.firm.id] if purchase_interest.price > highest_price
+    end
+    highest_price
   end
 end

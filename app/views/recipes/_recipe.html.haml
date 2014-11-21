@@ -1,0 +1,5 @@
+%tr{ id: dom_id(recipe) }
+  %td= link_to recipe.name, [@product, recipe]
+  %td
+    = srbuj_link_to_edit edit_product_recipe_path(@product, recipe)
+    = srbuj_link_to_destroy product_recipe_path(@product, recipe), data: { target: dom_id(recipe), confirm: '¿Estás seguro que deseas eliminar esta receta?' }

@@ -25,6 +25,22 @@ var enableTooltips = function () {
   $("[rel='tooltip']").tooltip()
 }
 
+var updateRecipeTotals = function() {
+  var
+      lowestCostTarget  = document.getElementById('lowestCost')
+    , highestCostTarget = document.getElementById('highestCost')
+    , lowestValues      = document.querySelectorAll('[data-lowest-value]')
+    , highestValues     = document.querySelectorAll('[data-lowest-value]')
+    , lowestCost        = 0.0
+    , highestCost       = 0.0
+
+  for (i = 0; element = lowestValues[i++];)  lowestCost  += Number(element.getAttribute('data-lowest-value'))
+  for (i = 0; element = highestValues[i++];) highestCost += Number(element.getAttribute('data-lowest-value'))
+
+  lowestCostTarget.innerHTML  = lowestCost
+  highestCostTarget.innerHTML = highestCost
+}
+
 //var setTooltip = function () {
 //    $('.btn-info, .btn-danger, .filter').tooltip();
 //}

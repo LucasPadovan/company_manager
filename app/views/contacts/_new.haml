@@ -1,7 +1,9 @@
 .modal
-  .modal-header
-    %h3= t 'view.contacts.new_title', firm: @firm.nombre
-  .modal-body
-    = render 'form'
-  .modal-footer
-    = link_to_function t('label.close'), "$('#modal').modal('toggle');", class: 'btn'
+  = form_for [@firm, @contact] do |f|
+    .modal-header
+      %h3= t 'view.contacts.new_title', firm: @firm.nombre
+    .modal-body
+      = render partial: 'form', locals: { f: f }
+    .modal-footer
+      = f.submit t('view.contacts.save_contact'), class: 'btn btn-primary btn-small'
+      = link_to_function t('label.close'), "$('#modal').modal('toggle');", class: 'btn'
