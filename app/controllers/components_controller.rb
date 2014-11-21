@@ -5,6 +5,7 @@ class ComponentsController < ApplicationController
   # GET /components/new.json
   def new
     @title = t('view.components.new_title')
+    @title = "Nuevo componente de receta #{@recipe}"
     @component = @recipe.components.build
 
     render partial: 'components/new', content_type: 'text/html'
@@ -13,6 +14,7 @@ class ComponentsController < ApplicationController
   # GET /components/1/edit
   def edit
     @title = t('view.components.edit_title')
+    @title = "Editando componente de receta #{@recipe}"
     @component = Component.find(params[:id])
 
     render partial: 'components/edit', content_type: 'text/html'
@@ -22,6 +24,7 @@ class ComponentsController < ApplicationController
   # POST /components.json
   def create
     @title = t('view.components.new_title')
+    @title = "Nuevo componente para receta #{@recipe}"
     @component = @recipe.components.new(params[:component])
 
     if @component.save
@@ -35,6 +38,7 @@ class ComponentsController < ApplicationController
   # PUT /components/1.json
   def update
     @title = t('view.components.edit_title')
+    @title = "Editando componente de receta #{@recipe}"
     @component = Component.find(params[:id])
 
     if @component.update_attributes(params[:component])

@@ -1,5 +1,5 @@
 .modal
-  = simple_form_for @component, url: product_recipe_component_path(@product, @recipe, @component), html: { remote: true, data: { target: dom_id(@component), modal: true, error: 'modal', callback: 'updateRecipeTotals' } } do |f|
+  = simple_form_for @component, url: product_recipe_component_path(@product, @recipe, @component), html: { remote: true, data: { target: dom_id(@component), modal: true, error: 'modal', callback: 'updateRecipeTotals', replace: true } } do |f|
     .modal-header
       %h3= @title
     .modal-body

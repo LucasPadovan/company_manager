@@ -35,17 +35,17 @@ class Product < ActiveRecord::Base
   end
 
   def lowest_price_and_firm
-    lowest_price = 0
+    lowest_price = [0]
     purchase_interests.each do |purchase_interest|
-      lowest_price = [purchase_interest.price, purchase_interest.firm.id] if purchase_interest.price < lowest_price || lowest_price == 0
+      lowest_price = [purchase_interest.price, purchase_interest.firm.id] if purchase_interest.price < lowest_price[0] || lowest_price[0] == 0
     end
     lowest_price
   end
 
   def highest_price_and_firm
-    highest_price = 0
+    highest_price = [0]
     purchase_interests.each do |purchase_interest|
-      highest_price = [purchase_interest.price, purchase_interest.firm.id] if purchase_interest.price > highest_price
+      highest_price = [purchase_interest.price, purchase_interest.firm.id] if purchase_interest.price > highest_price[0]
     end
     highest_price
   end
