@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
     @title = t('view.products.index_title')
     if params[:type].present?
       case params[:type]
-        when 'CustomProduct'  then @products = CustomProduct.page(params[:page])
-        when 'RawMaterial'    then @products = RawMaterial.page(params[:page])
+        when 'CustomProduct' then @products = CustomProduct.page(params[:page])
+        when 'RawMaterial'   then @products = RawMaterial.page(params[:page])
       end
     else
       @products = Product.general.page(params[:page])

@@ -16,4 +16,4 @@
       %tbody#products_body
         = render partial: 'product', collection: @products
 .form-actions
-  = srbuj_link_to_new t('view.products.new_title'), new_product_path
+  = srbuj_link_to_new t('view.products.new_title'), new_product_path(type: params[:type])
