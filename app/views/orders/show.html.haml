@@ -1,0 +1,20 @@
+.container-fluid
+  .row
+    .span4
+      %p
+        %b= Order.human_attribute_name(:firm_id) + ':'
+        = @order.firm.to_s
+      %p
+        %b= Order.human_attribute_name(:received) + ':'
+        = @order.received.strftime('%d/%m/%y %H:%Mhs')
+      %p
+        %b= Order.human_attribute_name(:status) + ':'
+        = @order.status
+      %p
+        %b= t 'view.orders.show.taken_for'
+        = @order.user.name
+    .span8
+      -#= render 'lines/index'
+.form-actions
+  = link_to_edit edit_order_path(@order)
+  = link_to t('label.back'), orders_path, class: 'btn'

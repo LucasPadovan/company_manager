@@ -1,6 +1,6 @@
-class CreateClientOrders < ActiveRecord::Migration
+class CreateOrders < ActiveRecord::Migration
   def change
-    create_table :client_orders do |t|
+    create_table :orders do |t|
       t.datetime  :completed
       t.datetime  :received
       t.datetime  :cancelled
@@ -15,6 +15,6 @@ class CreateClientOrders < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :client_orders, :number
+    add_index :orders, :number
   end
 end

@@ -20,7 +20,7 @@
       monthly_movement:
         one: 'Facturación mensual'
         other: 'Facturaciones mensuales'
-      client_orders:
+      orders:
         one: 'Pedido'
         other: 'Pedidos'
       product:
@@ -327,11 +327,11 @@
       roles:
         admin: 'Administrador'
         regular: 'Normal'
-    client_orders:
+    orders:
       index_title: "Listado de pedidos"
       show_title: "Pedido nº %{order_number}"
       new_title: "Nuevo pedido"
       edit_title: "Editando el pedido %{order_number}"
       save: "Guardar pedido"
       show:
-        taken_for: "Tomado por"
+        taken_for: "Tomado por:"

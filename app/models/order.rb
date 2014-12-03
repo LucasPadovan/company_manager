@@ -1,4 +1,4 @@
-class ClientOrder < ActiveRecord::Base
+class Order < ActiveRecord::Base
   has_paper_trail
 
   belongs_to :user
@@ -10,7 +10,6 @@ class ClientOrder < ActiveRecord::Base
 
   validates :number, presence: true
 
-  after_initialize :generate_number
   before_create    :create_as_open
 
   scope :open, -> { where status: STATUSES[:open] }
@@ -32,13 +31,13 @@ class ClientOrder < ActiveRecord::Base
     self.save
   end
 
-  private
-    def generate_number
-      seed = Date.today.year.to_i + 100000
-      id   = ClientOrder.last.try(:id) || 0
-      self.number = seed + id
-    end
+  def generate_number
+    seed = Date.today.year.to_i + 100000
+    id   = Order.last.try(:id) || 0
+    self.number = seed + id
+  end
 
+  private
     def create_as_open
       self.status = STATUSES[:open]
     end
