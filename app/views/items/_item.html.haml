@@ -1,0 +1,7 @@
+%tr{ id: dom_id(item) }
+  %td= item.quantity
+  %td= item.product.to_s
+  %td= item.unit_price
+  %td= item.completition
+  %td
+    = srbuj_link_to_destroy order_item_path(@order, item), data: { target: dom_id(item) }

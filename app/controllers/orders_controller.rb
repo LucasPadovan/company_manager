@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @items = @order.items
     @title = t('view.orders.show_title', order_number: @order.number)
 
     respond_to do |format|

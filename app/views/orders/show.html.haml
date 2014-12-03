@@ -14,7 +14,7 @@
         %b= t 'view.orders.show.taken_for'
         = @order.user.name
     .span8
-      -#= render 'lines/index'
+      = render 'items/index'
 .form-actions
   = link_to_edit edit_order_path(@order)
   = link_to t('label.back'), orders_path, class: 'btn'

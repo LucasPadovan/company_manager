@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141202015334) do
+ActiveRecord::Schema.define(:version => 20141203015334) do
 
   create_table "components", :force => true do |t|
     t.integer "product_id"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(:version => 20141202015334) do
   end
 
   add_index "interests", ["firm_id", "product_id"], :name => "index_interests_on_firm_id_and_product_id"
+
+  create_table "items", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.integer  "completition"
+    t.float    "quantity"
+    t.float    "unit_price"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "monthly_movements", :force => true do |t|
     t.string   "month"

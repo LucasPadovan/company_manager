@@ -1,0 +1,12 @@
+%h3= t('view.items.index_title')
+%table.table.table-striped
+  %thead
+    %tr
+      %td= Item.human_attribute_name :quantity
+      %td= Item.human_attribute_name :firm_id
+      %td= Item.human_attribute_name :unit_price
+      %td= Item.human_attribute_name :completition
+      %td
+  %tbody#items_body
+    = render partial: 'items/item', collection: @items
+= srbuj_link_to_new t('view.items.add_item'), new_order_item_path(@order)

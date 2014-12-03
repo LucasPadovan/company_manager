@@ -1,5 +1,5 @@
 = f.input :number, input_html: { disabled: true }
-= f.input :received
+= f.input :received, as: :string, input_html: { class: 'datepicker', value: Date.today.strftime('%d/%m/%Y') }
 = f.input :external_code
 = f.input :details, input_html: { rows: 4, cols: 40 }
 = f.input :firm_id, collection: Firm.firms_for_select, selected: (params[:firm_id] || @order.firm_id)

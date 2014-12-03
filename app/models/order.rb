@@ -1,10 +1,12 @@
 class Order < ActiveRecord::Base
+  # todo: al realizar una nueva order, realizar un interest entre la firma y los productos pedidos
+
   has_paper_trail
 
   belongs_to :user
   belongs_to :firm
 
-  # has_many :lines
+  has_many :items
 
   attr_accessible :completed, :details, :deliver_in, :external_code, :firm_id, :number, :place, :received, :status, :user_id
 

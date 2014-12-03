@@ -1,0 +1,11 @@
+.modal
+  = simple_form_for [@order, @item], html: { remote: true, data: { target: 'items_body', modal: true, error: 'modal' } } do |f|
+    .modal-header
+      %h3= @title
+    .modal-body
+      = f.input :product_id, collection: Product.products_for_select
+      = f.input :quantity
+      = f.input :unit_price
+    .modal-footer
+      = f.submit t('view.items.save_item'), class: 'btn btn-primary btn-small'
+      = link_to_function t('label.close'), "$('#modal').modal('toggle');", class: 'btn'
