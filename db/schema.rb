@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141121015335) do
+ActiveRecord::Schema.define(:version => 20141202015334) do
+
+  create_table "client_orders", :force => true do |t|
+    t.datetime "completed"
+    t.datetime "received"
+    t.datetime "cancelled"
+    t.integer  "firm_id"
+    t.integer  "deliver_in"
+    t.integer  "number",        :null => false
+    t.integer  "user_id"
+    t.string   "external_code"
+    t.string   "place"
+    t.string   "status"
+    t.text     "details"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "client_orders", ["number"], :name => "index_client_orders_on_number"
 
   create_table "components", :force => true do |t|
     t.integer "product_id"

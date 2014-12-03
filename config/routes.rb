@@ -1,4 +1,6 @@
 CompanyManager::Application.routes.draw do
+  resources :client_orders
+
   resources :products, :custom_products, :raw_products, controller: :products do
     resources :purchase_interests, only: [:new, :create, :destroy]
     resources :sale_interests, only: [:new, :create, :destroy]

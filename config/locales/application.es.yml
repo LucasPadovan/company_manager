@@ -20,6 +20,9 @@
       monthly_movement:
         one: 'Facturación mensual'
         other: 'Facturaciones mensuales'
+      client_orders:
+        one: 'Pedido'
+        other: 'Pedidos'
       product:
         one: 'Producto'
         other: 'Productos'
@@ -65,6 +68,18 @@
         sales_otros_conc_total: 'Otros conceptos ventas'
         sales_subtotal: 'Subtotal ventas'
         sales_total: 'Total ventas'
+      order:
+        cancelled: 'Cancelada'
+        completed: 'Completada'
+        details: 'Detalles'
+        deliver_in: 'Entregar dentro de'
+        external_code: 'Codigo externo'
+        firm_id: 'Empresa'
+        number: 'Número'
+        place: 'Entregar en'
+        received: 'Recibido'
+        status: 'Estado'
+        user_id: 'Usuario'
       price:
         purchase_price: Precio de compra
         sale_price: Precio de venta
@@ -312,3 +327,11 @@
       roles:
         admin: 'Administrador'
         regular: 'Normal'
+    client_orders:
+      index_title: "Listado de pedidos"
+      show_title: "Pedido nº %{order_number}"
+      new_title: "Nuevo pedido"
+      edit_title: "Editando el pedido %{order_number}"
+      save: "Guardar pedido"
+      show:
+        taken_for: "Tomado por"

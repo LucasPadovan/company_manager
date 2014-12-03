@@ -10,12 +10,13 @@
       <% if user_signed_in? %>
         <div class="nav-collapse">
           <ul class="nav">
-            <%= show_menu_link( name: 'Empresas',            controllers: 'firms',             path: firms_path             ) if can?( :read, Firm ) %>
-            <%= show_menu_link( name: 'Productos',           controllers: 'products',          path: products_path          ) if can?( :read, Product ) %>
-            <%= show_menu_link( name: 'Stock',               controllers: 'products',          path: products_path          ) if can?( :read, Product ) %>
-            <%= show_menu_link( name: 'Producción',          controllers: 'products',          path: products_path          ) if can?( :read, Product ) %>
-            <%= show_menu_link( name: 'Facturación Mensual', controllers: 'monthly_movements', path: monthly_movements_path ) if can?( :read, MonthlyMovement ) %>
-            <%= show_menu_link( name: 'Usuarios',            controllers: 'users',             path: users_path             ) if can?( :read, User ) %>
+            <%= show_menu_link( name: 'Empresas',    controllers: 'firms',             path: firms_path             ) if can?( :read, Firm ) %>
+            <%= show_menu_link( name: 'Productos',   controllers: 'products',          path: products_path          ) if can?( :read, Product ) %>
+            <%= show_menu_link( name: 'Stock',       controllers: 'products',          path: products_path          ) if can?( :read, Product ) %>
+            <%= show_menu_link( name: 'Producción',  controllers: 'products',          path: products_path          ) if can?( :read, Product ) %>
+            <%= show_menu_link( name: 'Pedidos',     controllers: 'client_orders',     path: client_orders_path     ) if can?( :read, ClientOrder ) %>
+            <%= show_menu_link( name: 'Facturación', controllers: 'monthly_movements', path: monthly_movements_path ) if can?( :read, MonthlyMovement ) %>
+            <%= show_menu_link( name: 'Usuarios',    controllers: 'users',             path: users_path             ) if can?( :read, User ) %>
           </ul>
           <%= render partial: 'shared/nav_search' %>
           <ul class="nav pull-right">

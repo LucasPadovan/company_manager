@@ -1,0 +1,8 @@
+.modal
+  = simple_form_for @client_order, url: client_orders_path(@client_order), html: { remote: true, data: { modal: true, error: 'modal' } } do |f|
+    .modal-header
+      %h3= @title
+    .modal-body
+      = render partial: 'form', locals: { f: f }
+    .modal-footer
+      = yield :form_actions

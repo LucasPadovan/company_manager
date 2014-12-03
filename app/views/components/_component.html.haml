@@ -1,6 +1,7 @@
 %tr{ id: dom_id(component) }
   %td= "#{component.quantity} #{component.unit}"
   %td= component.product.name
+  -#todo: considerar inflacion
   - if component.lowest_cost[0] > 0
     %td= link_to component.lowest_cost[0], firm_path(component.lowest_cost[1]), data: { lowest_value: component.lowest_cost[0] }
     %td= link_to component.highest_cost[0], firm_path(component.highest_cost[1]), data: { highest_value: component.lowest_cost[0] }

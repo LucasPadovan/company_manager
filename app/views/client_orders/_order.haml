@@ -1,0 +1,8 @@
+%tr{ id: "client_order_#{client_order.id}" }
+  %td= client_order.number
+  %td= client_order.firm.to_s
+  %td= client_order.received.strftime('%d/%m/%y %H:%Mhs')
+  %td= client_order.status
+  %td.span2
+    = srbuj_link_to_edit edit_client_order_path(client_order)
+    = srbuj_link_to_destroy client_order_path(client_order), data: { target: "client_order_#{client_order.id}", confirm: '¿Estás seguro que deseas dar de baja este pedido?' }

@@ -1,0 +1,19 @@
+.container-fluid
+  .well
+    -#= form_tag products_path, method: :get do
+      = Product.human_attribute_name :type
+      = select_tag :type, options_for_select(Product.types_for_select, params[:type])
+      = submit_tag 'Filtrar', class: 'btn btn-info'
+
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th= ClientOrder.human_attribute_name :number
+          %th= ClientOrder.human_attribute_name :firm_id
+          %th= ClientOrder.human_attribute_name :received
+          %th= ClientOrder.human_attribute_name :status
+          %th.span2
+      %tbody#client_orders_body
+        = render partial: 'order', collection: @client_orders
+.form-actions
+  = srbuj_link_to_new t('view.client_orders.new_title'), new_client_order_path

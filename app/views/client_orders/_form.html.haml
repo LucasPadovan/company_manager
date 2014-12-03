@@ -1,0 +1,10 @@
+= f.input :number, input_html: { disabled: true }
+= f.input :received
+= f.input :external_code
+= f.input :details, input_html: { rows: 4, cols: 40 }
+= f.input :firm_id, collection: Firm.firms_for_select, selected: (params[:firm_id] || @client_order.firm_id)
+= f.input :deliver_in
+= f.input :place
+= content_for :form_actions do
+  = link_to_close_modal
+  = f.submit t('view.client_orders.save'), class: 'btn btn-primary'
