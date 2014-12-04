@@ -1,4 +1,4 @@
-.modal
+.modal.modal-wide
   = simple_form_for @order, url: orders_path(@order), html: { remote: true, data: { modal: true, error: 'modal' } } do |f|
     .modal-header
       %h3= @title

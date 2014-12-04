@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
     @title = t('view.orders.edit_title', order_number: @order.number)
 
     if @order.update_attributes(params[:order])
-      js_redirect to: :show
+      js_redirect to: order_path(@order)
     else
       render partial: 'edit', status: :unprocessable_entity
     end

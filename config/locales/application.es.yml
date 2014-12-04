@@ -17,6 +17,9 @@
       interest:
         one: 'Interes'
         other: 'Intereses'
+      item:
+        one: 'Item'
+        other: 'Items'
       monthly_movement:
         one: 'Facturación mensual'
         other: 'Facturaciones mensuales'
@@ -56,6 +59,12 @@
         firm_id: 'Empresa'
         price: 'Precio'
         sale_price: 'Precio de venta'
+      item:
+        completition: 'Entregado'
+        product_id: 'Producto'
+        firm_id: 'Empresa'
+        quantity: 'Cantidad'
+        unit_price: 'Precio unitario'
       monthly_movement:
         month: 'Mes'
         year: 'Año'
@@ -78,6 +87,8 @@
         number: 'Número'
         place: 'Entregar en'
         received: 'Recibido'
+        requester: 'Pedido por'
+        requester_area: 'Área'
         status: 'Estado'
         user_id: 'Usuario'
       price:
@@ -335,3 +346,8 @@
       save: "Guardar pedido"
       show:
         taken_for: "Tomado por:"
+    items:
+      add_item: "Agregar item"
+      index_title: "Detalle pedido"
+      new_title: "Nuevo item"
+      save_item: "Agregar item"

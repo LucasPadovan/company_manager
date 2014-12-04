@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'jquery-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'will_paginate'
 gem 'simple_form'
 gem 'devise'

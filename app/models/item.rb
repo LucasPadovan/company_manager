@@ -6,4 +6,6 @@ class Item < ActiveRecord::Base
   # has_many :progesses #gotta find a better name
 
   attr_accessible :product_id, :order_id, :quantity, :completition, :unit_price
+
+  validates_presence_of :quantity, :product_id, :order_id
 end

@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turboevents
-//= require turbolinks
 //= require common
 //= require mobile
 //= require manager_utils

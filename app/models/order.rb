@@ -8,11 +8,11 @@ class Order < ActiveRecord::Base
 
   has_many :items
 
-  attr_accessible :completed, :details, :deliver_in, :external_code, :firm_id, :number, :place, :received, :status, :user_id
+  attr_accessible :completed, :details, :deliver_in, :external_code, :firm_id, :number, :place, :received, :requester, :requester_area, :status, :user_id
 
   validates :number, presence: true
 
-  before_create    :create_as_open
+  before_create :create_as_open
 
   scope :open, -> { where status: STATUSES[:open] }
 

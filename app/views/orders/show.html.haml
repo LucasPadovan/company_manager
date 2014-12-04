@@ -1,20 +1,38 @@
 .container-fluid
   .row
-    .span4
+    .span3
+      %h3 Datos
       %p
         %b= Order.human_attribute_name(:firm_id) + ':'
         = @order.firm.to_s
       %p
+        %b= Order.human_attribute_name(:requester) + ':'
+        = @order.requester
+      %p
+        %b= Order.human_attribute_name(:requester_area) + ':'
+        = @order.requester_area
+      %p
         %b= Order.human_attribute_name(:received) + ':'
         = @order.received.strftime('%d/%m/%y %H:%Mhs')
+      %p
+        %b= Order.human_attribute_name(:details) + ':'
+        = @order.details
+    .span3
+      %h3 Entrega
       %p
         %b= Order.human_attribute_name(:status) + ':'
         = @order.status
       %p
-        %b= t 'view.orders.show.taken_for'
+        %b= t('view.orders.show.taken_for')
         = @order.user.name
-    .span8
+      %p
+        %b= Order.human_attribute_name(:deliver_in)
+        = "#{@order.deliver_in || '-'} días"
+      %p
+        %b= Order.human_attribute_name(:place) + ':'
+        = @order.place
+    .span6
       = render 'items/index'
 .form-actions
-  = link_to_edit edit_order_path(@order)
+  = srbuj_link_to_edit edit_order_path(@order)
   = link_to t('label.back'), orders_path, class: 'btn'
