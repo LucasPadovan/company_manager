@@ -1,0 +1,14 @@
+.modal
+  .modal-header
+    %h3= @title
+  .modal-body
+    %table.table.table-striped
+      %thead
+        %tr
+          %td= Deliver.human_attribute_name(:delivered_at)
+          %td= Deliver.human_attribute_name(:quantity)
+      %tbody#delivers_body
+        = render partial: 'delivers/deliver', collection: @delivers
+
+  .modal-footer
+    = link_to_function t('label.close'), "$('#modal').modal('toggle');", class: 'btn'

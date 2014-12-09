@@ -1,5 +1,9 @@
 - if @firms.empty?
-  = render 'shared/empty_index'
+  .span10
+    = render 'shared/empty_index'
+  .span2
+    = link_to_add t('view.firms.add_firm'), new_firm_path if can? :create, Firm
+  .clearfix
 - else
   .span10
     %table.table.resource-list

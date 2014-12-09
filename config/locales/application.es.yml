@@ -11,6 +11,9 @@
       contact:
         one: 'Contacto'
         other: 'Contactos'
+      deliver:
+        one: 'Entrega'
+        other: 'Entregas'
       firm:
         one: 'Empresa'
         other: 'Empresas'
@@ -50,6 +53,10 @@
         name: 'Nombre del encargado'
         area: 'Área'
         details: 'Telefono/Email/Fax'
+      deliver:
+        receipt_id: 'Remito nº'
+        quantity: 'Cantidad'
+        delivered_at: 'Entegado el día'
       firm:
         nombre: 'Nombre'
         afip_cond: 'Condición AFIP'
@@ -183,7 +190,7 @@
       correctly_updated: 'Contacto actualizado correctamente.'
       stale_object_error: 'El contacta no pudo ser actualizado, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ningun contacto hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo contacto</span>'
+        html: 'No se ha creado ningun contacto hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo contacto</span>'
       add_contact: 'Agregar contacto'
       edit_contact: 'Editar contacto'
       contact: 'Contacto'
@@ -201,7 +208,7 @@
       correctly_updated: 'Empresa actualizada correctamente.'
       stale_object_error: 'La empresa no pudo ser actualizada, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva empresa</span>'
+        html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label">Agregar empresa</span>'
       add_firm: 'Agregar empresa'
       edit_firm: 'Editar empresa'
       save_firm: 'Guardar empresa'
@@ -226,7 +233,7 @@
       correctly_updated: 'Facturación mensual actualizado correctamente.'
       stale_object_error: 'La facturación mensual no pudo ser actualizada, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ninguna facturación mensual hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva facturación mensual</span>'
+        html: 'No se ha creado ninguna facturación mensual hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nueva facturación mensual</span>'
       new_monthly_movement: 'Nueva facturación mensual'
       edit_monthly_movement:
       save_monthly_movement: 'Guardar facturacion mensual'
@@ -246,7 +253,7 @@
       correctly_updated: 'Factura de compra actualizada correctamente.'
       stale_object_error: 'La factura de compra no pudo ser actualizada, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ninguna factura de compra hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva factura de compra</span>'
+        html: 'No se ha creado ninguna factura de compra hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nueva factura de compra</span>'
       index:
         delete_confirm: 'Estás a punto de eliminar una factura, ¿estás seguro que deseas hacer esto?'
         back_to_monthly_movement: "Volver a movimientos de %{month}"
@@ -262,7 +269,7 @@
       correctly_updated: 'Producto actualizado correctamente.'
       stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
       empty_index:
-        html: 'No se ha cargado ningun producto hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nuevo producto</span>'
+        html: 'No se ha cargado ningun producto hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo producto</span>'
       save: 'Guardar producto'
       show:
         created_by: 'Cargado por: '
@@ -279,7 +286,7 @@
       correctly_updated: 'Precio actualizado correctamente.'
       stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ningun precio hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Comprar a otra empresa</span>'
+        html: 'No se ha creado ningun precio hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Comprar a otra empresa</span>'
       update_price: 'Actualizar precio'
       add_new_price: 'Comprar a otra empresa'
       save_price: 'Guardar precio'
@@ -296,7 +303,7 @@
       correctly_updated: 'Precio de venta actualizado correctamente.'
       stale_object_error: 'El precio de venta no pudo ser actualizado, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ningun precio de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Vender a otra empresa</span>'
+        html: 'No se ha creado ningun precio de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Vender a otra empresa</span>'
       update_price: 'Actualizar precio venta'
       add_new_price: 'Vender a otra empresa'
       save_price: 'Guardar precio'
@@ -309,7 +316,7 @@
       correctly_updated: 'Factura de venta actualizada correctamente.'
       stale_object_error: 'La factura de venta no pudo ser actualizada, intente nuevamente.'
       empty_index:
-        html: 'No se ha creado ninguna factura de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label-info">Nueva factura de venta</span>'
+        html: 'No se ha creado ninguna factura de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nueva factura de venta</span>'
       index:
         search:
           firm: 'Nombre de la empresa'
@@ -351,3 +358,9 @@
       index_title: "Detalle pedido"
       new_title: "Nuevo item"
       save_item: "Agregar item"
+    delivers:
+      add_deliver: "Agregar entrega"
+      index_title: "Entregas de %{product}"
+      new_title: "Nueva entrega"
+      save_deliver: "Agregar entrega"
+      view_index: "Ver historial"

@@ -136,6 +136,18 @@ module ApplicationHelper
 
   end
 
+  def srbuj_link_to_index(name, *args)
+    options = args.extract_options!
+
+    options['class'] ||= 'btn btn-success stitched'
+    options['title'] ||= t('label.new')
+    options['data-show-tooltip'] ||= true
+    options['data-remote'] = true
+    options['data-target'] ||= 'modal'
+    options['data-modal'] ||= true
+    link_to content_tag(:i, '', class: 'icon-plus-sign') + ' ' + name, *args, options
+  end
+
   def srbuj_link_to_new(name, *args)
     options = args.extract_options!
 

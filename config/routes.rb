@@ -1,6 +1,8 @@
 CompanyManager::Application.routes.draw do
   resources :orders do
-    resources :items, only: [:new, :create, :destroy]
+    resources :items, only: [:new, :create, :destroy] do
+      resources :delivers
+    end
   end
 
   resources :products, :custom_products, :raw_products, controller: :products do

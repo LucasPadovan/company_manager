@@ -4,4 +4,6 @@
   %td= item.unit_price
   %td= item.completition
   %td
+    = srbuj_link_to_new t('view.delivers.add_deliver'), new_order_item_deliver_path(@order, item), class: 'btn btn-primary btn-mini'
+    = srbuj_link_to_index t('view.delivers.view_index'), order_item_delivers_path(@order, item), class: 'btn btn-success btn-mini'
     = srbuj_link_to_destroy order_item_path(@order, item), data: { target: dom_id(item) }

@@ -15,6 +15,7 @@
             <!--<%= show_menu_link( name: 'Stock',       controllers: 'products',          path: products_path          ) if can?( :read, Product ) %>-->
             <!--<%= show_menu_link( name: 'Producción',  controllers: 'products',          path: products_path          ) if can?( :read, Product ) %>-->
             <%= show_menu_link( name: 'Pedidos',     controllers: 'orders',            path: orders_path            ) if can?( :read, Order ) %>
+            <%#= show_menu_link( name: 'Remitos',     controllers: 'receipts',            path: receipts_path            ) if can?( :read, Receipt ) %>
             <%= show_menu_link( name: 'Facturación', controllers: 'monthly_movements', path: monthly_movements_path ) if can?( :read, MonthlyMovement ) %>
             <%= show_menu_link( name: 'Usuarios',    controllers: 'users',             path: users_path             ) if can?( :read, User ) %>
           </ul>

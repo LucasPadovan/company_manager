@@ -1,9 +1,14 @@
 = Company_manager
 
-Skeleton project, empty but with all the stuff I need to begin with =)
-
-All you have to do for start using it is change all the X0Y0 (and x0y0) strings
-with the name of your application...
+PSQL configuration
+- sudo apt-get install postgresql-9.3
+- sudo apt-get install libpq-dev
+- cd /path_to_workspace/company_manager
+- bundle install
+- sudo -u postgres psql
+- CREATE USER general_user WITH PASSWORD 'general_user';
+- ALTER ROLE general_user CREATEROLE CREATEDB;
+- rake db:setup
 
 === Build Status {<img src="https://secure.travis-ci.org/francocatena/x0y0.png"/>}[http://travis-ci.org/francocatena/x0y0]
 

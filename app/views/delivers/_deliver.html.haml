@@ -1,0 +1,4 @@
+%tr{ id: dom_id(deliver) }
+  %td= deliver.delivered_at.strftime('%d/%m/%y %H:%MHs.')
+  %td= deliver.quantity
+  %td= link_to_destroy order_item_deliver_path(@order, @item, deliver)

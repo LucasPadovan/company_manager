@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
     @order.user = @current_user
 
     if @order.save
-      js_redirect to: :show
+      js_redirect to: order_path(@order)
     else
       render partial: 'new', status: :unprocessable_entity
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141204015335) do
+ActiveRecord::Schema.define(:version => 20141204018334) do
 
   create_table "components", :force => true do |t|
     t.integer "product_id"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20141204015335) do
   end
 
   add_index "contacts", ["firm_id"], :name => "index_contacts_on_firm_id"
+
+  create_table "delivers", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "receipt_id"
+    t.float    "quantity"
+    t.datetime "delivered_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "firms", :force => true do |t|
     t.string   "nombre"
@@ -53,11 +62,11 @@ ActiveRecord::Schema.define(:version => 20141204015335) do
   create_table "items", :force => true do |t|
     t.integer  "order_id"
     t.integer  "product_id"
-    t.integer  "completition"
+    t.integer  "completition", :default => 0
     t.float    "quantity"
     t.float    "unit_price"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "monthly_movements", :force => true do |t|

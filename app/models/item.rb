@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
 
   belongs_to :order
   belongs_to :product
-  # has_many :progesses #gotta find a better name
+  has_many :delivers
 
   attr_accessible :product_id, :order_id, :quantity, :completition, :unit_price
 

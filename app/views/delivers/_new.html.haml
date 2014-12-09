@@ -1,0 +1,10 @@
+.modal
+  = simple_form_for [@order, @item, @deliver], html: { remote: true, data: { target: dom_id(@item), modal: true, error: 'modal', replace: true } } do |f|
+    .modal-header
+      %h3= @title
+    .modal-body
+      = f.input :delivered_at, as: :string, input_html: { class: 'datepicker', value: Date.today.strftime('%d/%m/%Y') }
+      = f.input :quantity
+    .modal-footer
+      = f.submit t('view.delivers.save_deliver'), class: 'btn btn-primary btn-small'
+      = link_to_function t('label.close'), "$('#modal').modal('toggle');", class: 'btn'
