@@ -17,4 +17,10 @@ class Deliver < ActiveRecord::Base
       item.completition -= quantity
       item.save
     end
+  #todo: relacion muchos a muchos, un solo deliver puede tener mas de un item, entonces hago entregas mas generales, con una lista de items.
+  #      al crear un nuevo deliver, que descuente de los completition la cantidad indicada en cada uno de los deliverItem (relacion intermedia con la cantidad solamente)
+
+  #      belongs_to :order
+
+  #      asi tambien tengo una sola fecha y cada uno de estos deliver puede tener su propio remito => belongs_to :receipt
 end

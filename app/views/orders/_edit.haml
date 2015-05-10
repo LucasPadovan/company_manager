@@ -1,4 +1,4 @@
-.modal
+.modal.modal-wide
   = simple_form_for :order, url: order_path(@order), html: { remote: true,
     data: { target: "product_#{@order.id}", modal: true, error: 'modal', replace: true,
     responds_as: :put }, method: :put } do |f|
